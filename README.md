@@ -3,10 +3,7 @@ title: Aegis-Env
 emoji: 🛡️
 colorFrom: blue
 colorTo: green
-sdk: gradio
-sdk_version: "5.29.0"
-python_version: "3.10"
-app_file: docker/demo.py
+sdk: docker
 pinned: false
 ---
 
@@ -17,7 +14,7 @@ In March 2026, a simulated incident rattles two teams:
 - Claude’s on-call security engineer is paged for suspicious package installs.
 - Vercel’s customer success inbox starts filling with “our build pulled malware” escalations.
 
-The failure mode is familiar: an LLM assistant can *talk* about supply-chain attacks, but it cannot reliably **run a tool-driven investigation**, keep state, and communicate **calm, actionable guidance** to stakeholders under uncertainty.
+The failure mode is familiar: an LLM assistant can _talk_ about supply-chain attacks, but it cannot reliably **run a tool-driven investigation**, keep state, and communicate **calm, actionable guidance** to stakeholders under uncertainty.
 
 **Aegis-Env** is an OpenEnv MCP environment for training LLM agents on realistic package supply-chain forensics. Each episode hides one attack in a synthetic package ecosystem; the agent must gather evidence through tools, maintain state across steps, and submit a final attack verdict — while optionally maintaining a long-horizon case file and replying to stakeholder messages.
 
