@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import random
 import uuid
-from datetime import UTC, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from environment.models import CommitRecord, Maintainer, Package, PackageVersion
 
@@ -43,7 +43,7 @@ class PackageFactory:
     def _build_versions(self, package_name: str, maintainers: list[Maintainer]) -> list[PackageVersion]:
         version_count = self._rng.randint(1, 4)
         minor = self._rng.randint(0, 4)
-        base_time = datetime.now(UTC) - timedelta(days=self._rng.randint(320, 1500))
+        base_time = datetime.now(timezone.utc) - timedelta(days=self._rng.randint(320, 1500))
 
         versions: list[PackageVersion] = []
         current_time = base_time

@@ -1,8 +1,22 @@
 # Aegis-Env
 
-Aegis-Env is an OpenEnv MCP environment for training LLM agents on realistic package supply-chain forensics. Each episode hides one attack in a synthetic package ecosystem; the agent must gather evidence through tools, maintain state across steps, and submit a final attack verdict.
+In March 2026, a simulated incident rattles two teams:
+
+- Claude’s on-call security engineer is paged for suspicious package installs.
+- Vercel’s customer success inbox starts filling with “our build pulled malware” escalations.
+
+The failure mode is familiar: an LLM assistant can *talk* about supply-chain attacks, but it cannot reliably **run a tool-driven investigation**, keep state, and communicate **calm, actionable guidance** to stakeholders under uncertainty.
+
+**Aegis-Env** is an OpenEnv MCP environment for training LLM agents on realistic package supply-chain forensics. Each episode hides one attack in a synthetic package ecosystem; the agent must gather evidence through tools, maintain state across steps, and submit a final attack verdict — while optionally maintaining a long-horizon case file and replying to stakeholder messages.
+
+Built against **OpenEnv Core `openenv-core==0.2.3`** (pinned in `pyproject.toml` under the `openenv` extra).
 
 This repository is aligned to **Theme 3.1 (World Modeling - Professional Tasks)** of the OpenEnv Hackathon. The core task is a professional security workflow in a partially observable world: the agent must interrogate tool outputs, update its beliefs, and end with a single high-stakes classification.
+
+Additional themes supported:
+
+- **Theme 3.2 (Personalized Tasks)**: a lightweight “stakeholder inbox” requires context-aware incident updates (`aegis://inbox/current`, `draft_incident_reply`, `send_incident_reply`).
+- **Theme 2 (Long-Horizon Planning & Instruction Following)**: a persistent case file encourages durable state across longer trajectories (`aegis://casefile/current`, `append_case_note`).
 
 ## Problem Statement
 
@@ -16,7 +30,7 @@ Aegis-Env trains those capabilities in a partially observable world with delayed
 
 ## Minimum Requirement Status
 
-- OpenEnv environment: yes. Manifest in [openenv.yaml](openenv.yaml), server in [environment/mcp_server.py](environment/mcp_server.py), and shared runtime in [environment/runtime.py](environment/runtime.py).
+- OpenEnv environment: yes. Manifest in [openenv.yaml](openenv.yaml), server in [environment/mcp_server.py](environment/mcp_server.py), and shared runtime in [environment/runtime.py](environment/runtime.py). OpenEnv dependency is pinned as `openenv-core==0.2.3` in `pyproject.toml` (`.[openenv]`).
 - Working TRL training script: yes. Entrypoint [training/train.py](training/train.py), GRPO implementation in [training/grpo.py](training/grpo.py), and a re-runnable Colab notebook in [notebooks/aegis_grpo_colab.ipynb](notebooks/aegis_grpo_colab.ipynb).
 - Real training evidence with loss and reward plots: yes. See [reports/training_evidence/training_summary.json](reports/training_evidence/training_summary.json), [reports/training_evidence/training_log_history.json](reports/training_evidence/training_log_history.json), and [reports/training_evidence/training_curves.png](reports/training_evidence/training_curves.png).
 - Short presentation asset linked from the README: yes. See [docs/hackathon_slide_deck.md](docs/hackathon_slide_deck.md).
@@ -28,8 +42,7 @@ Aegis-Env trains those capabilities in a partially observable world with delayed
 1. Install the repo:
 
 ```bash
-pip install -e .[server,eval,demo]
-pip install -e .[training]
+pip install -e .[openenv,server,eval,demo,training]
 ```
 
 2. Run the local demo:
@@ -49,7 +62,8 @@ python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/h
 1. **Tool-grounded forensic world**: agents must use realistic investigation tools, not just emit labels.
 2. **Partially observable dynamics**: the ground-truth attack is hidden; only traces and metadata are exposed.
 3. **Attack diversity**: 8 malicious classes plus safe episodes (typosquatting, dependency confusion, CI/CD poisoning, and more).
-4. **Anti-gaming reward shaping**: reward combines accuracy, false-alarm control, parsimony, evidence-tool coverage, and reasoning hints.
+4. **Anti-gaming reward shaping**: reward combines accuracy, false-alarm control, parsimony, evidence-tool coverage, reasoning hints, and a small bonus for incident-communication + case-file hygiene.
+5. **Stakeholder-facing realism**: the agent is rewarded for producing usable updates, not just correct labels.
 
 ## Results Snapshot
 
@@ -61,7 +75,9 @@ Current source of truth: [reports/hackathon/submission_summary.json](reports/hac
 - Heuristic -> trained delta: +11.1 accuracy points and +0.22 average reward.
 - Random -> trained delta: +66.7 accuracy points and +1.33 average reward.
 
-The default **trained** line in [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json) comes from the lightweight nearest-neighbor forensic policy artifact in [artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json). The optional transformer checkpoint evaluation path remains available through `--trained-model artifacts/sft-smoke`.
+The default **trained** line in [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json) comes from the lightweight nearest-neighbor forensic policy artifact in [artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json). The optional transformer checkpoint evaluation path remains available through `--trained-model artifacts/grpo-evidence`.
+
+Important: the default `trained` in the hackathon bundle is **not** the TRL/GRPO transformer checkpoint — it is the lightweight **nearest-neighbor classifier** (`artifacts/classifier-smoke/policy.json`) used as a fast, deterministic benchmark. If your story/pitch is “we trained with TRL”, use the transformer checkpoint evaluation path below and cite the corresponding trained report.
 
 ![Aegis GRPO training curves](reports/training_evidence/training_curves.png)
 
@@ -74,6 +90,13 @@ The default **trained** line in [reports/hackathon/submission_summary.json](repo
 3. Shared non-server runtime (client/server separation): [environment/runtime.py](environment/runtime.py)
 4. Gym-like episode flow: reset/start, step via tools, terminal verdict.
 5. Reserved tool names avoided (`reset`, `step`, `state`, and `close` are not used as tool names).
+6. Additional resources/tools for Theme 3.2 + long-horizon: `aegis://inbox/current`, `aegis://casefile/current`, `append_case_note`, `draft_incident_reply`, `send_incident_reply`.
+
+## Using OpenEnv (what judges care about)
+
+- **Manifest**: `openenv.yaml` is the OpenEnv discovery surface (resources + tools + workflow).
+- **Deployment**: the repo is Docker Space-ready; deploy to Hugging Face Spaces and link the live Space URL in **Submission Assets**.
+- **Version**: OpenEnv Core is pinned as `openenv-core==0.2.3` (see `pyproject.toml` → `.[openenv]`).
 
 ## Reward Design
 
@@ -139,15 +162,15 @@ python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/h
 
 By default, this command trains or reuses [artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json) and evaluates it as the trained policy.
 
-Optional transformer-checkpoint evaluation path:
+Optional transformer-checkpoint evaluation path (use this for “TRL-trained model” results):
 
 ```bash
 python -m eval.hackathon \
 	--episodes-per-attack 1 \
 	--seed 0 \
 	--output-dir reports/hackathon \
-	--trained-model artifacts/sft-smoke \
-	--trained-label sft-smoke
+	--trained-model artifacts/grpo-evidence \
+	--trained-label grpo-evidence
 ```
 
 Optional comparison against the committed transformer smoke report:
@@ -175,8 +198,7 @@ Use [reports/hackathon/submission_summary.json](reports/hackathon/submission_sum
 ## Install
 
 ```bash
-pip install -e .[server,eval,demo]
-pip install -e .[training]
+pip install -e .[openenv,server,eval,demo,training]
 ```
 
 CLI entrypoints:

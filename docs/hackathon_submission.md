@@ -33,7 +33,7 @@ python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/h
 Optional transformer-checkpoint evaluation:
 
 ```bash
-python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/hackathon --trained-model artifacts/sft-smoke --trained-label sft-smoke
+python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/hackathon --trained-model artifacts/grpo-evidence --trained-label grpo-evidence
 ```
 
 Optional comparison against the committed transformer smoke report:

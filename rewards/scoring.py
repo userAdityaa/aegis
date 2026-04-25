@@ -58,7 +58,10 @@ def score_episode(
     accuracy = _accuracy_reward(actual_attack=actual_attack, decision=decision)
     false_alarm = _false_alarm_penalty(actual_attack=actual_attack, decision=decision)
     parsimony = _parsimony_penalty(actual_attack=actual_attack, step_count=step_count)
-    reasoning_reward = _reasoning_reward(actual_attack=actual_attack, reasoning=reasoning)
+    reasoning_reward = _reasoning_reward(actual_attack=actual_attack, reasoning=reasoning) + communication_bonus(
+        tools_used=tools_used,
+        reasoning=reasoning,
+    )
     evidence_coverage = _evidence_coverage_reward(actual_attack=actual_attack, tools_used=tools_used)
     return RewardBreakdown(
         accuracy=accuracy,
@@ -93,6 +96,19 @@ def _reasoning_reward(*, actual_attack: AttackClass, reasoning: str) -> float:
         return 0.0
     matched_hints = sum(1 for hint in _REASONING_HINTS[actual_attack] if hint in normalized)
     return 0.2 if matched_hints >= 2 else 0.0
+
+
+def communication_bonus(*, tools_used: Sequence[str], reasoning: str) -> float:
+    """Small bonus for personalized incident communication + case-file usage (Theme 3.2 / long-horizon)."""
+    normalized = reasoning.strip().lower()
+    bonus = 0.0
+    if "append_case_note" in tools_used:
+        bonus += 0.05
+    if "send_incident_reply" in tools_used:
+        bonus += 0.1
+    if bonus and any(token in normalized for token in ("customer", "stakeholder", "mitigation", "remediation", "impact")):
+        bonus += 0.05
+    return min(0.2, bonus)
 
 
 def _evidence_coverage_reward(*, actual_attack: AttackClass, tools_used: Sequence[str]) -> float:
