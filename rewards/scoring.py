@@ -23,26 +23,33 @@ _REASONING_HINTS = {
     AttackClass.SAFE: ("safe", "clean", "benign", "no evidence"),
 }
 
+from rewards.rubrics import (
+    ComposedRubric,
+    EvidenceRubric,
+    RubricInput,
+    SpeedRubric,
+    SpecificityRubric,
+    VerdictRubric,
+)
+
 
 @dataclass(frozen=True, slots=True)
 class RewardBreakdown:
-    accuracy: float
-    parsimony: float
-    reasoning: float
-    false_alarm: float
-    evidence_coverage: float
+    verdict: float
+    speed: float
+    specificity: float
+    evidence: float
 
     @property
     def total(self) -> float:
-        return self.accuracy + self.parsimony + self.reasoning + self.false_alarm + self.evidence_coverage
+        return self.verdict + self.speed + self.specificity + self.evidence
 
     def as_dict(self) -> dict[str, float]:
         return {
-            "accuracy": self.accuracy,
-            "parsimony": self.parsimony,
-            "reasoning": self.reasoning,
-            "false_alarm": self.false_alarm,
-            "evidence_coverage": self.evidence_coverage,
+            "verdict": self.verdict,
+            "speed": self.speed,
+            "specificity": self.specificity,
+            "evidence": self.evidence,
             "total": self.total,
         }
 
@@ -55,69 +62,30 @@ def score_episode(
     step_count: int,
     tools_used: Sequence[str],
 ) -> RewardBreakdown:
-    accuracy = _accuracy_reward(actual_attack=actual_attack, decision=decision)
-    false_alarm = _false_alarm_penalty(actual_attack=actual_attack, decision=decision)
-    parsimony = _parsimony_penalty(actual_attack=actual_attack, step_count=step_count)
-    reasoning_reward = _reasoning_reward(actual_attack=actual_attack, reasoning=reasoning) + communication_bonus(
-        tools_used=tools_used,
+    composed = build_default_rubric(actual_attack=actual_attack)
+    inputs = RubricInput(
+        actual_attack=actual_attack,
+        decision=decision,
         reasoning=reasoning,
+        step_count=step_count,
+        tools_used=tuple(tools_used),
     )
-    evidence_coverage = _evidence_coverage_reward(actual_attack=actual_attack, tools_used=tools_used)
+    parts = composed.score_components(inputs)
     return RewardBreakdown(
-        accuracy=accuracy,
-        parsimony=parsimony,
-        reasoning=reasoning_reward,
-        false_alarm=false_alarm,
-        evidence_coverage=evidence_coverage,
+        verdict=float(parts["verdict"]),
+        speed=float(parts["speed"]),
+        specificity=float(parts["specificity"]),
+        evidence=float(parts["evidence"]),
     )
 
-
-def _accuracy_reward(*, actual_attack: AttackClass, decision: AttackClass) -> float:
-    if actual_attack is AttackClass.SAFE:
-        return 0.5 if decision is AttackClass.SAFE else 0.0
-    return 1.0 if decision is actual_attack else -1.0
-
-
-def _false_alarm_penalty(*, actual_attack: AttackClass, decision: AttackClass) -> float:
-    if actual_attack is AttackClass.SAFE and decision is not AttackClass.SAFE:
-        return -0.6
-    return 0.0
-
-
-def _parsimony_penalty(*, actual_attack: AttackClass, step_count: int) -> float:
-    required_tools = _REQUIRED_TOOLS.get(actual_attack, ())
-    unnecessary_steps = max(0, step_count - len(required_tools))
-    return -0.05 * unnecessary_steps
-
-
-def _reasoning_reward(*, actual_attack: AttackClass, reasoning: str) -> float:
-    normalized = reasoning.strip().lower()
-    if not normalized:
-        return 0.0
-    matched_hints = sum(1 for hint in _REASONING_HINTS[actual_attack] if hint in normalized)
-    return 0.2 if matched_hints >= 2 else 0.0
-
-
-def communication_bonus(*, tools_used: Sequence[str], reasoning: str) -> float:
-    """Small bonus for personalized incident communication + case-file usage (Theme 3.2 / long-horizon)."""
-    normalized = reasoning.strip().lower()
-    bonus = 0.0
-    if "append_case_note" in tools_used:
-        bonus += 0.05
-    if "send_incident_reply" in tools_used:
-        bonus += 0.1
-    if bonus and any(token in normalized for token in ("customer", "stakeholder", "mitigation", "remediation", "impact")):
-        bonus += 0.05
-    return min(0.2, bonus)
-
-
-def _evidence_coverage_reward(*, actual_attack: AttackClass, tools_used: Sequence[str]) -> float:
-    required_tools = set(_REQUIRED_TOOLS.get(actual_attack, ()))
-    if not required_tools:
-        return 0.0
-
-    matched_tools = len(required_tools.intersection(tools_used))
-    coverage = matched_tools / len(required_tools)
-    if coverage == 0.0:
-        return -0.3
-    return 0.3 * coverage
+def build_default_rubric(*, actual_attack: AttackClass) -> ComposedRubric:
+    hints = _REASONING_HINTS.get(actual_attack, ())
+    required_tools = tuple(_REQUIRED_TOOLS.get(actual_attack, ()))
+    evidence_signals = tuple(dict.fromkeys((*hints, *required_tools, "customer", "stakeholder", "mitigation", "remediation", "impact")))
+    return ComposedRubric(
+        verdict=VerdictRubric(),
+        speed=SpeedRubric(max_steps_for_bonus=max(4, len(required_tools) + 1), bonus=0.3),
+        specificity=SpecificityRubric(false_quarantine_penalty=-0.6),
+        evidence=EvidenceRubric(signals=evidence_signals, per_signal=0.1, max_total=0.8),
+        weights={"verdict": 1.0, "speed": 1.0, "specificity": 1.0, "evidence": 1.0},
+    )

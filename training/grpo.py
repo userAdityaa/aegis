@@ -34,9 +34,11 @@ class GRPOTrainingConfig:
     run_name: str = "aegis-grpo"
     use_vllm: bool = False
     vllm_mode: str = "colocate"
-    log_completions: bool = True
+    # TRL's console completion samples can break on Windows terminals with non-UTF8 codepages.
+    log_completions: bool = False
     manifest_path: str | None = None
     resume_from_checkpoint: str | bool | None = None
+    use_curriculum: bool = False
 
 
 def build_training_plan(config: GRPOTrainingConfig) -> dict[str, object]:
@@ -142,13 +144,23 @@ def run_grpo_training(config: GRPOTrainingConfig) -> dict[str, object]:
         fp16=False,
     )
 
+    def _env_factory() -> GRPOAegisEnvironment:
+        env = GRPOAegisEnvironment(
+            manifest_path=config.manifest_path,
+            evidence_dir=config.evidence_dir or config.output_dir,
+            run_id=config.run_name,
+        )
+        if config.use_curriculum:
+            env.enable_curriculum(seed=config.seed)
+        return env
+
     trainer = GRPOTrainer(
         model=model,
         args=training_args,
         train_dataset=dataset,
         reward_funcs=aegis_reward_func,
         processing_class=tokenizer,
-        environment_factory=lambda: GRPOAegisEnvironment(manifest_path=config.manifest_path),
+        environment_factory=_env_factory,
     )
     train_output = trainer.train(resume_from_checkpoint=config.resume_from_checkpoint)
 
@@ -186,6 +198,7 @@ def _force_utf8_locale_for_trl_import() -> None:
 
         def _aegis_read_text_utf8(self, encoding=None, errors=None, newline=None):
             resolved_encoding = "utf-8" if encoding is None else encoding
-            return original_read_text(self, encoding=resolved_encoding, errors=errors, newline=newline)
+            # Python 3.10's Path.read_text does not accept newline=.
+            return original_read_text(self, encoding=resolved_encoding, errors=errors)
 
         Path.read_text = _aegis_read_text_utf8  # type: ignore[assignment]

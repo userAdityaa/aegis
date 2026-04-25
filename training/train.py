@@ -63,6 +63,7 @@ def main() -> None:
     parser.add_argument("--run-name", default="aegis-grpo")
     parser.add_argument("--use-vllm", action="store_true")
     parser.add_argument("--vllm-mode", choices=("colocate", "server"), default="colocate")
+    parser.add_argument("--curriculum", action="store_true")
     parser.add_argument("--manifest-path")
     parser.add_argument("--resume-from-checkpoint")
     args = parser.parse_args()
@@ -94,6 +95,7 @@ def main() -> None:
         vllm_mode=args.vllm_mode,
         manifest_path=args.manifest_path,
         resume_from_checkpoint=args.resume_from_checkpoint,
+        use_curriculum=bool(args.curriculum),
     )
 
     if config.per_device_train_batch_size % config.num_generations != 0:
