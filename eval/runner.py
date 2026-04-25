@@ -117,6 +117,7 @@ def evaluate_policy(
     episodes_per_attack: int = 2,
     seed: int = 0,
     attack_schedule: Sequence[AttackClass | str] | None = None,
+    max_steps: int = 7,
 ) -> tuple[EvaluationSummary, list[EvaluationEpisode]]:
     schedule = _normalize_schedule(attack_schedule, episodes_per_attack=episodes_per_attack)
     evaluation_episodes: list[EvaluationEpisode] = []
@@ -129,6 +130,7 @@ def evaluate_policy(
             policy,
             attack_class=attack_class.value,
             seed=episode_seed,
+            max_steps=max_steps,
         )
         evaluation_episodes.append(EvaluationEpisode(seed=episode_seed, trace=trace))
 

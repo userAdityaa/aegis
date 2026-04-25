@@ -98,10 +98,14 @@ def main() -> None:
         payload["artifacts"]["trained_summary"] = trained_summary_path.as_posix()
     elif args.trained_model is not None:
         trained_policy = TransformerTranscriptPolicy(args.trained_model)
+        # Transformer rollouts can require more turns than simple baselines,
+        # especially when the model repeats tools. Use a slightly larger cap
+        # so the hackathon command is robust on real checkpoints.
         trained_summary, trained_episodes = evaluate_policy(
             trained_policy,
             episodes_per_attack=args.episodes_per_attack,
             seed=args.seed,
+            max_steps=12,
         )
         trained_label = args.trained_label or f"TransformerTranscriptPolicy[{args.trained_model.as_posix()}]"
         trained_report_path = write_evaluation_report(
