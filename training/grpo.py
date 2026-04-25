@@ -151,7 +151,7 @@ def run_grpo_training(config: GRPOTrainingConfig) -> dict[str, object]:
             run_id=config.run_name,
         )
         if config.use_curriculum:
-            env.enable_curriculum(seed=config.seed)
+            env._enable_curriculum(seed=config.seed)
         return env
 
     trainer = GRPOTrainer(

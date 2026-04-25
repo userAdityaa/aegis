@@ -27,7 +27,15 @@ class GRPOAegisEnvironment:
         self._use_curriculum = False
         self._curriculum: CurriculumScheduler | None = None
 
-    def enable_curriculum(self, *, seed: int = 0) -> None:
+    def _enable_curriculum(self, *, seed: int = 0) -> None:
+        """Enable curriculum sampling for subsequent resets.
+
+        This is a training-time convenience hook (not a forensic tool). When enabled, calls
+        to `reset()` will select the next attack class via the curriculum scheduler.
+
+        Args:
+            seed: RNG seed for the curriculum scheduler.
+        """
         if self._evidence_dir is None:
             return
         self._use_curriculum = True
@@ -41,6 +49,15 @@ class GRPOAegisEnvironment:
         prompt: object | None = None,
         **_: object,
     ) -> str:
+        """Start a new episode and return the initial user prompt.
+
+        Args:
+            attack_class: Attack class label to inject, or "random".
+            seed: Optional episode RNG seed.
+            package_name: Optional package name to investigate.
+            prompt: Reserved for compatibility with TRL environments (unused).
+            **_: Ignored extra keyword arguments for compatibility.
+        """
         del prompt
         if self._use_curriculum and self._curriculum is not None:
             attack_class = self._curriculum.select_attack().value
@@ -63,10 +80,10 @@ class GRPOAegisEnvironment:
         )
 
     def check_maintainer_history(self, pkg_name: str | None = None) -> str:
-        """Return maintainer, IP, and commit-timing history.
+        """Return maintainer metadata plus IP and commit-timing history.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active target.
+            pkg_name: Optional package name. Defaults to the active episode target.
         """
 
         return self._call_tool("check_maintainer_history", pkg_name=pkg_name)
@@ -77,48 +94,48 @@ class GRPOAegisEnvironment:
         v1: str | None = None,
         v2: str | None = None,
     ) -> str:
-        """Return a version diff for the selected package.
+        """Return a diff between two package versions.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active target.
-            v1: Optional earlier version.
-            v2: Optional later version.
+            pkg_name: Optional package name. Defaults to the active episode target.
+            v1: Optional earlier version identifier. If omitted, the environment selects one.
+            v2: Optional later version identifier. If omitted, the environment selects one.
         """
 
         return self._call_tool("diff_versions", pkg_name=pkg_name, v1=v1, v2=v2)
 
     def trace_dependencies(self, pkg_name: str | None = None) -> str:
-        """Return the dependency tree and flattened summary.
+        """Return the dependency tree and flattened dependency summary.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active target.
+            pkg_name: Optional package name. Defaults to the active episode target.
         """
 
         return self._call_tool("trace_dependencies", pkg_name=pkg_name)
 
     def inspect_install_script(self, pkg_name: str | None = None) -> str:
-        """Return suspicious install-script patterns.
+        """Inspect install/build scripts for suspicious patterns.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active target.
+            pkg_name: Optional package name. Defaults to the active episode target.
         """
 
         return self._call_tool("inspect_install_script", pkg_name=pkg_name)
 
     def get_reputation_score(self, pkg_name: str | None = None) -> str:
-        """Return reputation and popularity signals.
+        """Return reputation and popularity signals for a package.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active target.
+            pkg_name: Optional package name. Defaults to the active episode target.
         """
 
         return self._call_tool("get_reputation_score", pkg_name=pkg_name)
 
     def run_sandbox_test(self, pkg_name: str | None = None) -> str:
-        """Return simulated runtime observations.
+        """Run a simulated sandbox test and return runtime observations.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active target.
+            pkg_name: Optional package name. Defaults to the active episode target.
         """
 
         return self._call_tool("run_sandbox_test", pkg_name=pkg_name)
@@ -127,8 +144,8 @@ class GRPOAegisEnvironment:
         """Submit the final verdict and end the episode.
 
         Args:
-            decision: Predicted attack class name or safe.
-            reasoning: Evidence-based explanation for the verdict.
+            decision: Predicted attack class label (or "safe").
+            reasoning: Concise evidence-based rationale for the decision.
         """
 
         trace = self.client.submit_verdict(decision, reasoning)

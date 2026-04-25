@@ -87,10 +87,13 @@ class ComposedRubric(Rubric):
         return sum(scores.values())
 
     def score_components(self, x: RubricInput) -> dict[str, float]:
-        verdict = float(self.verdict(x)) * float(self.weights.get("verdict", 1.0))
-        speed = float(self.speed(x)) * float(self.weights.get("speed", 1.0))
-        specificity = float(self.specificity(x)) * float(self.weights.get("specificity", 1.0))
-        evidence = float(self.evidence(x)) * float(self.weights.get("evidence", 1.0))
+        # OpenEnv's Rubric base class implements __call__(observation, ...). Our rubrics
+        # use a project-specific RubricInput, so call forward(...) directly to avoid
+        # signature mismatches when OpenEnv changes its Rubric.__call__ contract.
+        verdict = float(self.verdict.forward(x)) * float(self.weights.get("verdict", 1.0))
+        speed = float(self.speed.forward(x)) * float(self.weights.get("speed", 1.0))
+        specificity = float(self.specificity.forward(x)) * float(self.weights.get("specificity", 1.0))
+        evidence = float(self.evidence.forward(x)) * float(self.weights.get("evidence", 1.0))
         return {
             "verdict": verdict,
             "speed": speed,

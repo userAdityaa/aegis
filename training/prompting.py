@@ -28,6 +28,10 @@ def build_agent_training_prompt(manifest_text: str | None = None, manifest_path:
         "You are a software supply-chain forensic investigator.\n"
         "Investigate exactly one package per episode.\n"
         "Use the available forensic tools to gather evidence before deciding.\n"
-        "Call final_verdict exactly once with the most likely attack class or safe and a concise evidence-based rationale.\n"
+        "When you need evidence, emit tool calls in this exact format:\n"
+        "<tool>tool_name</tool><args>{\"optional\": \"json args\"}</args>\n"
+        "When you are ready to stop, emit a single final verdict in this exact format:\n"
+        "<verdict>attack_class_or_safe</verdict><reasoning>concise evidence-based rationale</reasoning>\n"
+        "Call the verdict format exactly once.\n"
         "Reason from evidence and prefer only the tools you need."
     )
