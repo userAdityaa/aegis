@@ -19,7 +19,7 @@
       "comparison_path": "reports/hackathon/random_vs_heuristic.json",
       "delta": {
         "accuracy": 0.5555555555555556,
-        "average_reward": 1.1111111111111112,
+        "average_reward": 1.0222222222222221,
         "average_steps": 4.0
       },
       "plot_path": "reports/hackathon/random_vs_heuristic.png"
@@ -28,7 +28,7 @@
       "comparison_path": "reports/hackathon/random_vs_trained.json",
       "delta": {
         "accuracy": 0.6666666666666666,
-        "average_reward": 1.3333333333333335,
+        "average_reward": 1.2444444444444445,
         "average_steps": 4.0
       },
       "plot_path": "reports/hackathon/random_vs_trained.png"
@@ -41,12 +41,12 @@
   "metrics": {
     "delta": {
       "accuracy": 0.5555555555555556,
-      "average_reward": 1.1111111111111112,
+      "average_reward": 1.0222222222222221,
       "average_steps": 4.0
     },
     "heuristic": {
       "accuracy": 0.7777777777777778,
-      "average_reward": 0.6333333333333333,
+      "average_reward": 0.7,
       "average_steps": 6.0,
       "confusion_matrix": {
         "account_takeover": {
@@ -162,55 +162,55 @@
       "per_attack": {
         "account_takeover": {
           "accuracy": 1.0,
-          "average_reward": 1.25,
+          "average_reward": 1.2,
           "average_steps": 6.0,
           "episodes": 1
         },
         "cicd_poisoning": {
           "accuracy": 1.0,
-          "average_reward": 1.3,
+          "average_reward": 1.2,
           "average_steps": 6.0,
           "episodes": 1
         },
         "dead_drop_hijack": {
           "accuracy": 1.0,
-          "average_reward": 1.15,
+          "average_reward": 1.0,
           "average_steps": 6.0,
           "episodes": 1
         },
         "dependency_confusion": {
           "accuracy": 1.0,
-          "average_reward": 1.3,
+          "average_reward": 1.2,
           "average_steps": 6.0,
           "episodes": 1
         },
         "long_con": {
           "accuracy": 0.0,
-          "average_reward": -0.8999999999999999,
+          "average_reward": -0.9,
           "average_steps": 6.0,
           "episodes": 1
         },
         "metadata_injection": {
           "accuracy": 1.0,
-          "average_reward": 1.25,
+          "average_reward": 1.4,
           "average_steps": 6.0,
           "episodes": 1
         },
         "safe": {
           "accuracy": 1.0,
-          "average_reward": 0.19999999999999996,
+          "average_reward": 1.0,
           "average_steps": 6.0,
           "episodes": 1
         },
         "star_jacking": {
           "accuracy": 1.0,
-          "average_reward": 1.05,
+          "average_reward": 1.1,
           "average_steps": 6.0,
           "episodes": 1
         },
         "typosquatting": {
           "accuracy": 0.0,
-          "average_reward": -0.8999999999999999,
+          "average_reward": -0.9,
           "average_steps": 6.0,
           "episodes": 1
         }
@@ -227,7 +227,7 @@
     },
     "random": {
       "accuracy": 0.2222222222222222,
-      "average_reward": -0.47777777777777786,
+      "average_reward": -0.3222222222222222,
       "average_steps": 2.0,
       "confusion_matrix": {
         "account_takeover": {
@@ -344,55 +344,55 @@
       "per_attack": {
         "account_takeover": {
           "accuracy": 1.0,
-          "average_reward": 0.6000000000000001,
+          "average_reward": 1.3,
           "average_steps": 3.0,
           "episodes": 1
         },
         "cicd_poisoning": {
           "accuracy": 0.0,
-          "average_reward": -1.3,
+          "average_reward": -0.7,
           "average_steps": 1.0,
           "episodes": 1
         },
         "dead_drop_hijack": {
           "accuracy": 0.0,
-          "average_reward": -0.8,
+          "average_reward": -0.7,
           "average_steps": 3.0,
           "episodes": 1
         },
         "dependency_confusion": {
           "accuracy": 0.0,
-          "average_reward": -0.85,
+          "average_reward": -0.7,
           "average_steps": 1.0,
           "episodes": 1
         },
         "long_con": {
           "accuracy": 0.0,
-          "average_reward": -0.9,
+          "average_reward": -0.7,
           "average_steps": 3.0,
           "episodes": 1
         },
         "metadata_injection": {
           "accuracy": 1.0,
-          "average_reward": 1.25,
+          "average_reward": 1.3,
           "average_steps": 2.0,
           "episodes": 1
         },
         "safe": {
           "accuracy": 0.0,
-          "average_reward": -0.65,
+          "average_reward": -1.2999999999999998,
           "average_steps": 1.0,
           "episodes": 1
         },
         "star_jacking": {
           "accuracy": 0.0,
-          "average_reward": -0.8,
+          "average_reward": -0.7,
           "average_steps": 3.0,
           "episodes": 1
         },
         "typosquatting": {
           "accuracy": 0.0,
-          "average_reward": -0.85,
+          "average_reward": -0.7,
           "average_steps": 1.0,
           "episodes": 1
         }
@@ -409,12 +409,12 @@
     },
     "random_to_trained_delta": {
       "accuracy": 0.6666666666666666,
-      "average_reward": 1.3333333333333335,
+      "average_reward": 1.2444444444444445,
       "average_steps": 4.0
     },
     "trained": {
       "accuracy": 0.8888888888888888,
-      "average_reward": 0.8555555555555556,
+      "average_reward": 0.9222222222222223,
       "average_steps": 6.0,
       "confusion_matrix": {
         "account_takeover": {
@@ -531,7 +531,7 @@
       "per_attack": {
         "account_takeover": {
           "accuracy": 1.0,
-          "average_reward": 1.25,
+          "average_reward": 1.3,
           "average_steps": 6.0,
           "episodes": 1
         },
@@ -543,43 +543,43 @@
         },
         "dead_drop_hijack": {
           "accuracy": 1.0,
-          "average_reward": 1.15,
+          "average_reward": 1.1,
           "average_steps": 6.0,
           "episodes": 1
         },
         "dependency_confusion": {
           "accuracy": 1.0,
-          "average_reward": 1.3,
+          "average_reward": 1.2,
           "average_steps": 6.0,
           "episodes": 1
         },
         "long_con": {
           "accuracy": 0.0,
-          "average_reward": -0.8999999999999999,
+          "average_reward": -0.9,
           "average_steps": 6.0,
           "episodes": 1
         },
         "metadata_injection": {
           "accuracy": 1.0,
-          "average_reward": 1.25,
+          "average_reward": 1.2,
           "average_steps": 6.0,
           "episodes": 1
         },
         "safe": {
           "accuracy": 1.0,
-          "average_reward": 0.19999999999999996,
+          "average_reward": 1.0,
           "average_steps": 6.0,
           "episodes": 1
         },
         "star_jacking": {
           "accuracy": 1.0,
-          "average_reward": 1.05,
+          "average_reward": 1.1,
           "average_steps": 6.0,
           "episodes": 1
         },
         "typosquatting": {
           "accuracy": 1.0,
-          "average_reward": 1.3,
+          "average_reward": 1.2,
           "average_steps": 6.0,
           "episodes": 1
         }
@@ -602,16 +602,14 @@
   },
   "schema_version": 1,
   "seed": 0,
-  "submission_blockers": [
-    "Publish the Docker app to a Hugging Face Space and add the live Space URL to README.md."
-  ],
+  "submission_blockers": [],
   "submission_checks": {
     "comparison_exists": true,
     "dockerfile_exists": true,
     "heuristic_report_exists": true,
     "openenv_manifest_exists": true,
     "random_report_exists": true,
-    "readme_has_live_hf_space_url": false,
+    "readme_has_live_hf_space_url": true,
     "readme_has_minimum_requirements_section": true,
     "readme_has_no_todo_placeholders": true,
     "readme_has_presentation_asset": true,
@@ -622,7 +620,7 @@
     "readme_links_notebook": true,
     "readme_links_training_evidence": true,
     "slide_deck_exists": true,
-    "submission_ready": false,
+    "submission_ready": true,
     "trained_comparison_exists": true,
     "trained_report_exists": true,
     "training_evidence_history_exists": true,

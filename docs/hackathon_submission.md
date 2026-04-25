@@ -14,15 +14,12 @@ Use this checklist before the final OpenEnv Hackathon submission.
 8. [reports/hackathon/submission_summary.json](../reports/hackathon/submission_summary.json)
 9. [docs/hackathon_slide_deck.md](hackathon_slide_deck.md)
 
-## 2. One Remaining External Submission Step
+## 2. Hugging Face Space + submission_ready
 
-The repo is Docker Space-ready, but the final submission is **not complete** until a live Hugging Face Space exists.
-
-1. Create a Docker Space.
-2. Point it at [docker/Dockerfile](../docker/Dockerfile).
-3. Verify the demo boots successfully.
-4. Paste the live `https://huggingface.co/spaces/...` URL into the **Submission Assets** section of [README.md](../README.md).
-5. Re-run the hackathon summary command so `submission_checks.submission_ready` turns true.
+1. Create a Docker Space and point it at [docker/Dockerfile](../docker/Dockerfile).
+2. Verify the demo boots successfully.
+3. Ensure the live `https://huggingface.co/spaces/...` URL appears in [README.md](../README.md) (Submission Assets or body text — the automated checker scans the whole file).
+4. Re-run the hackathon command below so `reports/hackathon/submission_summary.json` picks up the URL and `submission_checks.submission_ready` becomes **true**.
 
 ## 3. Regenerate Evidence
 

@@ -32,9 +32,11 @@ These tools force grounded investigation instead of direct label prediction.
 
 ## Slide 5: Results
 
-- Random baseline: 22.2% accuracy, -0.48 average reward.
-- Heuristic baseline: 77.8% accuracy, 0.63 average reward.
-- Trained classifier policy: 88.9% accuracy, 0.86 average reward.
+**Important:** The headline **“trained”** row is **not** a neural LLM. It is a **nearest-neighbor classifier** on handcrafted forensic features (`artifacts/classifier-smoke/policy.json`). Random and heuristic rows are explicit baselines. For **TRL / GRPO transformer** evaluation, run `eval.hackathon` with `--trained-model` pointing at a checkpoint (see README).
+
+- Random baseline: 22.2% accuracy, -0.32 average reward.
+- Heuristic baseline: 77.8% accuracy, 0.70 average reward.
+- **Trained (kNN classifier, not LLM):** 88.9% accuracy, 0.92 average reward.
 - Heuristic -> trained delta: +11.1 accuracy points, +0.22 average reward.
 
 Source of truth: [reports/hackathon/submission_summary.json](../reports/hackathon/submission_summary.json)

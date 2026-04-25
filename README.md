@@ -60,11 +60,13 @@ pip install -e .[openenv,server,eval,demo,training]
 python docker/demo.py --server-name 127.0.0.1 --server-port 7860
 ```
 
-3. Regenerate the hackathon evidence bundle:
+3. Regenerate the hackathon evidence bundle (updates `submission_checks` in [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json), including the live Space URL from this README):
 
 ```bash
 python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/hackathon
 ```
+
+For a slightly thicker evaluation (same workflow, more episodes per attack class), use `--episodes-per-attack 2` or higher.
 
 ## Why This Environment Is Novel
 
@@ -76,13 +78,15 @@ python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/h
 
 ## Results Snapshot
 
+**How to read this table:** **Random** and **heuristic** are policy baselines. The **88.9% “trained”** row is a **nearest-neighbor classifier** on handcrafted features ([artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json)), **not** a fine-tuned transformer. For **TRL / GRPO checkpoint** metrics, regenerate the hackathon bundle with `--trained-model artifacts/grpo-evidence` (after you have a checkpoint from Colab).
+
 Current source of truth: [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json)
 
-- Random baseline: 22.2% accuracy, -0.48 average reward, 2.0 average steps.
-- Heuristic baseline: 77.8% accuracy, 0.63 average reward, 6.0 average steps.
-- **Trained (non-neural) classifier policy**: 88.9% accuracy, 0.86 average reward, 6.0 average steps.
+- Random baseline: 22.2% accuracy, -0.32 average reward, 2.0 average steps.
+- Heuristic baseline: 77.8% accuracy, 0.70 average reward, 6.0 average steps.
+- **Trained (non-neural) classifier policy**: 88.9% accuracy, 0.92 average reward, 6.0 average steps.
 - Heuristic -> trained delta: +11.1 accuracy points and +0.22 average reward.
-- Random -> trained delta: +66.7 accuracy points and +1.33 average reward.
+- Random -> trained delta: +66.7 accuracy points and +1.24 average reward.
 
 The default **trained** line in [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json) comes from the lightweight nearest-neighbor forensic policy artifact in [artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json).
 
@@ -135,27 +139,29 @@ Re-runnable Colab notebook:
 
 - [notebooks/aegis_grpo_colab.ipynb](notebooks/aegis_grpo_colab.ipynb)
 
-Compact TRL / GRPO smoke run that writes training evidence (recommended to run in Colab / GPU):
+Recommended GRPO run that writes **fresh** training evidence (run in **Colab with GPU**; `sshleifer/tiny-gpt2` is not recommended here because tool-augmented prompts can exceed its short context):
 
 ```bash
 python -m training.train \
 	--train \
-	--model-name sshleifer/tiny-gpt2 \
+	--model-name Qwen/Qwen3-0.6B \
 	--episodes-per-attack 1 \
-	--max-steps 3 \
+	--max-steps 20 \
 	--per-device-train-batch-size 2 \
 	--gradient-accumulation-steps 1 \
 	--num-generations 2 \
-	--max-completion-length 48 \
-	--max-tool-calling-iterations 4 \
+	--max-completion-length 256 \
+	--max-tool-calling-iterations 7 \
 	--logging-steps 1 \
-	--save-steps 10 \
+	--save-steps 20 \
 	--output-dir artifacts/grpo-evidence \
 	--evidence-dir reports/training_evidence \
 	--run-name aegis-grpo-evidence
 ```
 
-Committed training evidence:
+**Judge note on GRPO logs:** Training uses two reward terms: the environment rubric (`aegis_reward_func`) plus a small **completion-shaping** term (`aegis_completion_reward_func` in `training/grpo_env.py`) so short smoke runs still get a non-degenerate learning signal when the model fails to execute tools. For a convincing curve, run enough steps on GPU and commit the updated `reports/training_evidence/` files.
+
+Committed training evidence (regenerate in Colab after training):
 
 1. [reports/training_evidence/training_summary.json](reports/training_evidence/training_summary.json)
 2. [reports/training_evidence/training_log_history.json](reports/training_evidence/training_log_history.json)
