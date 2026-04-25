@@ -73,10 +73,21 @@ class GRPOAegisEnvironment:
             "target_pkg": str(state.get("target_pkg") or ""),
             "actual_attack": self.client.current_attack_class.value,
         }
+        tool_list = ", ".join(
+            [
+                "check_maintainer_history",
+                "diff_versions",
+                "inspect_install_script",
+                "get_reputation_score",
+                "trace_dependencies",
+                "run_sandbox_test",
+            ]
+        )
         return (
             f"Target package: {state['target_pkg']}\n"
-            "Use the available forensic tools to investigate the package. "
-            "When you are confident, call final_verdict exactly once."
+            "Investigate using the available tools, then end the episode by calling final_verdict exactly once.\n"
+            f"Suggested tool order: {tool_list}\n"
+            "When ready, call final_verdict(decision=..., reasoning=...). Do not continue after final_verdict."
         )
 
     def check_maintainer_history(self, pkg_name: str | None = None) -> str:
