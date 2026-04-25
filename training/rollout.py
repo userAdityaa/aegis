@@ -27,6 +27,7 @@ def rollout_episode(
     package_name: str | None = None,
     seed: int | None = None,
     max_steps: int = 7,
+    force_verdict_on_timeout: bool = False,
 ) -> EpisodeTrace:
     state = client.reset(attack_class=attack_class, package_name=package_name, seed=seed)
     for _ in range(max_steps):
@@ -42,7 +43,15 @@ def rollout_episode(
         for tool_call in tool_calls:
             client.call_tool(tool_call.name, tool_call.arguments)
 
-    raise RuntimeError(f"Policy exceeded max_steps={max_steps} without submitting a verdict.")
+    if not force_verdict_on_timeout:
+        raise RuntimeError(f"Policy exceeded max_steps={max_steps} without submitting a verdict.")
+
+    # Imported lazily to avoid circular imports (baseline imports rollout for its CLI helpers).
+    from training.baseline import infer_verdict_from_observations
+
+    decision, reasoning = infer_verdict_from_observations(client.observations)
+    timeout_reasoning = f"[timeout after {max_steps} steps] {reasoning}"
+    return client.submit_verdict(decision, timeout_reasoning)
 
 
 def build_rollout_sample(

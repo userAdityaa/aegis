@@ -106,6 +106,7 @@ def main() -> None:
             episodes_per_attack=args.episodes_per_attack,
             seed=args.seed,
             max_steps=12,
+            force_verdict_on_timeout=True,
         )
         trained_label = args.trained_label or f"TransformerTranscriptPolicy[{args.trained_model.as_posix()}]"
         trained_report_path = write_evaluation_report(

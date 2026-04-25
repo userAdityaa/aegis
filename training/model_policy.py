@@ -56,7 +56,7 @@ class TransformerTranscriptPolicy:
             # Keep eval memory low enough for typical Colab GPUs.
             load_kwargs.update(
                 {
-                    "torch_dtype": torch.float16,
+                    "dtype": torch.float16,
                     "device_map": "auto",
                     "low_cpu_mem_usage": True,
                 }

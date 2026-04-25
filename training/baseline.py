@@ -9,7 +9,6 @@ from dataclasses import asdict, dataclass
 from environment.models import AttackClass
 from training.env_client import AegisEnvClient
 from training.parsing import render_tool_call, render_verdict
-from training.rollout import rollout_episode
 from training.types import ToolObservation
 
 
@@ -68,6 +67,9 @@ class RandomBaselinePolicy:
 
 
 def run_baseline(episodes: int = 10, seed: int = 0) -> BaselineSummary:
+    # Imported lazily to avoid a circular import between baseline and rollout.
+    from training.rollout import rollout_episode
+
     reward_total = 0.0
     correct = 0
     decision_counts: Counter[str] = Counter()
@@ -88,6 +90,16 @@ def run_baseline(episodes: int = 10, seed: int = 0) -> BaselineSummary:
         decision_counts=dict(sorted(decision_counts.items())),
         actual_attack_counts=dict(sorted(actual_attack_counts.items())),
     )
+
+
+def infer_verdict_from_observations(observations: list[ToolObservation]) -> tuple[AttackClass, str]:
+    """Infer a reasonable verdict from tool observations.
+
+    This is used as a safe fallback during evaluation when a policy fails to submit a verdict
+    within the step limit.
+    """
+
+    return _infer_verdict(observations)
 
 
 def _infer_verdict(observations: list[ToolObservation]) -> tuple[AttackClass, str]:
