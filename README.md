@@ -80,11 +80,11 @@ Current source of truth: [reports/hackathon/submission_summary.json](reports/hac
 
 - Random baseline: 22.2% accuracy, -0.48 average reward, 2.0 average steps.
 - Heuristic baseline: 77.8% accuracy, 0.63 average reward, 6.0 average steps.
-- Trained classifier policy: 88.9% accuracy, 0.86 average reward, 6.0 average steps.
+- **Trained (non-neural) classifier policy**: 88.9% accuracy, 0.86 average reward, 6.0 average steps.
 - Heuristic -> trained delta: +11.1 accuracy points and +0.22 average reward.
 - Random -> trained delta: +66.7 accuracy points and +1.33 average reward.
 
-The default **trained** line in [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json) comes from the lightweight nearest-neighbor forensic policy artifact in [artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json). The optional transformer checkpoint evaluation path remains available through `--trained-model artifacts/grpo-evidence`.
+The default **trained** line in [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json) comes from the lightweight nearest-neighbor forensic policy artifact in [artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json).
 
 Important: the default `trained` in the hackathon bundle is **not** the TRL/GRPO transformer checkpoint — it is the lightweight **nearest-neighbor classifier** (`artifacts/classifier-smoke/policy.json`) used as a fast, deterministic benchmark. If your story/pitch is “we trained with TRL”, use the transformer checkpoint evaluation path below and cite the corresponding trained report.
 
@@ -104,6 +104,7 @@ Important: the default `trained` in the hackathon bundle is **not** the TRL/GRPO
 ## Using OpenEnv (what judges care about)
 
 - **Manifest**: `openenv.yaml` is the OpenEnv discovery surface (resources + tools + workflow).
+- **Serving (MCP runtime)**: `environment/mcp_server.py` serves the environment over MCP using `FastMCP`. OpenEnv environments are evaluated via the MCP contract exposed by the manifest; we keep the server implementation lightweight and manifest-driven rather than subclassing an OpenEnv-specific server base class.
 - **Deployment**: the repo is Docker Space-ready; deploy to Hugging Face Spaces and link the live Space URL in **Submission Assets**.
 - **Version**: OpenEnv Core is pinned as `openenv-core==0.2.3` (see `pyproject.toml` → `.[openenv]`).
 
@@ -134,7 +135,7 @@ Re-runnable Colab notebook:
 
 - [notebooks/aegis_grpo_colab.ipynb](notebooks/aegis_grpo_colab.ipynb)
 
-Compact TRL / GRPO smoke run that writes training evidence:
+Compact TRL / GRPO smoke run that writes training evidence (recommended to run in Colab / GPU):
 
 ```bash
 python -m training.train \

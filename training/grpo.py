@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from training.dataset import build_training_prompt_rows, summarize_training_prompt_rows, write_training_prompt_jsonl
-from training.grpo_env import GRPOAegisEnvironment, aegis_reward_func
+from training.grpo_env import GRPOAegisEnvironment, aegis_completion_reward_func, aegis_reward_func
 from training.reporting import save_training_artifacts
 
 _DEFAULT_TOOL_TEMPLATE_SOURCE = "Qwen/Qwen3-0.6B"
@@ -158,7 +158,7 @@ def run_grpo_training(config: GRPOTrainingConfig) -> dict[str, object]:
         model=model,
         args=training_args,
         train_dataset=dataset,
-        reward_funcs=aegis_reward_func,
+        reward_funcs=[aegis_reward_func, aegis_completion_reward_func],
         processing_class=tokenizer,
         environment_factory=_env_factory,
     )

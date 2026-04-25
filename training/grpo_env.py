@@ -258,3 +258,44 @@ def aegis_reward_func(
             log_metric(f"aegis/rubric/{component}_mean", sum(values) / len(values))
 
     return rewards
+
+
+def aegis_completion_reward_func(
+    completions: list[str] | None = None,
+    log_metric=None,
+    **_: object,
+) -> list[float]:
+    """A lightweight shaping reward based on the raw completion text.
+
+    This is a safety net for tiny smoke runs where the model may fail to execute tools
+    (and thus produce a constant environment reward). It rewards producing the expected
+    "verdict" / "final_verdict" structure so gradients are non-degenerate.
+    """
+
+    if not completions:
+        return []
+
+    rewards: list[float] = []
+    verdict_like = 0
+    tool_like = 0
+    for text in completions:
+        normalized = (text or "").lower()
+        has_verdict = ("<verdict>" in normalized and "</verdict>" in normalized) or ("final_verdict" in normalized)
+        has_tool = "<tool>" in normalized or "check_maintainer_history" in normalized or "diff_versions" in normalized
+        verdict_like += int(has_verdict)
+        tool_like += int(has_tool)
+
+        # Small, bounded reward to avoid dominating the true environment rubric.
+        reward = 0.0
+        if has_tool:
+            reward += 0.05
+        if has_verdict:
+            reward += 0.15
+        rewards.append(reward)
+
+    if log_metric and rewards:
+        log_metric("aegis/completion_shaping_mean", sum(rewards) / len(rewards))
+        log_metric("aegis/completion_verdict_like_rate", verdict_like / len(rewards))
+        log_metric("aegis/completion_tool_like_rate", tool_like / len(rewards))
+
+    return rewards
