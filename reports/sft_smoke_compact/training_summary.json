@@ -1,0 +1,43 @@
+{
+  "dataset": {
+    "attack_counts": {
+      "account_takeover": 1,
+      "cicd_poisoning": 1,
+      "dead_drop_hijack": 1,
+      "dependency_confusion": 1,
+      "long_con": 1,
+      "metadata_injection": 1,
+      "safe": 1,
+      "star_jacking": 1,
+      "typosquatting": 1
+    },
+    "episodes": 9,
+    "sample_packages": [
+      "stackindex405",
+      "edge_vault664",
+      "betastack51",
+      "guard_index265",
+      "fluxutils821"
+    ],
+    "sample_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "episodes": 9,
+  "global_step": 3,
+  "history_jsonl_path": "reports/sft_smoke_compact/training_log_history.jsonl",
+  "history_path": "reports/sft_smoke_compact/training_log_history.json",
+  "log_history_entries": 4,
+  "output_dir": "artifacts/sft-smoke-compact",
+  "summary_path": "reports/sft_smoke_compact/training_summary.json",
+  "total_flos": 5603328.0,
+  "train_loss": 10.812498410542807,
+  "train_runtime": 1.3951,
+  "train_samples_per_second": 4.301,
+  "train_steps_per_second": 2.15,
+  "training_loss": 10.812498410542807
+}

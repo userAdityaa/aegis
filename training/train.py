@@ -47,12 +47,13 @@ def main() -> None:
     parser.add_argument("--episodes-per-attack", type=int, default=2)
     parser.add_argument("--model-name", default="Qwen/Qwen3-0.6B")
     parser.add_argument("--output-dir", default="artifacts/grpo")
+    parser.add_argument("--evidence-dir")
     parser.add_argument("--learning-rate", type=float, default=1e-6)
     parser.add_argument("--num-train-epochs", type=float, default=1.0)
     parser.add_argument("--max-steps", type=int, default=32)
-    parser.add_argument("--per-device-train-batch-size", type=int, default=1)
+    parser.add_argument("--per-device-train-batch-size", type=int, default=2)
     parser.add_argument("--gradient-accumulation-steps", type=int, default=8)
-    parser.add_argument("--num-generations", type=int, default=4)
+    parser.add_argument("--num-generations", type=int, default=2)
     parser.add_argument("--max-completion-length", type=int, default=256)
     parser.add_argument("--max-tool-calling-iterations", type=int, default=7)
     parser.add_argument("--logging-steps", type=int, default=10)
@@ -73,6 +74,7 @@ def main() -> None:
     config = GRPOTrainingConfig(
         model_name=args.model_name,
         output_dir=args.output_dir,
+        evidence_dir=args.evidence_dir,
         episodes_per_attack=args.episodes_per_attack,
         seed=args.seed,
         learning_rate=args.learning_rate,
@@ -93,6 +95,12 @@ def main() -> None:
         manifest_path=args.manifest_path,
         resume_from_checkpoint=args.resume_from_checkpoint,
     )
+
+    if config.per_device_train_batch_size % config.num_generations != 0:
+        raise SystemExit(
+            "per_device_train_batch_size must be divisible by num_generations for GRPO. "
+            f"Received batch_size={config.per_device_train_batch_size} and num_generations={config.num_generations}."
+        )
 
     if args.prepare_dataset is not None:
         payload = export_training_prompt_dataset(

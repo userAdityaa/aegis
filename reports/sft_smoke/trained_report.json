@@ -1,0 +1,356 @@
+{
+  "episodes": [
+    {
+      "actual_attack": "typosquatting",
+      "decision": "safe",
+      "episode_id": "8e0310e3742c423280ea7e3a048a2256",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st",
+      "reward": -1.0,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.0
+      },
+      "seed": 0,
+      "step_count": 0,
+      "target_pkg": "stackindex405",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "long_con",
+      "decision": "safe",
+      "episode_id": "244d52d8ffa64cf782a364c22b840a33",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors ",
+      "reward": -1.0,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.0
+      },
+      "seed": 1,
+      "step_count": 0,
+      "target_pkg": "edge_vault664",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "account_takeover",
+      "decision": "safe",
+      "episode_id": "360230e476e14d808658ffcdf5be2d19",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st",
+      "reward": -1.0,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.0
+      },
+      "seed": 2,
+      "step_count": 0,
+      "target_pkg": "betastack51",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "cicd_poisoning",
+      "decision": "safe",
+      "episode_id": "d179c7853c5f428dba599c3fe52e18e6",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st",
+      "reward": -1.0,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.0
+      },
+      "seed": 3,
+      "step_count": 0,
+      "target_pkg": "guard_index265",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "dependency_confusion",
+      "decision": "safe",
+      "episode_id": "2033b8780cf34895b426d361f3722beb",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st",
+      "reward": -1.0,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.0
+      },
+      "seed": 4,
+      "step_count": 0,
+      "target_pkg": "fluxutils821",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "metadata_injection",
+      "decision": "safe",
+      "episode_id": "46a34a68aacb435d9ed3537c2e52b492",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st",
+      "reward": -1.0,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.0
+      },
+      "seed": 5,
+      "step_count": 0,
+      "target_pkg": "relayyield278",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "star_jacking",
+      "decision": "safe",
+      "episode_id": "1a9113fcc8a547409eb0d54e9e9c7a95",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors factors ",
+      "reward": -1.0,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.0
+      },
+      "seed": 6,
+      "step_count": 0,
+      "target_pkg": "utils_logic956",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "dead_drop_hijack",
+      "decision": "safe",
+      "episode_id": "ee6da4fda8a746ddb3ccb6b687336748",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st",
+      "reward": -1.0,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.0
+      },
+      "seed": 7,
+      "step_count": 0,
+      "target_pkg": "proxy-core460",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "safe",
+      "decision": "safe",
+      "episode_id": "0b8cabe5c35646989f86ae17c9696e05",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st",
+      "reward": 0.5,
+      "reward_breakdown": {
+        "accuracy": 0.5,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": 0.5
+      },
+      "seed": 8,
+      "step_count": 0,
+      "target_pkg": "flux_logic800",
+      "tool_names": []
+    }
+  ],
+  "label": "sft-smoke",
+  "reward_curve": [
+    -1.0,
+    -1.0,
+    -1.0,
+    -1.0,
+    -1.0,
+    -1.0,
+    -1.0,
+    -1.0,
+    0.5
+  ],
+  "schema_version": 1,
+  "summary": {
+    "accuracy": 0.1111111111111111,
+    "average_reward": -0.8333333333333334,
+    "average_steps": 0.0,
+    "confusion_matrix": {
+      "account_takeover": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "cicd_poisoning": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "dead_drop_hijack": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "dependency_confusion": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "long_con": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "metadata_injection": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "safe": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "star_jacking": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "typosquatting": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      }
+    },
+    "decision_counts": {
+      "safe": 9
+    },
+    "episodes": 9,
+    "per_attack": {
+      "account_takeover": {
+        "accuracy": 0.0,
+        "average_reward": -1.0,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "cicd_poisoning": {
+        "accuracy": 0.0,
+        "average_reward": -1.0,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "dead_drop_hijack": {
+        "accuracy": 0.0,
+        "average_reward": -1.0,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "dependency_confusion": {
+        "accuracy": 0.0,
+        "average_reward": -1.0,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "long_con": {
+        "accuracy": 0.0,
+        "average_reward": -1.0,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "metadata_injection": {
+        "accuracy": 0.0,
+        "average_reward": -1.0,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "safe": {
+        "accuracy": 1.0,
+        "average_reward": 0.5,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "star_jacking": {
+        "accuracy": 0.0,
+        "average_reward": -1.0,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "typosquatting": {
+        "accuracy": 0.0,
+        "average_reward": -1.0,
+        "average_steps": 0.0,
+        "episodes": 1
+      }
+    },
+    "policy_name": "TransformerTranscriptPolicy[artifacts/sft-smoke]",
+    "tool_usage_counts": {}
+  }
+}

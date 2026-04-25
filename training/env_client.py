@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Callable
 
-from environment.mcp_server import AegisMCPRuntime
+from environment.runtime import AegisRuntime
 from environment.models import AttackClass
 from rewards import score_episode
 from training.types import EpisodeTrace, ToolCall, ToolObservation
@@ -15,7 +15,7 @@ class AegisEnvClient:
         seed: int | None = None,
         manifest_path: str | Path | None = None,
     ) -> None:
-        self.runtime = AegisMCPRuntime(seed=seed)
+        self.runtime = AegisRuntime(seed=seed)
         self.manifest_path = Path(manifest_path) if manifest_path else Path(__file__).resolve().parents[1] / "openenv.yaml"
         self._observations: list[ToolObservation] = []
         self._tool_dispatch: dict[str, Callable[..., dict[str, object]]] = {

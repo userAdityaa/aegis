@@ -30,10 +30,11 @@ class RewardBreakdown:
     parsimony: float
     reasoning: float
     false_alarm: float
+    evidence_coverage: float
 
     @property
     def total(self) -> float:
-        return self.accuracy + self.parsimony + self.reasoning + self.false_alarm
+        return self.accuracy + self.parsimony + self.reasoning + self.false_alarm + self.evidence_coverage
 
     def as_dict(self) -> dict[str, float]:
         return {
@@ -41,6 +42,7 @@ class RewardBreakdown:
             "parsimony": self.parsimony,
             "reasoning": self.reasoning,
             "false_alarm": self.false_alarm,
+            "evidence_coverage": self.evidence_coverage,
             "total": self.total,
         }
 
@@ -53,17 +55,17 @@ def score_episode(
     step_count: int,
     tools_used: Sequence[str],
 ) -> RewardBreakdown:
-    del tools_used
-
     accuracy = _accuracy_reward(actual_attack=actual_attack, decision=decision)
     false_alarm = _false_alarm_penalty(actual_attack=actual_attack, decision=decision)
     parsimony = _parsimony_penalty(actual_attack=actual_attack, step_count=step_count)
     reasoning_reward = _reasoning_reward(actual_attack=actual_attack, reasoning=reasoning)
+    evidence_coverage = _evidence_coverage_reward(actual_attack=actual_attack, tools_used=tools_used)
     return RewardBreakdown(
         accuracy=accuracy,
         parsimony=parsimony,
         reasoning=reasoning_reward,
         false_alarm=false_alarm,
+        evidence_coverage=evidence_coverage,
     )
 
 
@@ -91,3 +93,15 @@ def _reasoning_reward(*, actual_attack: AttackClass, reasoning: str) -> float:
         return 0.0
     matched_hints = sum(1 for hint in _REASONING_HINTS[actual_attack] if hint in normalized)
     return 0.2 if matched_hints >= 2 else 0.0
+
+
+def _evidence_coverage_reward(*, actual_attack: AttackClass, tools_used: Sequence[str]) -> float:
+    required_tools = set(_REQUIRED_TOOLS.get(actual_attack, ()))
+    if not required_tools:
+        return 0.0
+
+    matched_tools = len(required_tools.intersection(tools_used))
+    coverage = matched_tools / len(required_tools)
+    if coverage == 0.0:
+        return -0.3
+    return 0.3 * coverage

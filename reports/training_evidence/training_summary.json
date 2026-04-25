@@ -1,0 +1,17 @@
+{
+  "episodes": 9,
+  "global_step": 6,
+  "history_jsonl_path": "reports/training_evidence/training_log_history.jsonl",
+  "history_path": "reports/training_evidence/training_log_history.json",
+  "log_history_entries": 7,
+  "output_dir": "artifacts/grpo-progress",
+  "plot_path": "reports/training_evidence/training_curves.png",
+  "summary_path": "reports/training_evidence/training_summary.json",
+  "tool_template_source": "Qwen/Qwen3-0.6B",
+  "total_flos": 0.0,
+  "train_loss": 0.0,
+  "train_runtime": 3.0012,
+  "train_samples_per_second": 3.998,
+  "train_steps_per_second": 1.999,
+  "training_loss": 0.0
+}

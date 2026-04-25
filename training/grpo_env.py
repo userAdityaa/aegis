@@ -38,13 +38,10 @@ class GRPOAegisEnvironment:
         )
 
     def check_maintainer_history(self, pkg_name: str | None = None) -> str:
-        """Inspect maintainer identity, IP history, and commit timing.
+        """Return maintainer, IP, and commit-timing history.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active episode target.
-
-        Returns:
-            A JSON string containing maintainer investigation results.
+            pkg_name: Optional package name. Defaults to the active target.
         """
 
         return self._call_tool("check_maintainer_history", pkg_name=pkg_name)
@@ -55,76 +52,58 @@ class GRPOAegisEnvironment:
         v1: str | None = None,
         v2: str | None = None,
     ) -> str:
-        """Compare two versions of a package.
+        """Return a version diff for the selected package.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active episode target.
-            v1: Optional earlier version. Omit to compare the latest two versions.
-            v2: Optional later version. Omit to compare the latest two versions.
-
-        Returns:
-            A JSON string containing the version diff and metadata.
+            pkg_name: Optional package name. Defaults to the active target.
+            v1: Optional earlier version.
+            v2: Optional later version.
         """
 
         return self._call_tool("diff_versions", pkg_name=pkg_name, v1=v1, v2=v2)
 
     def trace_dependencies(self, pkg_name: str | None = None) -> str:
-        """Trace dependency relationships for a package.
+        """Return the dependency tree and flattened summary.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active episode target.
-
-        Returns:
-            A JSON string containing the dependency tree and flattened summary.
+            pkg_name: Optional package name. Defaults to the active target.
         """
 
         return self._call_tool("trace_dependencies", pkg_name=pkg_name)
 
     def inspect_install_script(self, pkg_name: str | None = None) -> str:
-        """Inspect installation metadata and setup logic for suspicious behavior.
+        """Return suspicious install-script patterns.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active episode target.
-
-        Returns:
-            A JSON string describing suspicious install-script patterns.
+            pkg_name: Optional package name. Defaults to the active target.
         """
 
         return self._call_tool("inspect_install_script", pkg_name=pkg_name)
 
     def get_reputation_score(self, pkg_name: str | None = None) -> str:
-        """Inspect popularity and maintainer reputation signals.
+        """Return reputation and popularity signals.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active episode target.
-
-        Returns:
-            A JSON string containing reputation metrics and anomaly flags.
+            pkg_name: Optional package name. Defaults to the active target.
         """
 
         return self._call_tool("get_reputation_score", pkg_name=pkg_name)
 
     def run_sandbox_test(self, pkg_name: str | None = None) -> str:
-        """Return simulated runtime activity observed during installation.
+        """Return simulated runtime observations.
 
         Args:
-            pkg_name: Optional package name. Defaults to the active episode target.
-
-        Returns:
-            A JSON string containing sandbox observations.
+            pkg_name: Optional package name. Defaults to the active target.
         """
 
         return self._call_tool("run_sandbox_test", pkg_name=pkg_name)
 
     def final_verdict(self, decision: str, reasoning: str) -> str:
-        """Submit the final attack classification for the current episode.
+        """Submit the final verdict and end the episode.
 
         Args:
-            decision: The final predicted attack class or safe.
-            reasoning: Concise evidence-based rationale for the decision.
-
-        Returns:
-            A JSON string containing the terminal verdict response.
+            decision: Predicted attack class name or safe.
+            reasoning: Evidence-based explanation for the verdict.
         """
 
         trace = self.client.submit_verdict(decision, reasoning)
