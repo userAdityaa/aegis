@@ -37,8 +37,16 @@ def parse_verdict(text: str) -> ParsedVerdict | None:
     match = _VERDICT_PATTERN.search(text)
     if match is None:
         return None
+    decision_text = match.group("decision").strip()
+    # Models sometimes echo the prompt's placeholder instead of a real class.
+    if decision_text in {"attack_class_or_safe", "attack_class", "class"}:
+        return None
+    try:
+        decision = AttackClass(decision_text)
+    except ValueError:
+        return None
     return ParsedVerdict(
-        decision=AttackClass(match.group("decision").strip()),
+        decision=decision,
         reasoning=match.group("reasoning").strip(),
     )
 
