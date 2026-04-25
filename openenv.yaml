@@ -1,0 +1,305 @@
+version: 1
+name: aegis-env
+description: Stateful MCP environment for package supply-chain forensic investigations.
+
+server:
+  transport: stdio
+  command: python
+  args:
+    - -m
+    - environment.mcp_server
+
+workflow:
+  - Read resource aegis://episode/current to get the current episode target.
+  - Use forensic tools to gather evidence for the target package.
+  - End each investigation by calling final_verdict.
+
+resources:
+  - uri: aegis://episode/current
+    mimeType: application/json
+    description: Minimal observable episode state containing only episode_id and target_pkg.
+    outputSchema:
+      type: object
+      required: [episode_id, target_pkg]
+      properties:
+        episode_id:
+          type: string
+        target_pkg:
+          type: string
+      additionalProperties: false
+
+tools:
+  - name: start_episode
+    description: Reset the registry and begin a new investigation episode.
+    inputSchema:
+      type: object
+      properties:
+        attack_class:
+          type: string
+          default: random
+          enum:
+            - random
+            - safe
+            - typosquatting
+            - long_con
+            - account_takeover
+            - cicd_poisoning
+            - dependency_confusion
+            - metadata_injection
+            - star_jacking
+            - dead_drop_hijack
+        package_name:
+          type: string
+        seed:
+          type: integer
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [episode_id, target_pkg]
+      properties:
+        episode_id:
+          type: string
+        target_pkg:
+          type: string
+      additionalProperties: false
+  - name: check_maintainer_history
+    description: Inspect maintainer identity, IP history, and commit timing for a package.
+    inputSchema:
+      type: object
+      properties:
+        pkg_name:
+          type: string
+          description: Defaults to the current episode target package.
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required:
+        [
+          package,
+          maintainers,
+          commit_count,
+          ip_history,
+          recent_commits,
+          suspicious_ip_shift,
+        ]
+      properties:
+        package:
+          type: string
+        maintainers:
+          type: array
+          items:
+            type: object
+        commit_count:
+          type: integer
+        ip_history:
+          type: array
+          items:
+            type: object
+        recent_commits:
+          type: array
+          items:
+            type: object
+        suspicious_ip_shift:
+          type: boolean
+      additionalProperties: true
+  - name: diff_versions
+    description: Compare two versions of a package. Omitting versions defaults to the latest two.
+    inputSchema:
+      type: object
+      properties:
+        pkg_name:
+          type: string
+          description: Defaults to the current episode target package.
+        v1:
+          type: string
+        v2:
+          type: string
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [package, from_version, to_version, changed_files, diff]
+      properties:
+        package:
+          type: string
+        from_version:
+          type: string
+        to_version:
+          type: string
+        changed_files:
+          type: array
+          items:
+            type: string
+        diff:
+          type: string
+      additionalProperties: false
+  - name: trace_dependencies
+    description: Return the dependency tree and flattened dependency summary for a package.
+    inputSchema:
+      type: object
+      properties:
+        pkg_name:
+          type: string
+          description: Defaults to the current episode target package.
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [package, tree, flat_dependencies, dependency_count]
+      properties:
+        package:
+          type: string
+        tree:
+          type: object
+        flat_dependencies:
+          type: array
+          items:
+            type: object
+        dependency_count:
+          type: integer
+      additionalProperties: false
+  - name: inspect_install_script
+    description: Inspect package installation metadata for suspicious execution or network patterns.
+    inputSchema:
+      type: object
+      properties:
+        pkg_name:
+          type: string
+          description: Defaults to the current episode target package.
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required:
+        [
+          package,
+          install_script,
+          has_network_call,
+          has_exec,
+          suspicious_patterns,
+        ]
+      properties:
+        package:
+          type: string
+        install_script:
+          type: string
+        has_network_call:
+          type: boolean
+        has_exec:
+          type: boolean
+        suspicious_patterns:
+          type: array
+          items:
+            type: string
+      additionalProperties: true
+  - name: get_reputation_score
+    description: Inspect popularity and maintainer signals for suspicious reputation anomalies.
+    inputSchema:
+      type: object
+      properties:
+        pkg_name:
+          type: string
+          description: Defaults to the current episode target package.
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required:
+        [
+          package,
+          stars,
+          open_issues,
+          closed_issues,
+          weekly_download_trend,
+          average_weekly_downloads,
+          star_issue_ratio,
+          star_download_ratio,
+          maintainer_count,
+          suspicious_popularity,
+        ]
+      properties:
+        package:
+          type: string
+        stars:
+          type: integer
+        open_issues:
+          type: integer
+        closed_issues:
+          type: integer
+        weekly_download_trend:
+          type: array
+          items:
+            type: integer
+        average_weekly_downloads:
+          type: number
+        star_issue_ratio:
+          type: number
+        star_download_ratio:
+          type: number
+        maintainer_count:
+          type: integer
+        suspicious_popularity:
+          type: boolean
+      additionalProperties: false
+  - name: run_sandbox_test
+    description: Return simulated runtime activity observed during package installation.
+    inputSchema:
+      type: object
+      properties:
+        pkg_name:
+          type: string
+          description: Defaults to the current episode target package.
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required:
+        [package, network_calls, files_written, processes_spawned, exit_code]
+      properties:
+        package:
+          type: string
+        network_calls:
+          type: array
+          items:
+            type: object
+        files_written:
+          type: array
+          items:
+            type: string
+        processes_spawned:
+          type: array
+          items:
+            type: string
+        exit_code:
+          type: integer
+      additionalProperties: false
+  - name: final_verdict
+    description: Submit the final attack classification for the current episode.
+    inputSchema:
+      type: object
+      required: [decision, reasoning]
+      properties:
+        decision:
+          type: string
+          enum:
+            - typosquatting
+            - long_con
+            - account_takeover
+            - cicd_poisoning
+            - dependency_confusion
+            - metadata_injection
+            - star_jacking
+            - dead_drop_hijack
+            - safe
+        reasoning:
+          type: string
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [episode_id, decision_received, reasoning, is_terminal]
+      properties:
+        episode_id:
+          type: string
+          nullable: true
+        decision_received:
+          type: string
+        reasoning:
+          type: string
+        is_terminal:
+          type: boolean
+      additionalProperties: false
