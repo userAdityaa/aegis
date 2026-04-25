@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import random
+import traceback
 from pathlib import Path
 from typing import Any
 
@@ -67,6 +68,19 @@ def refresh_catalog(seed_text: str) -> tuple[str, gr.Dropdown, str]:
 
 
 def run_demo(
+    seed_text: str,
+    package_name: str,
+    selected_package: str | None,
+    attack_class: str,
+) -> tuple[str, list[dict[str, Any]], str]:
+    try:
+        return _run_demo_inner(seed_text, package_name, selected_package, attack_class)
+    except Exception:
+        tb = traceback.format_exc()
+        return f"### Error\n```\n{tb}\n```", [], load_transcript_viewer()
+
+
+def _run_demo_inner(
     seed_text: str,
     package_name: str,
     selected_package: str | None,
