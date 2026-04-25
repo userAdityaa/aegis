@@ -7,6 +7,7 @@ from pathlib import Path
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from environment.models import AttackClass
 from training.parsing import parse_tool_calls, parse_verdict, render_tool_call, render_verdict
 from training.prompting import build_agent_training_prompt, load_manifest_text
 from training.types import ToolObservation
