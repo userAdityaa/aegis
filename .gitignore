@@ -12,3 +12,5 @@ venv/
 htmlcov/
 dist/
 build/
+artifacts/
+results/

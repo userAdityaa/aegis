@@ -5,18 +5,20 @@ import json
 from pathlib import Path
 
 from .plotting import save_evaluation_figure
-from .runner import evaluate_baseline
+from .runner import evaluate_baseline, write_evaluation_report
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Phase 6 evaluation entrypoint for Aegis-Env.")
+    parser = argparse.ArgumentParser(description="Evaluation entrypoint for Aegis-Env.")
     parser.add_argument("--episodes-per-attack", type=int, default=2)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--plot", type=Path)
+    parser.add_argument("--report", type=Path)
+    parser.add_argument("--label")
     args = parser.parse_args()
 
-    summary, _ = evaluate_baseline(
+    summary, episodes = evaluate_baseline(
         episodes_per_attack=args.episodes_per_attack,
         seed=args.seed,
     )
@@ -32,6 +34,10 @@ def main() -> None:
         except RuntimeError as exc:
             raise SystemExit(str(exc)) from exc
         payload["plot_path"] = str(plot_path)
+
+    if args.report is not None:
+        report_path = write_evaluation_report(summary, episodes, args.report, label=args.label)
+        payload["report_path"] = str(report_path)
 
     print(json.dumps(payload, indent=2, sort_keys=True))
 

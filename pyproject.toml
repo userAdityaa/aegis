@@ -18,19 +18,26 @@ aegis-env-mcp = "environment.mcp_server:main"
 aegis-env-baseline = "training.baseline:main"
 aegis-env-train = "training.train:main"
 aegis-env-eval = "eval.cli:main"
+aegis-env-compare = "eval.compare:main"
 
 [project.optional-dependencies]
 server = ["mcp>=1.0,<2.0"]
 training = [
   "trl>=1.2,<2.0",
-  "unsloth>=2024.10",
   "wandb>=0.17,<1.0",
   "transformers>=5.2,<6.0",
   "torch>=2.4,<3.0",
   "datasets>=2.20,<4.0",
   "accelerate>=1.0,<2.0",
+  "jmespath>=1.0,<2.0",
+  "matplotlib>=3.9,<4.0",
 ]
-eval = ["matplotlib>=3.9,<4.0"]
+eval = [
+  "matplotlib>=3.9,<4.0",
+  "wandb>=0.17,<1.0",
+]
+demo = ["gradio>=5.29,<6.0"]
+unsloth = ["unsloth>=2024.10"]
 
 [tool.setuptools.packages.find]
 include = ["environment*", "training*", "rewards*", "eval*"]

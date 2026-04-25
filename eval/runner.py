@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import json
 from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Callable, Sequence
 
 from environment.models import AttackClass
@@ -21,6 +23,29 @@ class EvaluationEpisode:
     @property
     def step_count(self) -> int:
         return len(self.trace.observations)
+
+    def as_dict(self) -> dict[str, object]:
+        return {
+            "seed": self.seed,
+            "step_count": self.step_count,
+            "episode_id": self.trace.episode_id,
+            "target_pkg": self.trace.target_pkg,
+            "actual_attack": self.trace.actual_attack.value,
+            "decision": self.trace.decision.value,
+            "reasoning": self.trace.reasoning,
+            "reward": self.trace.reward.total,
+            "reward_breakdown": self.trace.reward.as_dict(),
+            "tool_names": self.trace.tool_names,
+            "observations": [
+                {
+                    "step_index": observation.step_index,
+                    "tool_name": observation.call.name,
+                    "arguments": observation.call.arguments,
+                    "result": observation.result,
+                }
+                for observation in self.trace.observations
+            ],
+        }
 
 
 @dataclass(slots=True)
@@ -55,6 +80,35 @@ class EvaluationSummary:
             "confusion_matrix": self.confusion_matrix,
             "per_attack": {name: asdict(metrics) for name, metrics in self.per_attack.items()},
         }
+
+
+def build_evaluation_report(
+    summary: EvaluationSummary,
+    episodes: Sequence[EvaluationEpisode],
+    *,
+    label: str | None = None,
+) -> dict[str, object]:
+    return {
+        "schema_version": 1,
+        "label": label or summary.policy_name,
+        "summary": summary.as_dict(),
+        "reward_curve": [episode.trace.reward.total for episode in episodes],
+        "episodes": [episode.as_dict() for episode in episodes],
+    }
+
+
+def write_evaluation_report(
+    summary: EvaluationSummary,
+    episodes: Sequence[EvaluationEpisode],
+    output_path: str | Path,
+    *,
+    label: str | None = None,
+) -> Path:
+    destination = Path(output_path)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    payload = build_evaluation_report(summary, episodes, label=label)
+    destination.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return destination
 
 
 def evaluate_policy(
