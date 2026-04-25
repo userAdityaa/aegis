@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import random
+from pathlib import Path
 from typing import Any
 
 import gradio as gr
@@ -39,6 +40,7 @@ def build_app() -> gr.Blocks:
 
         summary_output = gr.Markdown(label="Episode summary")
         transcript_output = gr.JSON(label="Tool transcript")
+        transcript_viewer = gr.HTML(label="Side-by-side transcript viewer")
 
         refresh_button.click(
             fn=refresh_catalog,
@@ -49,9 +51,10 @@ def build_app() -> gr.Blocks:
         run_button.click(
             fn=run_demo,
             inputs=[seed_box, package_box, package_picker, attack_box],
-            outputs=[summary_output, transcript_output],
+            outputs=[summary_output, transcript_output, transcript_viewer],
         )
         demo.load(fn=refresh_catalog, inputs=seed_box, outputs=[seed_box, package_picker, package_box])
+        demo.load(fn=load_transcript_viewer, outputs=transcript_viewer)
 
     return demo
 
@@ -68,7 +71,7 @@ def run_demo(
     package_name: str,
     selected_package: str | None,
     attack_class: str,
-) -> tuple[str, list[dict[str, Any]]]:
+) -> tuple[str, list[dict[str, Any]], str]:
     seed = _resolve_seed(seed_text)
     candidate_package = (package_name or "").strip() or (selected_package or "").strip()
     available_packages = _list_packages(seed)
@@ -81,11 +84,30 @@ def run_demo(
             f"`{candidate_package}` is not present in the synthetic registry for seed `{seed}`.\n\n"
             f"Try one of: {suggestions}"
         )
-        return message, []
+        return message, [], load_transcript_viewer()
 
     trace = _simulate_episode(seed=seed, package_name=candidate_package, attack_class=attack_class)
     summary = _render_summary(trace)
-    return summary, trace["steps"]
+    return summary, trace["steps"], load_transcript_viewer()
+
+
+def load_transcript_viewer() -> str:
+    """Load a generated transcript_viewer.html if present."""
+    candidates = [
+        "reports/training_evidence/transcript_viewer.html",
+        "reports/rubric_smoke2/transcript_viewer.html",
+    ]
+    for candidate in candidates:
+        path = Path(candidate)
+        if path.exists():
+            return path.read_text(encoding="utf-8")
+    return (
+        "<div style='padding:10px'>"
+        "<h3>Transcript viewer not generated yet</h3>"
+        "<p>Run a training job that writes <code>per_episode_events.jsonl</code> and the app will render "
+        "<code>transcript_viewer.html</code> automatically.</p>"
+        "</div>"
+    )
 
 
 def _simulate_episode(*, seed: int, package_name: str, attack_class: str) -> dict[str, Any]:

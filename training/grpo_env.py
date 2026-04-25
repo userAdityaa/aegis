@@ -6,14 +6,32 @@ from typing import Any
 
 from training.env_client import AegisEnvClient
 from training.types import EpisodeTrace
+from training.curriculum import CurriculumScheduler
 
 
 class GRPOAegisEnvironment:
-    def __init__(self, manifest_path: str | Path | None = None) -> None:
+    def __init__(
+        self,
+        manifest_path: str | Path | None = None,
+        *,
+        evidence_dir: str | Path | None = None,
+        run_id: str | None = None,
+    ) -> None:
         self._manifest_path = manifest_path
         self.client = AegisEnvClient(manifest_path=manifest_path)
         self.last_trace: EpisodeTrace | None = None
         self.last_reward: float = 0.0
+        self._evidence_dir = Path(evidence_dir) if evidence_dir else None
+        self._run_id = run_id or "run"
+        self._last_episode_meta: dict[str, object] = {}
+        self._use_curriculum = False
+        self._curriculum: CurriculumScheduler | None = None
+
+    def enable_curriculum(self, *, seed: int = 0) -> None:
+        if self._evidence_dir is None:
+            return
+        self._use_curriculum = True
+        self._curriculum = CurriculumScheduler(evidence_dir=self._evidence_dir, seed=seed)
 
     def reset(
         self,
@@ -24,6 +42,8 @@ class GRPOAegisEnvironment:
         **_: object,
     ) -> str:
         del prompt
+        if self._use_curriculum and self._curriculum is not None:
+            attack_class = self._curriculum.select_attack().value
         state = self.client.reset(
             attack_class=attack_class,
             package_name=package_name,
@@ -31,6 +51,11 @@ class GRPOAegisEnvironment:
         )
         self.last_trace = None
         self.last_reward = 0.0
+        self._last_episode_meta = {
+            "episode_id": str(state.get("episode_id") or ""),
+            "target_pkg": str(state.get("target_pkg") or ""),
+            "actual_attack": self.client.current_attack_class.value,
+        }
         return (
             f"Target package: {state['target_pkg']}\n"
             "Use the available forensic tools to investigate the package. "
@@ -109,12 +134,73 @@ class GRPOAegisEnvironment:
         trace = self.client.submit_verdict(decision, reasoning)
         self.last_trace = trace
         self.last_reward = trace.reward.total
+        self._append_training_event(trace)
         return json.dumps(trace.verdict_response, sort_keys=True)
 
     def _call_tool(self, tool_name: str, **arguments: Any) -> str:
         normalized = {key: value for key, value in arguments.items() if value is not None}
         result = self.client.call_tool(tool_name, normalized)
         return json.dumps(result, sort_keys=True)
+
+    def _append_training_event(self, trace: EpisodeTrace) -> None:
+        if self._evidence_dir is None:
+            return
+        self._evidence_dir.mkdir(parents=True, exist_ok=True)
+        path = self._evidence_dir / "per_episode_events.jsonl"
+        payload = {
+            "run_id": self._run_id,
+            "episode_id": trace.episode_id,
+            "target_pkg": trace.target_pkg,
+            "actual_attack": trace.actual_attack.value,
+            "decision": trace.decision.value,
+            "correct": bool(trace.actual_attack is trace.decision),
+            "reward_total": trace.reward.total,
+            "reward_breakdown": trace.reward.as_dict(),
+            "step_count": len(trace.observations),
+            "tool_names": trace.tool_names,
+            "reasoning": trace.reasoning,
+            "observations": [
+                {
+                    "step_index": obs.step_index,
+                    "tool_name": obs.call.name,
+                    "arguments": obs.call.arguments,
+                    "result": obs.result,
+                }
+                for obs in trace.observations
+            ],
+        }
+        with path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(payload, sort_keys=True) + "\n")
+
+    def _append_failed_event(self, *, reward: float = -1.0) -> None:
+        if self._evidence_dir is None:
+            return
+        self._evidence_dir.mkdir(parents=True, exist_ok=True)
+        path = self._evidence_dir / "per_episode_events.jsonl"
+        payload = {
+            "run_id": self._run_id,
+            "episode_id": self._last_episode_meta.get("episode_id", ""),
+            "target_pkg": self._last_episode_meta.get("target_pkg", ""),
+            "actual_attack": self._last_episode_meta.get("actual_attack", "safe"),
+            "decision": "no_verdict",
+            "correct": False,
+            "reward_total": float(reward),
+            "reward_breakdown": {"verdict": 0.0, "speed": 0.0, "specificity": 0.0, "evidence": 0.0, "total": float(reward)},
+            "step_count": len(self.client.observations),
+            "tool_names": [obs.call.name for obs in self.client.observations],
+            "reasoning": "",
+            "observations": [
+                {
+                    "step_index": obs.step_index,
+                    "tool_name": obs.call.name,
+                    "arguments": obs.call.arguments,
+                    "result": obs.result,
+                }
+                for obs in self.client.observations
+            ],
+        }
+        with path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(payload, sort_keys=True) + "\n")
 
 
 def aegis_reward_func(
@@ -124,16 +210,34 @@ def aegis_reward_func(
 ) -> list[float]:
     rewards: list[float] = []
     verdict_completion_count = 0
+    per_class_rewards: dict[str, list[float]] = {}
+    per_class_correct: dict[str, list[int]] = {}
+    per_component: dict[str, list[float]] = {}
 
     for environment in environments:
         if environment.last_trace is None:
+            environment._append_failed_event(reward=-1.0)
             rewards.append(-1.0)
             continue
         verdict_completion_count += 1
         rewards.append(environment.last_reward)
+        trace = environment.last_trace
+        attack = trace.actual_attack.value
+        per_class_rewards.setdefault(attack, []).append(trace.reward.total)
+        per_class_correct.setdefault(attack, []).append(int(trace.actual_attack is trace.decision))
+        for key, value in trace.reward.as_dict().items():
+            if key == "total":
+                continue
+            per_component.setdefault(key, []).append(float(value))
 
     if log_metric and rewards:
         log_metric("aegis/reward_mean", sum(rewards) / len(rewards))
         log_metric("aegis/verdict_completion_rate", verdict_completion_count / len(rewards))
+        for attack, values in per_class_rewards.items():
+            log_metric(f"aegis/per_class/{attack}/reward_mean", sum(values) / len(values))
+        for attack, values in per_class_correct.items():
+            log_metric(f"aegis/per_class/{attack}/accuracy", sum(values) / len(values))
+        for component, values in per_component.items():
+            log_metric(f"aegis/rubric/{component}_mean", sum(values) / len(values))
 
     return rewards

@@ -102,11 +102,16 @@ Important: the default `trained` in the hackathon bundle is **not** the TRL/GRPO
 
 [rewards/scoring.py](rewards/scoring.py) combines:
 
-1. `accuracy`
-2. `false_alarm`
-3. `parsimony`
-4. `evidence_coverage`
-5. `reasoning`
+This environment uses OpenEnv-style **composable rubrics** (not a single monolithic reward).
+
+The final reward is the sum of four named sub-rubrics:
+
+1. **VerdictRubric**: \(+1.0\) correct, \(-1.0\) incorrect
+2. **SpeedRubric**: up to \(+0.3\) bonus for concise investigations
+3. **SpecificityRubric**: \(-0.6\) penalty for false quarantines (safe → non-safe)
+4. **EvidenceRubric**: \(+0.1\) per unique evidence signal cited in reasoning
+
+These are implemented as OpenEnv `Rubric` subclasses in `rewards/rubrics.py` and composed by `rewards/scoring.py`.
 
 This makes it harder for agents to exploit shallow strategies such as guessing without collecting attack-specific evidence.
 
@@ -145,6 +150,13 @@ Committed training evidence:
 1. [reports/training_evidence/training_summary.json](reports/training_evidence/training_summary.json)
 2. [reports/training_evidence/training_log_history.json](reports/training_evidence/training_log_history.json)
 3. [reports/training_evidence/training_curves.png](reports/training_evidence/training_curves.png)
+
+Additional research-grade evidence (generated when training writes `per_episode_events.jsonl`):
+
+1. `rubric_components.png` (per-rubric score curves)
+2. `per_class_accuracy.png` (one curve per attack class)
+3. `confusion_matrix.png` (from per-episode logs)
+4. `transcript_viewer.html` (side-by-side transcript demo)
 
 Additional transformer smoke artifacts:
 
