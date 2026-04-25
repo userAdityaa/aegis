@@ -3,7 +3,12 @@ from __future__ import annotations
 from mcp.server.fastmcp import FastMCP
 
 from environment.models import AttackClass
-from environment.runtime import AegisRuntime, CURRENT_EPISODE_URI
+from environment.runtime import (
+    AegisRuntime,
+    CURRENT_CASEFILE_URI,
+    CURRENT_EPISODE_URI,
+    CURRENT_INBOX_URI,
+)
 
 
 def create_app(seed: int | None = None) -> tuple[FastMCP, AegisRuntime]:
@@ -12,7 +17,7 @@ def create_app(seed: int | None = None) -> tuple[FastMCP, AegisRuntime]:
         name="Aegis-Env",
         instructions=(
             "Investigate one package per episode. Read aegis://episode/current to get the target package, "
-            "use the forensic tools to gather evidence, and finish with final_verdict."
+            "use the forensic tools to gather evidence, keep a case file, and finish with final_verdict."
         ),
     )
 
@@ -24,6 +29,24 @@ def create_app(seed: int | None = None) -> tuple[FastMCP, AegisRuntime]:
     )
     def current_episode() -> dict[str, object]:
         return runtime.read_current_episode()
+
+    @mcp.resource(
+        CURRENT_CASEFILE_URI,
+        name="current_casefile",
+        description="Running case file (notes) for the active investigation episode.",
+        mime_type="application/json",
+    )
+    def current_casefile() -> dict[str, object]:
+        return runtime.read_casefile()
+
+    @mcp.resource(
+        CURRENT_INBOX_URI,
+        name="current_inbox",
+        description="Personalized stakeholder inbox for the active incident (Theme 3.2).",
+        mime_type="application/json",
+    )
+    def current_inbox() -> dict[str, object]:
+        return runtime.list_incident_inbox()
 
     @mcp.tool(
         name="start_episode",
@@ -81,6 +104,41 @@ def create_app(seed: int | None = None) -> tuple[FastMCP, AegisRuntime]:
     )
     def run_sandbox_test(pkg_name: str | None = None) -> dict[str, object]:
         return runtime.run_sandbox_test(pkg_name=pkg_name)
+
+    @mcp.tool(
+        name="append_case_note",
+        description="Append a short note to the running incident case file (Theme 2/3: long-horizon memory).",
+    )
+    def append_case_note(note: str) -> dict[str, object]:
+        return runtime.append_case_note(note=note)
+
+    @mcp.tool(
+        name="list_incident_inbox",
+        description="List stakeholder inbox messages for this incident (Theme 3.2).",
+    )
+    def list_incident_inbox() -> dict[str, object]:
+        return runtime.list_incident_inbox()
+
+    @mcp.tool(
+        name="read_incident_message",
+        description="Read an inbox message (Theme 3.2).",
+    )
+    def read_incident_message(message_id: str) -> dict[str, object]:
+        return runtime.read_incident_message(message_id=message_id)
+
+    @mcp.tool(
+        name="draft_incident_reply",
+        description="Draft a reply to an inbox message (Theme 3.2).",
+    )
+    def draft_incident_reply(message_id: str, intent: str) -> dict[str, object]:
+        return runtime.draft_incident_reply(message_id=message_id, intent=intent)
+
+    @mcp.tool(
+        name="send_incident_reply",
+        description="Send a previously drafted reply (Theme 3.2).",
+    )
+    def send_incident_reply(message_id: str) -> dict[str, object]:
+        return runtime.send_incident_reply(message_id=message_id)
 
     @mcp.tool(
         name="final_verdict",

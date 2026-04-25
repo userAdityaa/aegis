@@ -19,7 +19,7 @@ COPY docker ./docker
 COPY README.md ./README.md
 
 RUN pip install --upgrade pip \
-    && pip install -e .[server,eval,demo]
+    && pip install -e .[openenv,server,eval,demo]
 
 EXPOSE 7860
 

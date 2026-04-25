@@ -12,13 +12,22 @@ from training.types import ToolObservation
 
 
 class TransformerTranscriptPolicy:
-    _AVAILABLE_TOOLS = (
+    _FORENSIC_TOOLS = (
         "check_maintainer_history",
         "diff_versions",
         "inspect_install_script",
         "get_reputation_score",
         "trace_dependencies",
         "run_sandbox_test",
+    )
+
+    _AVAILABLE_TOOLS = (
+        *_FORENSIC_TOOLS,
+        "append_case_note",
+        "list_incident_inbox",
+        "read_incident_message",
+        "draft_incident_reply",
+        "send_incident_reply",
     )
 
     def __init__(
@@ -106,7 +115,7 @@ class TransformerTranscriptPolicy:
 
     def _fallback_action(self, observations: list[ToolObservation]) -> str:
         seen_tools = {observation.call.name for observation in observations}
-        for tool_name in self._AVAILABLE_TOOLS:
+        for tool_name in self._FORENSIC_TOOLS:
             if tool_name not in seen_tools:
                 return render_tool_call(tool_name)
         return render_verdict("safe", "model output was unparsable after collecting forensic evidence")

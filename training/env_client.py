@@ -25,6 +25,11 @@ class AegisEnvClient:
             "inspect_install_script": self.runtime.inspect_install_script,
             "get_reputation_score": self.runtime.get_reputation_score,
             "run_sandbox_test": self.runtime.run_sandbox_test,
+            "append_case_note": self.runtime.append_case_note,
+            "list_incident_inbox": self.runtime.list_incident_inbox,
+            "read_incident_message": self.runtime.read_incident_message,
+            "draft_incident_reply": self.runtime.draft_incident_reply,
+            "send_incident_reply": self.runtime.send_incident_reply,
         }
 
     def reset(

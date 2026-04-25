@@ -11,6 +11,8 @@ server:
 
 workflow:
   - Read resource aegis://episode/current to get the current episode target.
+  - Optionally read aegis://casefile/current and append_case_note to maintain a long-horizon case file.
+  - Optionally read aegis://inbox/current and reply to stakeholders for personalized incident communication.
   - Use forensic tools to gather evidence for the target package.
   - End each investigation by calling final_verdict.
 
@@ -27,6 +29,40 @@ resources:
         target_pkg:
           type: string
       additionalProperties: false
+
+  - uri: aegis://casefile/current
+    mimeType: application/json
+    description: Running case file notes for the active incident (Theme 2/3 long-horizon memory).
+    outputSchema:
+      type: object
+      required: [episode_id, target_pkg, notes, notes_count]
+      properties:
+        episode_id:
+          type: string
+        target_pkg:
+          type: string
+        notes:
+          type: array
+          items:
+            type: string
+        notes_count:
+          type: integer
+      additionalProperties: false
+
+  - uri: aegis://inbox/current
+    mimeType: application/json
+    description: Personalized stakeholder inbox for the active incident (Theme 3.2).
+    outputSchema:
+      type: object
+      required: [messages, count]
+      properties:
+        messages:
+          type: array
+          items:
+            type: object
+        count:
+          type: integer
+      additionalProperties: true
 
 tools:
   - name: start_episode
@@ -245,6 +281,113 @@ tools:
         pkg_name:
           type: string
           description: Defaults to the current episode target package.
+      additionalProperties: false
+
+  - name: append_case_note
+    description: Append a short note to the running incident case file (Theme 2/3 long-horizon memory).
+    inputSchema:
+      type: object
+      required: [note]
+      properties:
+        note:
+          type: string
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [ok, notes_count]
+      properties:
+        ok:
+          type: boolean
+        notes_count:
+          type: integer
+      additionalProperties: false
+
+  - name: list_incident_inbox
+    description: List stakeholder inbox messages for this incident (Theme 3.2).
+    inputSchema:
+      type: object
+      properties: {}
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [messages, count]
+      properties:
+        messages:
+          type: array
+          items:
+            type: object
+        count:
+          type: integer
+      additionalProperties: true
+
+  - name: read_incident_message
+    description: Read an inbox message (Theme 3.2).
+    inputSchema:
+      type: object
+      required: [message_id]
+      properties:
+        message_id:
+          type: string
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [id, from, to, subject, priority, body]
+      properties:
+        id:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        subject:
+          type: string
+        priority:
+          type: string
+        body:
+          type: string
+      additionalProperties: true
+
+  - name: draft_incident_reply
+    description: Draft a reply to an inbox message (Theme 3.2).
+    inputSchema:
+      type: object
+      required: [message_id, intent]
+      properties:
+        message_id:
+          type: string
+        intent:
+          type: string
+          enum: [status_update, customer_guidance, exec_summary]
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [message_id, draft]
+      properties:
+        message_id:
+          type: string
+        draft:
+          type: string
+      additionalProperties: false
+
+  - name: send_incident_reply
+    description: Send a previously drafted reply (Theme 3.2).
+    inputSchema:
+      type: object
+      required: [message_id]
+      properties:
+        message_id:
+          type: string
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [ok, message_id, sent]
+      properties:
+        ok:
+          type: boolean
+        message_id:
+          type: string
+        sent:
+          type: boolean
       additionalProperties: false
     outputSchema:
       type: object
