@@ -12,10 +12,10 @@
   "summary_path": "reports/training_evidence/training_summary.json",
   "tool_template_source": "Qwen/Qwen3-0.6B",
   "total_flos": 0.0,
-  "train_loss": 0.0,
-  "train_runtime": 583.264,
+  "train_loss": 0.0016791747882962226,
+  "train_runtime": 582.3668,
   "train_samples_per_second": 0.069,
   "train_steps_per_second": 0.034,
-  "training_loss": 0.0,
+  "training_loss": 0.0016791747882962226,
   "transcript_viewer_path": "reports/training_evidence/transcript_viewer.html"
 }
