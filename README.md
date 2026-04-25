@@ -1,3 +1,15 @@
+---
+title: Aegis-Env
+emoji: 🛡️
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: "5.29.0"
+python_version: "3.10"
+app_file: docker/demo.py
+pinned: false
+---
+
 # Aegis-Env
 
 In March 2026, a simulated incident rattles two teams:
