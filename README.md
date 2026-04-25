@@ -1,3 +1,12 @@
+---
+title: Aegis-Env
+emoji: 🛡️
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+---
+
 # Aegis-Env
 
 In March 2026, a simulated incident rattles two teams:
@@ -5,7 +14,7 @@ In March 2026, a simulated incident rattles two teams:
 - Claude’s on-call security engineer is paged for suspicious package installs.
 - Vercel’s customer success inbox starts filling with “our build pulled malware” escalations.
 
-The failure mode is familiar: an LLM assistant can *talk* about supply-chain attacks, but it cannot reliably **run a tool-driven investigation**, keep state, and communicate **calm, actionable guidance** to stakeholders under uncertainty.
+The failure mode is familiar: an LLM assistant can _talk_ about supply-chain attacks, but it cannot reliably **run a tool-driven investigation**, keep state, and communicate **calm, actionable guidance** to stakeholders under uncertainty.
 
 **Aegis-Env** is an OpenEnv MCP environment for training LLM agents on realistic package supply-chain forensics. Each episode hides one attack in a synthetic package ecosystem; the agent must gather evidence through tools, maintain state across steps, and submit a final attack verdict — while optionally maintaining a long-horizon case file and replying to stakeholder messages.
 
@@ -35,7 +44,7 @@ Aegis-Env trains those capabilities in a partially observable world with delayed
 - Real training evidence with loss and reward plots: yes. See [reports/training_evidence/training_summary.json](reports/training_evidence/training_summary.json), [reports/training_evidence/training_log_history.json](reports/training_evidence/training_log_history.json), and [reports/training_evidence/training_curves.png](reports/training_evidence/training_curves.png).
 - Short presentation asset linked from the README: yes. See [docs/hackathon_slide_deck.md](docs/hackathon_slide_deck.md).
 - Hugging Face Space packaging: yes. The app is Docker Space-ready via [docker/Dockerfile](docker/Dockerfile) and [docker/demo.py](docker/demo.py).
-- Live Hugging Face Space URL: pending deployment. Add the deployed `https://huggingface.co/spaces/...` URL in **Submission Assets** before the final submission.
+- Live Hugging Face Space URL: yes. https://huggingface.co/spaces/userAdityaaaa/aegis
 
 ## Judge Quickstart
 
@@ -233,7 +242,7 @@ python docker/demo.py --server-name 127.0.0.1 --server-port 7860
 Build locally:
 
 ```bash
-docker build -f docker/Dockerfile -t aegis-env .
+docker build -t aegis-env .
 ```
 
 Run demo mode:
@@ -248,7 +257,7 @@ Run MCP mode:
 docker run --rm -e AEGIS_APP_MODE=mcp aegis-env
 ```
 
-For Hugging Face Spaces, create a Docker Space and point it at [docker/Dockerfile](docker/Dockerfile). The container entrypoint already supports both demo mode and MCP mode.
+For Hugging Face Spaces, set `sdk: docker` in the README frontmatter. The root `Dockerfile` is used automatically. The container entrypoint supports both demo mode and MCP mode.
 
 ## Submission Assets
 
@@ -259,7 +268,7 @@ For Hugging Face Spaces, create a Docker Space and point it at [docker/Dockerfil
 - Hackathon evaluation bundle: [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json), [reports/hackathon/trained_summary.json](reports/hackathon/trained_summary.json), [reports/hackathon/heuristic_vs_trained.png](reports/hackathon/heuristic_vs_trained.png)
 - Slide deck: [docs/hackathon_slide_deck.md](docs/hackathon_slide_deck.md)
 - Submission playbook: [docs/hackathon_submission.md](docs/hackathon_submission.md)
-- Live HF Space URL: replace this line with the deployed `https://huggingface.co/spaces/<org-or-user>/aegis-env` URL before final submission.
+- Live HF Space URL: https://huggingface.co/spaces/userAdityaaaa/aegis
 
 ## Final Checklist
 

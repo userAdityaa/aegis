@@ -1,0 +1,6 @@
+networkx>=3.3,<4.0
+faker>=25.8,<26.0
+pydantic>=2.11,<3.0
+openenv-core==0.2.3
+gradio>=5.29,<6.0
+matplotlib>=3.9,<4.0
