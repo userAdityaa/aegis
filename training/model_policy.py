@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import torch
@@ -36,12 +37,12 @@ class TransformerTranscriptPolicy:
         *,
         manifest_path: str | Path | None = None,
         device: str | None = None,
-        max_new_tokens: int = 128,
+        max_new_tokens: int = 96,
     ) -> None:
         self.checkpoint_path = Path(checkpoint_path)
         self.manifest_path = Path(manifest_path) if manifest_path else None
-        self.device = _resolve_device(device)
-        self.max_new_tokens = max_new_tokens
+        resolved_device = _resolve_device(device)
+        self.max_new_tokens = int(os.environ.get("AEGIS_EVAL_MAX_NEW_TOKENS", str(max_new_tokens)))
 
         self.prompt_prefix = self._build_prompt_prefix()
         self.tokenizer = AutoTokenizer.from_pretrained(self.checkpoint_path.as_posix())
@@ -49,9 +50,22 @@ class TransformerTranscriptPolicy:
         if self.tokenizer.pad_token_id is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
-        self.model = AutoModelForCausalLM.from_pretrained(self.checkpoint_path.as_posix())
-        self.model.to(self.device)
+        load_kwargs: dict[str, object] = {}
+        if resolved_device.type == "cuda":
+            # Keep eval memory low enough for typical Colab GPUs.
+            load_kwargs.update(
+                {
+                    "torch_dtype": torch.float16,
+                    "device_map": "auto",
+                    "low_cpu_mem_usage": True,
+                }
+            )
+        self.model = AutoModelForCausalLM.from_pretrained(self.checkpoint_path.as_posix(), **load_kwargs)
+        if resolved_device.type != "cuda":
+            self.model.to(resolved_device)
         self.model.eval()
+        # When device_map="auto" is used, inputs must be placed on the model's first device.
+        self.device = next(self.model.parameters()).device
         self.context_window = int(
             getattr(self.model.config, "n_positions", 0)
             or getattr(self.model.config, "max_position_embeddings", 0)
@@ -125,10 +139,9 @@ class TransformerTranscriptPolicy:
         return (
             build_agent_training_prompt()
             + "\n"
-            + "Use this tool-call format when you need evidence:\n"
-            + '<tool>tool_name</tool><args>{"optional": "json args"}</args>\n'
-            + "Use this verdict format when you are ready to stop:\n"
-            + "<verdict>attack_class_or_safe</verdict><reasoning>concise evidence-based rationale</reasoning>\n"
+            + "When you are ready to stop, choose one of these classes for <verdict>: "
+            + ", ".join([c.value for c in AttackClass])
+            + ".\n"
             + f"Available forensic tools: {available_tools}."
         )
 
