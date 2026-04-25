@@ -1,17 +1,21 @@
 {
+  "confusion_matrix_path": "reports/training_evidence/confusion_matrix.png",
   "episodes": 9,
-  "global_step": 6,
+  "global_step": 20,
   "history_jsonl_path": "reports/training_evidence/training_log_history.jsonl",
   "history_path": "reports/training_evidence/training_log_history.json",
-  "log_history_entries": 7,
-  "output_dir": "artifacts/grpo-progress",
+  "log_history_entries": 21,
+  "output_dir": "artifacts/grpo-evidence",
+  "per_class_plot_path": "reports/training_evidence/per_class_accuracy.png",
   "plot_path": "reports/training_evidence/training_curves.png",
+  "rubric_plot_path": "reports/training_evidence/rubric_components.png",
   "summary_path": "reports/training_evidence/training_summary.json",
   "tool_template_source": "Qwen/Qwen3-0.6B",
   "total_flos": 0.0,
   "train_loss": 0.0,
-  "train_runtime": 3.0012,
-  "train_samples_per_second": 3.998,
-  "train_steps_per_second": 1.999,
-  "training_loss": 0.0
+  "train_runtime": 583.264,
+  "train_samples_per_second": 0.069,
+  "train_steps_per_second": 0.034,
+  "training_loss": 0.0,
+  "transcript_viewer_path": "reports/training_evidence/transcript_viewer.html"
 }
