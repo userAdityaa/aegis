@@ -260,8 +260,39 @@ def aegis_reward_func(
     return rewards
 
 
+def _completion_to_text(completion: object) -> str:
+    """Normalize TRL completion payloads to a single string for pattern matching."""
+
+    if completion is None:
+        return ""
+    if isinstance(completion, str):
+        return completion
+    if isinstance(completion, (bytes, bytearray)):
+        return completion.decode("utf-8", errors="replace")
+    if isinstance(completion, list):
+        parts: list[str] = []
+        for item in completion:
+            if isinstance(item, str):
+                parts.append(item)
+            elif isinstance(item, dict):
+                content = item.get("content")
+                if isinstance(content, str):
+                    parts.append(content)
+                else:
+                    parts.append(str(item))
+            else:
+                parts.append(str(item))
+        return "\n".join(parts)
+    if isinstance(completion, dict):
+        content = completion.get("content")
+        if isinstance(content, str):
+            return content
+        return str(completion)
+    return str(completion)
+
+
 def aegis_completion_reward_func(
-    completions: list[str] | None = None,
+    completions: list[object] | None = None,
     log_metric=None,
     **_: object,
 ) -> list[float]:
@@ -278,8 +309,8 @@ def aegis_completion_reward_func(
     rewards: list[float] = []
     verdict_like = 0
     tool_like = 0
-    for text in completions:
-        normalized = (text or "").lower()
+    for raw in completions:
+        normalized = _completion_to_text(raw).lower()
         has_verdict = ("<verdict>" in normalized and "</verdict>" in normalized) or ("final_verdict" in normalized)
         has_tool = "<tool>" in normalized or "check_maintainer_history" in normalized or "diff_versions" in normalized
         verdict_like += int(has_verdict)
