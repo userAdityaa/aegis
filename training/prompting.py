@@ -23,12 +23,11 @@ def build_system_prompt(manifest_text: str | None = None, manifest_path: str | P
 
 
 def build_agent_training_prompt(manifest_text: str | None = None, manifest_path: str | Path | None = None) -> str:
-    resolved_manifest = manifest_text if manifest_text is not None else load_manifest_text(manifest_path)
+    del manifest_text, manifest_path
     return (
         "You are a software supply-chain forensic investigator.\n"
         "Investigate exactly one package per episode.\n"
         "Use the available forensic tools to gather evidence before deciding.\n"
-        "When the investigation is complete, call final_verdict exactly once with the most likely attack class or safe and a concise evidence-based rationale.\n\n"
-        "Environment manifest:\n"
-        f"{resolved_manifest}"
+        "Call final_verdict exactly once with the most likely attack class or safe and a concise evidence-based rationale.\n"
+        "Reason from evidence and prefer only the tools you need."
     )

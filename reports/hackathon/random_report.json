@@ -1,0 +1,2739 @@
+{
+  "episodes": [
+    {
+      "actual_attack": "typosquatting",
+      "decision": "star_jacking",
+      "episode_id": "26a4106baf0042339399c806d5de30d1",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "average_weekly_downloads": 74.67,
+            "closed_issues": 1,
+            "maintainer_count": 1,
+            "open_issues": 2,
+            "package": "stackindex405",
+            "star_download_ratio": 0.48,
+            "star_issue_ratio": 12.0,
+            "stars": 36,
+            "suspicious_popularity": false,
+            "weekly_download_trend": [
+              76,
+              39,
+              28,
+              68,
+              140,
+              158,
+              41,
+              83,
+              29,
+              22,
+              88,
+              124
+            ]
+          },
+          "step_index": 1,
+          "tool_name": "get_reputation_score"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": -0.85,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": 0.15,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -0.85
+      },
+      "seed": 0,
+      "step_count": 1,
+      "target_pkg": "stackindex405",
+      "tool_names": [
+        "get_reputation_score"
+      ]
+    },
+    {
+      "actual_attack": "long_con",
+      "decision": "dead_drop_hijack",
+      "episode_id": "8d0d8ca27da245558a056f2eb51e13ad",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "commit_count": 35,
+            "ip_history": [
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "harden input validation",
+                "hash": "bea9be66215d",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-02-05T07:35:53+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "harden input validation",
+                "hash": "bea9be66215d",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-02-05T07:35:53+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "14e504866f2b",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-02-06T10:31:40+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "14e504866f2b",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-02-06T10:31:40+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "bcbf0a5427e2",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-02-10T10:27:54+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "bcbf0a5427e2",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-02-10T10:27:54+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "27bcf20c026c",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-02-11T10:32:18+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "27bcf20c026c",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-02-11T10:32:18+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "1052fafdec36",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-02-15T12:03:53+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "1052fafdec36",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-02-15T12:03:53+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "52e1720d4f3d",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-02-17T08:21:12+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "52e1720d4f3d",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-02-17T08:21:12+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "update packaging metadata",
+                "hash": "5a96ec773971",
+                "ip": "74.16.128.91",
+                "timestamp": "2025-02-20T08:56:23+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "update packaging metadata",
+                "hash": "5a96ec773971",
+                "ip": "74.16.128.91",
+                "timestamp": "2025-02-20T08:56:23+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "ec88ac683e79",
+                "ip": "131.102.136.135",
+                "timestamp": "2025-02-24T13:45:41+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "ec88ac683e79",
+                "ip": "131.102.136.135",
+                "timestamp": "2025-02-24T13:45:41+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "3f37acb621a7",
+                "ip": "131.102.136.135",
+                "timestamp": "2025-02-25T10:16:21+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "3f37acb621a7",
+                "ip": "131.102.136.135",
+                "timestamp": "2025-02-25T10:16:21+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "6334f32fa25f",
+                "ip": "131.102.136.135",
+                "timestamp": "2025-02-27T14:20:13+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "6334f32fa25f",
+                "ip": "131.102.136.135",
+                "timestamp": "2025-02-27T14:20:13+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "harden input validation",
+                "hash": "a70078cac400",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-03-03T07:08:19+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "harden input validation",
+                "hash": "a70078cac400",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-03-03T07:08:19+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "refactor parser helper",
+                "hash": "f33399474990",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-03-04T10:46:40+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "refactor parser helper",
+                "hash": "f33399474990",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-03-04T10:46:40+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "c46c7b779409",
+                "ip": "131.102.136.135",
+                "timestamp": "2025-03-08T11:32:48+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "c46c7b779409",
+                "ip": "131.102.136.135",
+                "timestamp": "2025-03-08T11:32:48+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "cec4685579ff",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-03-12T12:44:30+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "cec4685579ff",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-03-12T12:44:30+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "harden input validation",
+                "hash": "41132ad61e0e",
+                "ip": "74.16.128.91",
+                "timestamp": "2025-03-13T12:06:55+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "harden input validation",
+                "hash": "41132ad61e0e",
+                "ip": "74.16.128.91",
+                "timestamp": "2025-03-13T12:06:55+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "47fe35646637",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-03-15T11:13:11+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "47fe35646637",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-03-15T11:13:11+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "improve retry behavior",
+                "hash": "c2ca35687203",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-03-19T13:52:36+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "improve retry behavior",
+                "hash": "c2ca35687203",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-03-19T13:52:36+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "trim cache fallback",
+                "hash": "c2ce7ed4d57b",
+                "ip": "147.218.207.197",
+                "timestamp": "2025-04-27T00:16:07+00:00"
+              }
+            ],
+            "maintainers": [
+              {
+                "commit_count": 19,
+                "commit_hour_distribution": {
+                  "0": 1,
+                  "7": 4,
+                  "10": 4,
+                  "11": 4,
+                  "12": 2,
+                  "13": 2,
+                  "14": 2
+                },
+                "email": "shannonledge81@shipit.dev",
+                "first_seen": "2025-02-05T07:35:53+00:00",
+                "known_ips": [
+                  "131.102.136.135",
+                  "131.102.136.142",
+                  "131.102.136.150"
+                ],
+                "last_seen": "2025-04-27T00:16:07+00:00",
+                "name": "Shannon Lindsey"
+              },
+              {
+                "commit_count": 16,
+                "commit_hour_distribution": {
+                  "8": 4,
+                  "10": 6,
+                  "12": 4,
+                  "13": 2
+                },
+                "email": "rosescotedge77@maintainers.net",
+                "first_seen": "2025-02-06T10:31:40+00:00",
+                "known_ips": [
+                  "74.16.128.85",
+                  "74.16.128.91"
+                ],
+                "last_seen": "2025-03-19T13:52:36+00:00",
+                "name": "Rose Scott"
+              }
+            ],
+            "off_hours_recent_commits": [
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "trim cache fallback",
+                "hash": "c2ce7ed4d57b",
+                "ip": "147.218.207.197",
+                "timestamp": "2025-04-27T00:16:07+00:00"
+              }
+            ],
+            "package": "edge_vault664",
+            "recent_commits": [
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "47fe35646637",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-03-15T11:13:11+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "47fe35646637",
+                "ip": "131.102.136.150",
+                "timestamp": "2025-03-15T11:13:11+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "improve retry behavior",
+                "hash": "c2ca35687203",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-03-19T13:52:36+00:00"
+              },
+              {
+                "author": "rosescotedge77@maintainers.net",
+                "diff_summary": "improve retry behavior",
+                "hash": "c2ca35687203",
+                "ip": "74.16.128.85",
+                "timestamp": "2025-03-19T13:52:36+00:00"
+              },
+              {
+                "author": "shannonledge81@shipit.dev",
+                "diff_summary": "trim cache fallback",
+                "hash": "c2ce7ed4d57b",
+                "ip": "147.218.207.197",
+                "timestamp": "2025-04-27T00:16:07+00:00"
+              }
+            ],
+            "suspicious_ip_shift": true,
+            "unseen_recent_ips": [
+              "147.218.207.197"
+            ]
+          },
+          "step_index": 1,
+          "tool_name": "check_maintainer_history"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "exit_code": 0,
+            "files_written": [],
+            "network_calls": [],
+            "package": "edge_vault664",
+            "processes_spawned": [
+              "pip install"
+            ]
+          },
+          "step_index": 2,
+          "tool_name": "run_sandbox_test"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "average_weekly_downloads": 21522.58,
+            "closed_issues": 629,
+            "maintainer_count": 2,
+            "open_issues": 63,
+            "package": "edge_vault664",
+            "star_download_ratio": 0.05,
+            "star_issue_ratio": 1.4,
+            "stars": 970,
+            "suspicious_popularity": false,
+            "weekly_download_trend": [
+              17436,
+              25921,
+              22273,
+              22965,
+              23520,
+              24222,
+              24428,
+              19677,
+              19370,
+              15079,
+              22456,
+              20924
+            ]
+          },
+          "step_index": 3,
+          "tool_name": "get_reputation_score"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": -0.9,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": 0.15,
+        "false_alarm": 0.0,
+        "parsimony": -0.05,
+        "reasoning": 0.0,
+        "total": -0.9
+      },
+      "seed": 1,
+      "step_count": 3,
+      "target_pkg": "edge_vault664",
+      "tool_names": [
+        "check_maintainer_history",
+        "run_sandbox_test",
+        "get_reputation_score"
+      ]
+    },
+    {
+      "actual_attack": "account_takeover",
+      "decision": "account_takeover",
+      "episode_id": "3ff5387926b7428d946a4a143f078ce0",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "has_exec": false,
+            "has_network_call": false,
+            "install_script": "python -m pip install .",
+            "package": "betastack51",
+            "readme_excerpt": "# betastack51\n\nStable utilities package.\n",
+            "setup_py_excerpt": "",
+            "suspicious_patterns": []
+          },
+          "step_index": 1,
+          "tool_name": "inspect_install_script"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "changed_files": [
+              "__init__.py",
+              "core.py"
+            ],
+            "diff": "--- betastack51:1.0.3:__init__.py\n+++ betastack51:1.0.4:__init__.py\n@@ -1,2 +1,2 @@\n-__version__ = \"1.0.3\"\n+__version__ = \"1.0.4\"\n from .core import run\n--- betastack51:1.0.3:core.py\n+++ betastack51:1.0.4:core.py\n@@ -1,2 +1,3 @@\n def run(value: str) -> str:\n-    return \"betastack51:1.0.3:\" + value\n+    audit_value = value.strip()\n+    return \"betastack51:1.0.3:\" + audit_value",
+            "from_version": "1.0.3",
+            "package": "betastack51",
+            "to_version": "1.0.4"
+          },
+          "step_index": 2,
+          "tool_name": "diff_versions"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "dependency_count": 6,
+            "flat_dependencies": [
+              {
+                "latest_version": "1.0.2",
+                "maintainer_count": 2,
+                "name": "alphaflux109",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.4.1",
+                "maintainer_count": 1,
+                "name": "alphawatch983",
+                "source": "private"
+              },
+              {
+                "latest_version": "1.4.3",
+                "maintainer_count": 3,
+                "name": "beta_hash884",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.4.1",
+                "maintainer_count": 1,
+                "name": "betanova778",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.0.3",
+                "maintainer_count": 2,
+                "name": "beta-xeno383",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.4.3",
+                "maintainer_count": 2,
+                "name": "beta-delta175",
+                "source": "public"
+              }
+            ],
+            "package": "betastack51",
+            "tree": {
+              "betastack51": {
+                "alphaflux109": {},
+                "alphawatch983": {
+                  "alphaflux109": {}
+                },
+                "beta_hash884": {},
+                "betanova778": {
+                  "alphaflux109": {},
+                  "alphawatch983": {
+                    "alphaflux109": {}
+                  },
+                  "beta-xeno383": {
+                    "alphawatch983": {
+                      "alphaflux109": {}
+                    },
+                    "beta-delta175": {
+                      "alphaflux109": {},
+                      "alphawatch983": {
+                        "alphaflux109": {}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "step_index": 3,
+          "tool_name": "trace_dependencies"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": 0.6000000000000001,
+      "reward_breakdown": {
+        "accuracy": 1.0,
+        "evidence_coverage": -0.3,
+        "false_alarm": 0.0,
+        "parsimony": -0.1,
+        "reasoning": 0.0,
+        "total": 0.6000000000000001
+      },
+      "seed": 2,
+      "step_count": 3,
+      "target_pkg": "betastack51",
+      "tool_names": [
+        "inspect_install_script",
+        "diff_versions",
+        "trace_dependencies"
+      ]
+    },
+    {
+      "actual_attack": "cicd_poisoning",
+      "decision": "dependency_confusion",
+      "episode_id": "a721bac76f854618b9a81703d7c1f7a4",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "commit_count": 16,
+            "ip_history": [
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "a4b4fb9ccbd4",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-04-16T14:38:28+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "harden input validation",
+                "hash": "a5fc9066a1a6",
+                "ip": "64.61.53.123",
+                "timestamp": "2023-04-17T13:31:38+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "217c512a8d6a",
+                "ip": "64.61.53.24",
+                "timestamp": "2023-04-18T13:42:23+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "refactor parser helper",
+                "hash": "6dfd001198ce",
+                "ip": "64.61.53.24",
+                "timestamp": "2023-04-20T14:04:22+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "improve retry behavior",
+                "hash": "92e9de35e5b3",
+                "ip": "64.61.53.24",
+                "timestamp": "2023-04-24T16:54:37+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "bump lockfile",
+                "hash": "942e18a54cd2",
+                "ip": "64.61.53.123",
+                "timestamp": "2023-04-26T15:44:33+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "optimize cache lookup",
+                "hash": "190a5bd9afb2",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-04-30T14:32:14+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "refactor parser helper",
+                "hash": "9fdaf7e50799",
+                "ip": "64.61.53.24",
+                "timestamp": "2023-05-04T13:14:21+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "refactor parser helper",
+                "hash": "5b48f51faf15",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-05-05T13:29:33+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "bump lockfile",
+                "hash": "a2f8532ba184",
+                "ip": "64.61.53.123",
+                "timestamp": "2023-05-06T16:42:43+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "refactor parser helper",
+                "hash": "d457f4bda768",
+                "ip": "64.61.53.123",
+                "timestamp": "2023-05-10T11:18:20+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "update packaging metadata",
+                "hash": "91f97b3bb531",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-05-11T18:22:38+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "harden input validation",
+                "hash": "77eacc401ac6",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-05-13T14:33:56+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "update packaging metadata",
+                "hash": "138d135e9fce",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-05-14T14:40:43+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "bump lockfile",
+                "hash": "67e860d5a490",
+                "ip": "64.61.53.96",
+                "timestamp": "2023-05-17T17:24:38+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "refactor parser helper",
+                "hash": "b6cb8d5e0730",
+                "ip": "64.61.53.24",
+                "timestamp": "2023-05-20T16:20:21+00:00"
+              }
+            ],
+            "maintainers": [
+              {
+                "commit_count": 16,
+                "commit_hour_distribution": {
+                  "11": 1,
+                  "13": 4,
+                  "14": 5,
+                  "15": 1,
+                  "16": 3,
+                  "17": 1,
+                  "18": 1
+                },
+                "email": "alexismcguar26@maintainers.net",
+                "first_seen": "2023-04-16T14:38:28+00:00",
+                "known_ips": [
+                  "64.61.53.115",
+                  "64.61.53.123",
+                  "64.61.53.24",
+                  "64.61.53.96"
+                ],
+                "last_seen": "2023-05-20T16:20:21+00:00",
+                "name": "Alexis Mcgee"
+              }
+            ],
+            "off_hours_recent_commits": [],
+            "package": "guard_index265",
+            "recent_commits": [
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "update packaging metadata",
+                "hash": "91f97b3bb531",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-05-11T18:22:38+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "harden input validation",
+                "hash": "77eacc401ac6",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-05-13T14:33:56+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "update packaging metadata",
+                "hash": "138d135e9fce",
+                "ip": "64.61.53.115",
+                "timestamp": "2023-05-14T14:40:43+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "bump lockfile",
+                "hash": "67e860d5a490",
+                "ip": "64.61.53.96",
+                "timestamp": "2023-05-17T17:24:38+00:00"
+              },
+              {
+                "author": "alexismcguar26@maintainers.net",
+                "diff_summary": "refactor parser helper",
+                "hash": "b6cb8d5e0730",
+                "ip": "64.61.53.24",
+                "timestamp": "2023-05-20T16:20:21+00:00"
+              }
+            ],
+            "suspicious_ip_shift": true,
+            "unseen_recent_ips": [
+              "64.61.53.96"
+            ]
+          },
+          "step_index": 1,
+          "tool_name": "check_maintainer_history"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": -1.3,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.3,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.3
+      },
+      "seed": 3,
+      "step_count": 1,
+      "target_pkg": "guard_index265",
+      "tool_names": [
+        "check_maintainer_history"
+      ]
+    },
+    {
+      "actual_attack": "dependency_confusion",
+      "decision": "account_takeover",
+      "episode_id": "08756fae1e1b4184bd7519f360f149a6",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "dependency_count": 22,
+            "flat_dependencies": [
+              {
+                "latest_version": "99.0.0",
+                "maintainer_count": 1,
+                "name": "corp-auth",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.3.2",
+                "maintainer_count": 3,
+                "name": "edge_index643",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.3.1",
+                "maintainer_count": 3,
+                "name": "delta_hash614",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.1.3",
+                "maintainer_count": 2,
+                "name": "beta_relay597",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.3.2",
+                "maintainer_count": 3,
+                "name": "alpha_index848",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.3.3",
+                "maintainer_count": 1,
+                "name": "beta-watch285",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.4.0",
+                "maintainer_count": 3,
+                "name": "alphamesh940",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.1.1",
+                "maintainer_count": 3,
+                "name": "alpha_utils124",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.0.2",
+                "maintainer_count": 1,
+                "name": "betabeta173",
+                "source": "private"
+              },
+              {
+                "latest_version": "1.1.0",
+                "maintainer_count": 1,
+                "name": "core-quark422",
+                "source": "private"
+              },
+              {
+                "latest_version": "1.1.1",
+                "maintainer_count": 1,
+                "name": "corecore465",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.4.1",
+                "maintainer_count": 3,
+                "name": "edge_index27",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.3.0",
+                "maintainer_count": 1,
+                "name": "core-trace692",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.4.2",
+                "maintainer_count": 2,
+                "name": "betalogic85",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.4.1",
+                "maintainer_count": 2,
+                "name": "betaorbit288",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.4.0",
+                "maintainer_count": 2,
+                "name": "betawatch116",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.1.2",
+                "maintainer_count": 2,
+                "name": "beta_trace558",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.2.1",
+                "maintainer_count": 2,
+                "name": "edgeedge153",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.3.2",
+                "maintainer_count": 3,
+                "name": "coreyield927",
+                "source": "public"
+              },
+              {
+                "latest_version": "1.1.2",
+                "maintainer_count": 3,
+                "name": "edgewatch476",
+                "source": "private"
+              },
+              {
+                "latest_version": "1.3.1",
+                "maintainer_count": 2,
+                "name": "edgealpha898",
+                "source": "private"
+              },
+              {
+                "latest_version": "1.3.1",
+                "maintainer_count": 2,
+                "name": "flux-beta261",
+                "source": "public"
+              }
+            ],
+            "package": "fluxutils821",
+            "tree": {
+              "fluxutils821": {
+                "corp-auth": {},
+                "edge_index643": {
+                  "delta_hash614": {
+                    "beta_relay597": {
+                      "alpha_index848": {},
+                      "beta-watch285": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      }
+                    },
+                    "betabeta173": {
+                      "alpha_utils124": {},
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "core-quark422": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "corecore465": {
+                      "core-quark422": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      }
+                    }
+                  },
+                  "edge_index27": {
+                    "beta-watch285": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "core-trace692": {
+                      "alpha_utils124": {},
+                      "betalogic85": {
+                        "alpha_index848": {},
+                        "beta_relay597": {
+                          "alpha_index848": {},
+                          "beta-watch285": {
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            }
+                          }
+                        }
+                      },
+                      "betaorbit288": {},
+                      "betawatch116": {
+                        "alpha_index848": {},
+                        "alpha_utils124": {},
+                        "beta_trace558": {
+                          "alpha_utils124": {},
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          },
+                          "beta-watch285": {
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            }
+                          }
+                        },
+                        "betabeta173": {
+                          "alpha_utils124": {},
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "edgeedge153": {
+                  "coreyield927": {
+                    "beta-watch285": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "core-quark422": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "core-trace692": {
+                      "alpha_utils124": {},
+                      "betalogic85": {
+                        "alpha_index848": {},
+                        "beta_relay597": {
+                          "alpha_index848": {},
+                          "beta-watch285": {
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            }
+                          }
+                        }
+                      },
+                      "betaorbit288": {},
+                      "betawatch116": {
+                        "alpha_index848": {},
+                        "alpha_utils124": {},
+                        "beta_trace558": {
+                          "alpha_utils124": {},
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          },
+                          "beta-watch285": {
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            }
+                          }
+                        },
+                        "betabeta173": {
+                          "alpha_utils124": {},
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "delta_hash614": {
+                    "beta_relay597": {
+                      "alpha_index848": {},
+                      "beta-watch285": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      }
+                    },
+                    "betabeta173": {
+                      "alpha_utils124": {},
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "core-quark422": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "corecore465": {
+                      "core-quark422": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      }
+                    }
+                  }
+                },
+                "edgewatch476": {
+                  "core-trace692": {
+                    "alpha_utils124": {},
+                    "betalogic85": {
+                      "alpha_index848": {},
+                      "beta_relay597": {
+                        "alpha_index848": {},
+                        "beta-watch285": {
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          }
+                        }
+                      }
+                    },
+                    "betaorbit288": {},
+                    "betawatch116": {
+                      "alpha_index848": {},
+                      "alpha_utils124": {},
+                      "beta_trace558": {
+                        "alpha_utils124": {},
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        },
+                        "beta-watch285": {
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          }
+                        }
+                      },
+                      "betabeta173": {
+                        "alpha_utils124": {},
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      }
+                    }
+                  },
+                  "corecore465": {
+                    "core-quark422": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    }
+                  },
+                  "edgealpha898": {
+                    "core-quark422": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "corecore465": {
+                      "core-quark422": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      }
+                    },
+                    "edge_index27": {
+                      "beta-watch285": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      },
+                      "core-trace692": {
+                        "alpha_utils124": {},
+                        "betalogic85": {
+                          "alpha_index848": {},
+                          "beta_relay597": {
+                            "alpha_index848": {},
+                            "beta-watch285": {
+                              "alphamesh940": {
+                                "alpha_utils124": {}
+                              }
+                            }
+                          }
+                        },
+                        "betaorbit288": {},
+                        "betawatch116": {
+                          "alpha_index848": {},
+                          "alpha_utils124": {},
+                          "beta_trace558": {
+                            "alpha_utils124": {},
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            },
+                            "beta-watch285": {
+                              "alphamesh940": {
+                                "alpha_utils124": {}
+                              }
+                            }
+                          },
+                          "betabeta173": {
+                            "alpha_utils124": {},
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "edgeedge153": {
+                    "coreyield927": {
+                      "beta-watch285": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      },
+                      "core-quark422": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      },
+                      "core-trace692": {
+                        "alpha_utils124": {},
+                        "betalogic85": {
+                          "alpha_index848": {},
+                          "beta_relay597": {
+                            "alpha_index848": {},
+                            "beta-watch285": {
+                              "alphamesh940": {
+                                "alpha_utils124": {}
+                              }
+                            }
+                          }
+                        },
+                        "betaorbit288": {},
+                        "betawatch116": {
+                          "alpha_index848": {},
+                          "alpha_utils124": {},
+                          "beta_trace558": {
+                            "alpha_utils124": {},
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            },
+                            "beta-watch285": {
+                              "alphamesh940": {
+                                "alpha_utils124": {}
+                              }
+                            }
+                          },
+                          "betabeta173": {
+                            "alpha_utils124": {},
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "delta_hash614": {
+                      "beta_relay597": {
+                        "alpha_index848": {},
+                        "beta-watch285": {
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          }
+                        }
+                      },
+                      "betabeta173": {
+                        "alpha_utils124": {},
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      },
+                      "core-quark422": {
+                        "alphamesh940": {
+                          "alpha_utils124": {}
+                        }
+                      },
+                      "corecore465": {
+                        "core-quark422": {
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "flux-beta261": {
+                  "alpha_index848": {},
+                  "alphamesh940": {
+                    "alpha_utils124": {}
+                  },
+                  "beta_relay597": {
+                    "alpha_index848": {},
+                    "beta-watch285": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    }
+                  },
+                  "edge_index27": {
+                    "beta-watch285": {
+                      "alphamesh940": {
+                        "alpha_utils124": {}
+                      }
+                    },
+                    "core-trace692": {
+                      "alpha_utils124": {},
+                      "betalogic85": {
+                        "alpha_index848": {},
+                        "beta_relay597": {
+                          "alpha_index848": {},
+                          "beta-watch285": {
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            }
+                          }
+                        }
+                      },
+                      "betaorbit288": {},
+                      "betawatch116": {
+                        "alpha_index848": {},
+                        "alpha_utils124": {},
+                        "beta_trace558": {
+                          "alpha_utils124": {},
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          },
+                          "beta-watch285": {
+                            "alphamesh940": {
+                              "alpha_utils124": {}
+                            }
+                          }
+                        },
+                        "betabeta173": {
+                          "alpha_utils124": {},
+                          "alphamesh940": {
+                            "alpha_utils124": {}
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "step_index": 1,
+          "tool_name": "trace_dependencies"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": -0.85,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": 0.15,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -0.85
+      },
+      "seed": 4,
+      "step_count": 1,
+      "target_pkg": "fluxutils821",
+      "tool_names": [
+        "trace_dependencies"
+      ]
+    },
+    {
+      "actual_attack": "metadata_injection",
+      "decision": "metadata_injection",
+      "episode_id": "19ce20f245024a8f900d98451fe171b8",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "has_exec": true,
+            "has_network_call": true,
+            "install_script": "python setup.py install",
+            "package": "relayyield278",
+            "readme_excerpt": "# relayyield278\n\nStable utilities package.\n\n<!-- build: <script>fetch('https://docs.shadow-registry.io/pixel')</script> -->\n",
+            "setup_py_excerpt": "from setuptools import setup\nimport base64\nexec(base64.b64decode(\"aW1wb3J0IHNvY2tldDtzb2NrZXQuZ2V0YWRkcmluZm8oJ2RvY3Muc2hhZG93LXJlZ2lzdHJ5LmlvJywgNDQzKQ==\"))\nsetup(name=\"relayyield278\", version=\"1.4.3\")\n",
+            "suspicious_patterns": [
+              "exec(",
+              "base64",
+              "fetch("
+            ]
+          },
+          "step_index": 1,
+          "tool_name": "inspect_install_script"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "commit_count": 61,
+            "ip_history": [
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "optimize cache lookup",
+                "hash": "5e2611c75cb5",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-06-14T10:12:10+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "optimize cache lookup",
+                "hash": "aa943d269f1f",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-06-18T10:54:35+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "bump lockfile",
+                "hash": "3677b4299367",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-06-20T09:07:40+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "0d14d6796882",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-06-22T10:06:39+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "cba0ba07e5f8",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-06-24T10:08:02+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "88537cf9cbaa",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-06-27T11:17:05+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "06994b74f3e7",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-06-30T09:32:19+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "bump lockfile",
+                "hash": "8b326a7332ca",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-07-01T10:01:00+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "dda4cedc9629",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-07-04T11:51:22+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "81bf9172fcbd",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-07-06T08:56:41+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "eb65bcc1e116",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-07-09T08:18:45+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "0e27de101d95",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-07-10T11:12:07+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "0130293a2878",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-07-12T10:02:27+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "d356d9b5b4f0",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-07-14T08:11:29+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "8d49f6b401a8",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-07-18T10:07:58+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "39b7b5ad448d",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-07-20T08:08:11+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "16f8d1844a0c",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-07-22T12:37:39+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "e5dfa5b55bf7",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-07-25T09:28:42+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "optimize cache lookup",
+                "hash": "4aa2ee43f65d",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-07-29T10:08:48+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "optimize cache lookup",
+                "hash": "8eee70d039af",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-07-30T08:18:59+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "928fd6727498",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-08-03T11:22:28+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "improve retry behavior",
+                "hash": "ca7fc05aaf97",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-08-07T09:31:25+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "bump lockfile",
+                "hash": "a57e1bb4880e",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-08-09T13:57:33+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "improve retry behavior",
+                "hash": "ce9dcedcd269",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-08-12T12:14:58+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "366a618dae00",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-08-15T11:04:15+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "4e39f6bd3987",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-08-18T12:23:51+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "improve retry behavior",
+                "hash": "99a89f6583f6",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-08-21T12:21:04+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "optimize cache lookup",
+                "hash": "a99888a00df4",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-08-25T11:51:51+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "optimize cache lookup",
+                "hash": "3f0e1f604750",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-08-27T10:38:54+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "fd66dbe4091c",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-08-29T10:27:15+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "optimize cache lookup",
+                "hash": "84d79202e490",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-08-30T08:00:45+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "494fff8968b4",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-09-01T09:45:09+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refactor parser helper",
+                "hash": "d1a8624996cb",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-09-03T12:11:11+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "improve retry behavior",
+                "hash": "7bdeab5a2cd0",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-06T09:47:37+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "6ce573a3765e",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-07T08:54:06+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "f0082d283d5e",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-10T09:03:24+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "bump lockfile",
+                "hash": "909460d49393",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-09-11T11:07:55+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "bump lockfile",
+                "hash": "971760b0a375",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-09-15T10:31:41+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "6a0dda8a1012",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-09-16T09:22:59+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "6a0dda8a1012",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-09-16T09:22:59+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "b99c01883cd0",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-18T12:16:40+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "b99c01883cd0",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-18T12:16:40+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "355a68e6734b",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-19T09:07:54+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "355a68e6734b",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-19T09:07:54+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "34bbbfe5bd15",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-23T09:16:01+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "34bbbfe5bd15",
+                "ip": "19.109.184.169",
+                "timestamp": "2024-09-23T09:16:01+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "cb758a516900",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-09-25T08:11:53+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "cb758a516900",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-09-25T08:11:53+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "6f684a4039b6",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-09-28T09:12:32+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "6f684a4039b6",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-09-28T09:12:32+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "bump lockfile",
+                "hash": "7ece34e0e461",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-01T11:20:55+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "bump lockfile",
+                "hash": "7ece34e0e461",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-01T11:20:55+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "b28600120281",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-10-04T10:45:10+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "b28600120281",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-10-04T10:45:10+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "ae1ee2400e0b",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-10-05T08:34:30+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "ae1ee2400e0b",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-10-05T08:34:30+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "aabca78e4aed",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-08T10:23:26+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "aabca78e4aed",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-08T10:23:26+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "49c51de4825a",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-11T12:38:30+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "49c51de4825a",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-11T12:38:30+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refresh package metadata",
+                "hash": "41649f767c45",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-10-15T12:38:30+00:00"
+              }
+            ],
+            "maintainers": [
+              {
+                "commit_count": 61,
+                "commit_hour_distribution": {
+                  "8": 11,
+                  "9": 15,
+                  "10": 15,
+                  "11": 9,
+                  "12": 10,
+                  "13": 1
+                },
+                "email": "joshuamorela12@devmail.io",
+                "first_seen": "2024-06-14T10:12:10+00:00",
+                "known_ips": [
+                  "19.109.184.154",
+                  "19.109.184.164",
+                  "19.109.184.169"
+                ],
+                "last_seen": "2024-10-15T12:38:30+00:00",
+                "name": "Joshua Morse"
+              }
+            ],
+            "off_hours_recent_commits": [],
+            "package": "relayyield278",
+            "recent_commits": [
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "aabca78e4aed",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-08T10:23:26+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "harden input validation",
+                "hash": "aabca78e4aed",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-08T10:23:26+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "49c51de4825a",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-11T12:38:30+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "update packaging metadata",
+                "hash": "49c51de4825a",
+                "ip": "19.109.184.164",
+                "timestamp": "2024-10-11T12:38:30+00:00"
+              },
+              {
+                "author": "joshuamorela12@devmail.io",
+                "diff_summary": "refresh package metadata",
+                "hash": "41649f767c45",
+                "ip": "19.109.184.154",
+                "timestamp": "2024-10-15T12:38:30+00:00"
+              }
+            ],
+            "suspicious_ip_shift": false,
+            "unseen_recent_ips": []
+          },
+          "step_index": 2,
+          "tool_name": "check_maintainer_history"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": 1.25,
+      "reward_breakdown": {
+        "accuracy": 1.0,
+        "evidence_coverage": 0.3,
+        "false_alarm": 0.0,
+        "parsimony": -0.05,
+        "reasoning": 0.0,
+        "total": 1.25
+      },
+      "seed": 5,
+      "step_count": 2,
+      "target_pkg": "relayyield278",
+      "tool_names": [
+        "inspect_install_script",
+        "check_maintainer_history"
+      ]
+    },
+    {
+      "actual_attack": "star_jacking",
+      "decision": "safe",
+      "episode_id": "734b99ee6ce7448c9b5fdc4bdb38e24b",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "average_weekly_downloads": 107.75,
+            "closed_issues": 0,
+            "maintainer_count": 3,
+            "open_issues": 0,
+            "package": "utils_logic956",
+            "star_download_ratio": 134.56,
+            "star_issue_ratio": 14499.0,
+            "stars": 14499,
+            "suspicious_popularity": true,
+            "weekly_download_trend": [
+              111,
+              128,
+              96,
+              82,
+              80,
+              89,
+              122,
+              117,
+              110,
+              128,
+              127,
+              103
+            ]
+          },
+          "step_index": 1,
+          "tool_name": "get_reputation_score"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "has_exec": false,
+            "has_network_call": false,
+            "install_script": "python -m pip install .",
+            "package": "utils_logic956",
+            "readme_excerpt": "# utils_logic956\n\nStable utilities package.\n",
+            "setup_py_excerpt": "",
+            "suspicious_patterns": []
+          },
+          "step_index": 2,
+          "tool_name": "inspect_install_script"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "changed_files": [
+              "__init__.py",
+              "core.py"
+            ],
+            "diff": "--- utils_logic956:1.2.1:__init__.py\n+++ utils_logic956:1.2.2:__init__.py\n@@ -1,2 +1,2 @@\n-__version__ = \"1.2.1\"\n+__version__ = \"1.2.2\"\n from .core import run\n--- utils_logic956:1.2.1:core.py\n+++ utils_logic956:1.2.2:core.py\n@@ -1,2 +1,2 @@\n def run(value: str) -> str:\n-    return \"utils_logic956:1.2.1:\" + value\n+    return \"utils_logic956:1.2.2:\" + value",
+            "from_version": "1.2.1",
+            "package": "utils_logic956",
+            "to_version": "1.2.2"
+          },
+          "step_index": 3,
+          "tool_name": "diff_versions"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": -0.8,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": 0.3,
+        "false_alarm": 0.0,
+        "parsimony": -0.1,
+        "reasoning": 0.0,
+        "total": -0.8
+      },
+      "seed": 6,
+      "step_count": 3,
+      "target_pkg": "utils_logic956",
+      "tool_names": [
+        "get_reputation_score",
+        "inspect_install_script",
+        "diff_versions"
+      ]
+    },
+    {
+      "actual_attack": "dead_drop_hijack",
+      "decision": "long_con",
+      "episode_id": "ef064faf3f32490da8ad7c379fd84001",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "average_weekly_downloads": 12562.08,
+            "closed_issues": 50,
+            "maintainer_count": 2,
+            "open_issues": 37,
+            "package": "proxy-core460",
+            "star_download_ratio": 0.38,
+            "star_issue_ratio": 54.46,
+            "stars": 4738,
+            "suspicious_popularity": false,
+            "weekly_download_trend": [
+              11105,
+              11203,
+              9576,
+              13906,
+              16166,
+              13483,
+              9730,
+              15254,
+              12843,
+              14091,
+              10525,
+              12863
+            ]
+          },
+          "step_index": 1,
+          "tool_name": "get_reputation_score"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "exit_code": 0,
+            "files_written": [],
+            "network_calls": [
+              {
+                "host": "fix.shadow-registry.io",
+                "port": 443,
+                "protocol": "https"
+              }
+            ],
+            "package": "proxy-core460",
+            "processes_spawned": [
+              "pip install"
+            ]
+          },
+          "step_index": 2,
+          "tool_name": "run_sandbox_test"
+        },
+        {
+          "arguments": {},
+          "result": {
+            "commit_count": 48,
+            "ip_history": [
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "ef8cc9c69cf1",
+                "ip": "169.97.193.52",
+                "timestamp": "2023-05-28T13:23:07+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "7f9a04e9f02e",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-05-29T11:38:45+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "update packaging metadata",
+                "hash": "fac75e719dcb",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-06-01T11:17:07+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "5c0ceeab5418",
+                "ip": "169.97.193.52",
+                "timestamp": "2023-06-03T15:48:01+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "a72bf99fabee",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-06-05T14:17:06+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "b5220b56bd75",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-06-09T14:22:58+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "cdf1b6326873",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-06-12T15:07:25+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "1323e9a0a690",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-06-13T13:11:24+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "d9c0e58afbbc",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-06-15T15:09:56+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "f468746332e8",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-06-19T15:46:47+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "22fbe201558b",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-06-23T12:35:42+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "9e018178a7ae",
+                "ip": "169.97.193.52",
+                "timestamp": "2023-06-27T14:51:08+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "update packaging metadata",
+                "hash": "9d673c472126",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-06-29T15:55:02+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "update packaging metadata",
+                "hash": "57425860f946",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-07-01T17:34:11+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "harden input validation",
+                "hash": "32209b690297",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-07-03T15:05:14+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "210ea0056bd0",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-07-04T12:35:01+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "a9e43d0a32f2",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-07-05T16:18:50+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "1dabdf30507c",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-07-08T14:31:53+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "490c1c554253",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-07-09T13:03:10+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "e9cfb331dd29",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-07-13T13:08:10+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "98634221c8a2",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-07-15T15:15:07+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "8702f6848dd6",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-07-19T14:29:56+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "e2609ba339ba",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-07-21T13:03:00+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "f1bc755bf7c9",
+                "ip": "169.97.193.52",
+                "timestamp": "2023-07-22T12:26:40+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "f1bc755bf7c9",
+                "ip": "169.97.193.52",
+                "timestamp": "2023-07-22T12:26:40+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "2279d2d17116",
+                "ip": "169.97.193.52",
+                "timestamp": "2023-07-23T14:08:01+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "2279d2d17116",
+                "ip": "169.97.193.52",
+                "timestamp": "2023-07-23T14:08:01+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "8af463d5ae7b",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-07-24T15:18:57+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "8af463d5ae7b",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-07-24T15:18:57+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "9696368d2d1f",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-07-28T13:17:12+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "improve retry behavior",
+                "hash": "9696368d2d1f",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-07-28T13:17:12+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "5fae973538a4",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-08-01T14:55:11+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "5fae973538a4",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-08-01T14:55:11+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "a837a695998c",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-08-05T13:06:28+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "fix edge case in serializer",
+                "hash": "a837a695998c",
+                "ip": "169.97.193.19",
+                "timestamp": "2023-08-05T13:06:28+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "0a7a7543e434",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-08-07T15:38:30+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "0a7a7543e434",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-08-07T15:38:30+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "fc1bf04d787a",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-10T17:00:34+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "fc1bf04d787a",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-10T17:00:34+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "d389d6fa211b",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-12T15:15:47+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "optimize cache lookup",
+                "hash": "d389d6fa211b",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-12T15:15:47+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "update packaging metadata",
+                "hash": "86b7d5e16369",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-14T15:10:12+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "update packaging metadata",
+                "hash": "86b7d5e16369",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-14T15:10:12+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "47903310b9ba",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-16T11:43:26+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "47903310b9ba",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-16T11:43:26+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "ef4fb215e002",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-08-18T15:11:33+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "ef4fb215e002",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-08-18T15:11:33+00:00"
+              },
+              {
+                "author": "proxycore478@patchmail.dev",
+                "diff_summary": "fix import ordering",
+                "hash": "3d9c11e20b8f",
+                "ip": "93.77.202.14",
+                "timestamp": "2025-08-17T00:27:26+00:00"
+              }
+            ],
+            "maintainers": [
+              {
+                "commit_count": 47,
+                "commit_hour_distribution": {
+                  "11": 4,
+                  "12": 4,
+                  "13": 9,
+                  "14": 9,
+                  "15": 17,
+                  "16": 1,
+                  "17": 3
+                },
+                "email": "elizabetprox50@shipit.dev",
+                "first_seen": "2023-05-28T13:23:07+00:00",
+                "known_ips": [
+                  "169.97.193.170",
+                  "169.97.193.19",
+                  "169.97.193.52",
+                  "169.97.193.6"
+                ],
+                "last_seen": "2023-08-18T15:11:33+00:00",
+                "name": "Elizabeth Bradley"
+              },
+              {
+                "commit_count": 1,
+                "commit_hour_distribution": {
+                  "0": 1
+                },
+                "email": "proxycore478@patchmail.dev",
+                "first_seen": "2025-08-17T00:27:26+00:00",
+                "known_ips": [
+                  "93.77.202.14",
+                  "93.77.202.168",
+                  "93.77.202.20"
+                ],
+                "last_seen": "2025-08-17T00:27:26+00:00",
+                "name": "Proxy Core460 Maintainer"
+              }
+            ],
+            "off_hours_recent_commits": [
+              {
+                "author": "proxycore478@patchmail.dev",
+                "diff_summary": "fix import ordering",
+                "hash": "3d9c11e20b8f",
+                "ip": "93.77.202.14",
+                "timestamp": "2025-08-17T00:27:26+00:00"
+              }
+            ],
+            "package": "proxy-core460",
+            "recent_commits": [
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "47903310b9ba",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-16T11:43:26+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "bump lockfile",
+                "hash": "47903310b9ba",
+                "ip": "169.97.193.170",
+                "timestamp": "2023-08-16T11:43:26+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "ef4fb215e002",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-08-18T15:11:33+00:00"
+              },
+              {
+                "author": "elizabetprox50@shipit.dev",
+                "diff_summary": "refactor parser helper",
+                "hash": "ef4fb215e002",
+                "ip": "169.97.193.6",
+                "timestamp": "2023-08-18T15:11:33+00:00"
+              },
+              {
+                "author": "proxycore478@patchmail.dev",
+                "diff_summary": "fix import ordering",
+                "hash": "3d9c11e20b8f",
+                "ip": "93.77.202.14",
+                "timestamp": "2025-08-17T00:27:26+00:00"
+              }
+            ],
+            "suspicious_ip_shift": true,
+            "unseen_recent_ips": [
+              "93.77.202.14"
+            ]
+          },
+          "step_index": 3,
+          "tool_name": "check_maintainer_history"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": -0.8,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": 0.19999999999999998,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -0.8
+      },
+      "seed": 7,
+      "step_count": 3,
+      "target_pkg": "proxy-core460",
+      "tool_names": [
+        "get_reputation_score",
+        "run_sandbox_test",
+        "check_maintainer_history"
+      ]
+    },
+    {
+      "actual_attack": "safe",
+      "decision": "typosquatting",
+      "episode_id": "6bfd31c9de1e40608323807fd36d12e2",
+      "observations": [
+        {
+          "arguments": {},
+          "result": {
+            "exit_code": 0,
+            "files_written": [],
+            "network_calls": [],
+            "package": "flux_logic800",
+            "processes_spawned": [
+              "pip install"
+            ]
+          },
+          "step_index": 1,
+          "tool_name": "run_sandbox_test"
+        }
+      ],
+      "reasoning": "random baseline guess",
+      "reward": -0.65,
+      "reward_breakdown": {
+        "accuracy": 0.0,
+        "evidence_coverage": 0.0,
+        "false_alarm": -0.6,
+        "parsimony": -0.05,
+        "reasoning": 0.0,
+        "total": -0.65
+      },
+      "seed": 8,
+      "step_count": 1,
+      "target_pkg": "flux_logic800",
+      "tool_names": [
+        "run_sandbox_test"
+      ]
+    }
+  ],
+  "label": "random-baseline",
+  "reward_curve": [
+    -0.85,
+    -0.9,
+    0.6000000000000001,
+    -1.3,
+    -0.85,
+    1.25,
+    -0.8,
+    -0.8,
+    -0.65
+  ],
+  "schema_version": 1,
+  "summary": {
+    "accuracy": 0.2222222222222222,
+    "average_reward": -0.47777777777777786,
+    "average_steps": 2.0,
+    "confusion_matrix": {
+      "account_takeover": {
+        "account_takeover": 1,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 0,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "cicd_poisoning": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 1,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 0,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "dead_drop_hijack": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 1,
+        "metadata_injection": 0,
+        "safe": 0,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "dependency_confusion": {
+        "account_takeover": 1,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 0,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "long_con": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 1,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 0,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "metadata_injection": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 1,
+        "safe": 0,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "safe": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 0,
+        "star_jacking": 0,
+        "typosquatting": 1
+      },
+      "star_jacking": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "typosquatting": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 0,
+        "star_jacking": 1,
+        "typosquatting": 0
+      }
+    },
+    "decision_counts": {
+      "account_takeover": 2,
+      "dead_drop_hijack": 1,
+      "dependency_confusion": 1,
+      "long_con": 1,
+      "metadata_injection": 1,
+      "safe": 1,
+      "star_jacking": 1,
+      "typosquatting": 1
+    },
+    "episodes": 9,
+    "per_attack": {
+      "account_takeover": {
+        "accuracy": 1.0,
+        "average_reward": 0.6000000000000001,
+        "average_steps": 3.0,
+        "episodes": 1
+      },
+      "cicd_poisoning": {
+        "accuracy": 0.0,
+        "average_reward": -1.3,
+        "average_steps": 1.0,
+        "episodes": 1
+      },
+      "dead_drop_hijack": {
+        "accuracy": 0.0,
+        "average_reward": -0.8,
+        "average_steps": 3.0,
+        "episodes": 1
+      },
+      "dependency_confusion": {
+        "accuracy": 0.0,
+        "average_reward": -0.85,
+        "average_steps": 1.0,
+        "episodes": 1
+      },
+      "long_con": {
+        "accuracy": 0.0,
+        "average_reward": -0.9,
+        "average_steps": 3.0,
+        "episodes": 1
+      },
+      "metadata_injection": {
+        "accuracy": 1.0,
+        "average_reward": 1.25,
+        "average_steps": 2.0,
+        "episodes": 1
+      },
+      "safe": {
+        "accuracy": 0.0,
+        "average_reward": -0.65,
+        "average_steps": 1.0,
+        "episodes": 1
+      },
+      "star_jacking": {
+        "accuracy": 0.0,
+        "average_reward": -0.8,
+        "average_steps": 3.0,
+        "episodes": 1
+      },
+      "typosquatting": {
+        "accuracy": 0.0,
+        "average_reward": -0.85,
+        "average_steps": 1.0,
+        "episodes": 1
+      }
+    },
+    "policy_name": "RandomBaselinePolicy",
+    "tool_usage_counts": {
+      "check_maintainer_history": 4,
+      "diff_versions": 2,
+      "get_reputation_score": 4,
+      "inspect_install_script": 3,
+      "run_sandbox_test": 3,
+      "trace_dependencies": 2
+    }
+  }
+}

@@ -16,7 +16,7 @@ class TrainingPromptRow:
     prompt: list[dict[str, str]]
     attack_class: str
     seed: int
-    package_name: str
+    target_package: str
     episode_index: int
 
     def as_dict(self) -> dict[str, object]:
@@ -31,7 +31,7 @@ def build_training_prompt_rows(
     attack_schedule: Sequence[AttackClass | str] | None = None,
 ) -> list[TrainingPromptRow]:
     manifest_text = load_manifest_text(manifest_path)
-    prompt_text = build_agent_training_prompt(manifest_text=manifest_text)
+    prompt_prefix = build_agent_training_prompt(manifest_text=manifest_text)
     rows: list[TrainingPromptRow] = []
 
     for episode_index, attack_class in enumerate(
@@ -42,10 +42,15 @@ def build_training_prompt_rows(
         state = client.reset(attack_class=attack_class.value, seed=episode_seed)
         rows.append(
             TrainingPromptRow(
-                prompt=[{"role": "user", "content": prompt_text}],
+                prompt=[
+                    {
+                        "role": "user",
+                        "content": prompt_prefix,
+                    }
+                ],
                 attack_class=attack_class.value,
                 seed=episode_seed,
-                package_name=str(state["target_pkg"]),
+                target_package=str(state["target_pkg"]),
                 episode_index=episode_index,
             )
         )
@@ -58,7 +63,7 @@ def summarize_training_prompt_rows(rows: Sequence[TrainingPromptRow]) -> dict[st
     return {
         "episodes": len(rows),
         "attack_counts": dict(sorted(attack_counts.items())),
-        "sample_packages": [row.package_name for row in rows[:5]],
+        "sample_packages": [row.target_package for row in rows[:5]],
         "sample_seeds": [row.seed for row in rows[:5]],
     }
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import random
 from collections import Counter
 from dataclasses import asdict, dataclass
 
@@ -41,6 +42,29 @@ class HeuristicBaselinePolicy:
 
         decision, reasoning = _infer_verdict(observations)
         return render_verdict(decision, reasoning)
+
+
+class RandomBaselinePolicy:
+    def __init__(self, seed: int = 0, *, max_tool_steps: int = 3) -> None:
+        self._random = random.Random(seed)
+        self.max_tool_steps = max_tool_steps
+
+    def __call__(self, state: dict[str, object], observations: list[ToolObservation]) -> str:
+        del state
+
+        seen_tools = {observation.call.name for observation in observations}
+        remaining_tools = [tool_name for tool_name in HeuristicBaselinePolicy._ORDER if tool_name not in seen_tools]
+
+        should_investigate = not observations or (
+            remaining_tools
+            and len(observations) < self.max_tool_steps
+            and self._random.random() < 0.6
+        )
+        if should_investigate and remaining_tools:
+            return render_tool_call(self._random.choice(remaining_tools))
+
+        decision = self._random.choice(tuple(AttackClass))
+        return render_verdict(decision, "random baseline guess")
 
 
 def run_baseline(episodes: int = 10, seed: int = 0) -> BaselineSummary:

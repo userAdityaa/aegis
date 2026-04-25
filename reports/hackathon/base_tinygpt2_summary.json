@@ -1,0 +1,170 @@
+{
+  "accuracy": 0.1111111111111111,
+  "average_reward": -1.0444444444444445,
+  "average_steps": 0.0,
+  "confusion_matrix": {
+    "account_takeover": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    },
+    "cicd_poisoning": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    },
+    "dead_drop_hijack": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    },
+    "dependency_confusion": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    },
+    "long_con": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    },
+    "metadata_injection": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    },
+    "safe": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    },
+    "star_jacking": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    },
+    "typosquatting": {
+      "account_takeover": 0,
+      "cicd_poisoning": 0,
+      "dead_drop_hijack": 0,
+      "dependency_confusion": 0,
+      "long_con": 0,
+      "metadata_injection": 0,
+      "safe": 1,
+      "star_jacking": 0,
+      "typosquatting": 0
+    }
+  },
+  "decision_counts": {
+    "safe": 9
+  },
+  "episodes": 9,
+  "model_path": "sshleifer/tiny-gpt2",
+  "per_attack": {
+    "account_takeover": {
+      "accuracy": 0.0,
+      "average_reward": -1.25,
+      "average_steps": 0.0,
+      "episodes": 1
+    },
+    "cicd_poisoning": {
+      "accuracy": 0.0,
+      "average_reward": -1.25,
+      "average_steps": 0.0,
+      "episodes": 1
+    },
+    "dead_drop_hijack": {
+      "accuracy": 0.0,
+      "average_reward": -1.25,
+      "average_steps": 0.0,
+      "episodes": 1
+    },
+    "dependency_confusion": {
+      "accuracy": 0.0,
+      "average_reward": -1.25,
+      "average_steps": 0.0,
+      "episodes": 1
+    },
+    "long_con": {
+      "accuracy": 0.0,
+      "average_reward": -1.25,
+      "average_steps": 0.0,
+      "episodes": 1
+    },
+    "metadata_injection": {
+      "accuracy": 0.0,
+      "average_reward": -1.25,
+      "average_steps": 0.0,
+      "episodes": 1
+    },
+    "safe": {
+      "accuracy": 1.0,
+      "average_reward": 0.6,
+      "average_steps": 0.0,
+      "episodes": 1
+    },
+    "star_jacking": {
+      "accuracy": 0.0,
+      "average_reward": -1.25,
+      "average_steps": 0.0,
+      "episodes": 1
+    },
+    "typosquatting": {
+      "accuracy": 0.0,
+      "average_reward": -1.25,
+      "average_steps": 0.0,
+      "episodes": 1
+    }
+  },
+  "policy": "trained",
+  "policy_name": "TransformerTranscriptPolicy[sshleifer/tiny-gpt2]",
+  "tool_usage_counts": {}
+}

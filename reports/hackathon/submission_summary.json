@@ -1,0 +1,633 @@
+{
+  "artifacts": {
+    "heuristic_plot": "reports/hackathon/heuristic_summary.png",
+    "heuristic_report": "reports/hackathon/heuristic_report.json",
+    "heuristic_summary": "reports/hackathon/heuristic_summary.json",
+    "heuristic_vs_trained": {
+      "comparison_path": "reports/hackathon/heuristic_vs_trained.json",
+      "delta": {
+        "accuracy": 0.11111111111111105,
+        "average_reward": 0.22222222222222232,
+        "average_steps": 0.0
+      },
+      "plot_path": "reports/hackathon/heuristic_vs_trained.png"
+    },
+    "random_plot": "reports/hackathon/random_summary.png",
+    "random_report": "reports/hackathon/random_report.json",
+    "random_summary": "reports/hackathon/random_summary.json",
+    "random_vs_heuristic": {
+      "comparison_path": "reports/hackathon/random_vs_heuristic.json",
+      "delta": {
+        "accuracy": 0.5555555555555556,
+        "average_reward": 1.1111111111111112,
+        "average_steps": 4.0
+      },
+      "plot_path": "reports/hackathon/random_vs_heuristic.png"
+    },
+    "random_vs_trained": {
+      "comparison_path": "reports/hackathon/random_vs_trained.json",
+      "delta": {
+        "accuracy": 0.6666666666666666,
+        "average_reward": 1.3333333333333335,
+        "average_steps": 4.0
+      },
+      "plot_path": "reports/hackathon/random_vs_trained.png"
+    },
+    "trained_plot": "reports/hackathon/trained_summary.png",
+    "trained_report": "reports/hackathon/trained_report.json",
+    "trained_summary": "reports/hackathon/trained_summary.json"
+  },
+  "episodes_per_attack": 1,
+  "metrics": {
+    "delta": {
+      "accuracy": 0.5555555555555556,
+      "average_reward": 1.1111111111111112,
+      "average_steps": 4.0
+    },
+    "heuristic": {
+      "accuracy": 0.7777777777777778,
+      "average_reward": 0.6333333333333333,
+      "average_steps": 6.0,
+      "confusion_matrix": {
+        "account_takeover": {
+          "account_takeover": 1,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "cicd_poisoning": {
+          "account_takeover": 0,
+          "cicd_poisoning": 1,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "dead_drop_hijack": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 1,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "dependency_confusion": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 1,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "long_con": {
+          "account_takeover": 1,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "metadata_injection": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 1,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "safe": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 1,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "star_jacking": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 1,
+          "typosquatting": 0
+        },
+        "typosquatting": {
+          "account_takeover": 1,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        }
+      },
+      "decision_counts": {
+        "account_takeover": 3,
+        "cicd_poisoning": 1,
+        "dead_drop_hijack": 1,
+        "dependency_confusion": 1,
+        "metadata_injection": 1,
+        "safe": 1,
+        "star_jacking": 1
+      },
+      "episodes": 9,
+      "per_attack": {
+        "account_takeover": {
+          "accuracy": 1.0,
+          "average_reward": 1.25,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "cicd_poisoning": {
+          "accuracy": 1.0,
+          "average_reward": 1.3,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "dead_drop_hijack": {
+          "accuracy": 1.0,
+          "average_reward": 1.15,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "dependency_confusion": {
+          "accuracy": 1.0,
+          "average_reward": 1.3,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "long_con": {
+          "accuracy": 0.0,
+          "average_reward": -0.8999999999999999,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "metadata_injection": {
+          "accuracy": 1.0,
+          "average_reward": 1.25,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "safe": {
+          "accuracy": 1.0,
+          "average_reward": 0.19999999999999996,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "star_jacking": {
+          "accuracy": 1.0,
+          "average_reward": 1.05,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "typosquatting": {
+          "accuracy": 0.0,
+          "average_reward": -0.8999999999999999,
+          "average_steps": 6.0,
+          "episodes": 1
+        }
+      },
+      "policy_name": "HeuristicBaselinePolicy",
+      "tool_usage_counts": {
+        "check_maintainer_history": 9,
+        "diff_versions": 9,
+        "get_reputation_score": 9,
+        "inspect_install_script": 9,
+        "run_sandbox_test": 9,
+        "trace_dependencies": 9
+      }
+    },
+    "random": {
+      "accuracy": 0.2222222222222222,
+      "average_reward": -0.47777777777777786,
+      "average_steps": 2.0,
+      "confusion_matrix": {
+        "account_takeover": {
+          "account_takeover": 1,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "cicd_poisoning": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 1,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "dead_drop_hijack": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 1,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "dependency_confusion": {
+          "account_takeover": 1,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "long_con": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 1,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "metadata_injection": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 1,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "safe": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 1
+        },
+        "star_jacking": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 1,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "typosquatting": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 1,
+          "typosquatting": 0
+        }
+      },
+      "decision_counts": {
+        "account_takeover": 2,
+        "dead_drop_hijack": 1,
+        "dependency_confusion": 1,
+        "long_con": 1,
+        "metadata_injection": 1,
+        "safe": 1,
+        "star_jacking": 1,
+        "typosquatting": 1
+      },
+      "episodes": 9,
+      "per_attack": {
+        "account_takeover": {
+          "accuracy": 1.0,
+          "average_reward": 0.6000000000000001,
+          "average_steps": 3.0,
+          "episodes": 1
+        },
+        "cicd_poisoning": {
+          "accuracy": 0.0,
+          "average_reward": -1.3,
+          "average_steps": 1.0,
+          "episodes": 1
+        },
+        "dead_drop_hijack": {
+          "accuracy": 0.0,
+          "average_reward": -0.8,
+          "average_steps": 3.0,
+          "episodes": 1
+        },
+        "dependency_confusion": {
+          "accuracy": 0.0,
+          "average_reward": -0.85,
+          "average_steps": 1.0,
+          "episodes": 1
+        },
+        "long_con": {
+          "accuracy": 0.0,
+          "average_reward": -0.9,
+          "average_steps": 3.0,
+          "episodes": 1
+        },
+        "metadata_injection": {
+          "accuracy": 1.0,
+          "average_reward": 1.25,
+          "average_steps": 2.0,
+          "episodes": 1
+        },
+        "safe": {
+          "accuracy": 0.0,
+          "average_reward": -0.65,
+          "average_steps": 1.0,
+          "episodes": 1
+        },
+        "star_jacking": {
+          "accuracy": 0.0,
+          "average_reward": -0.8,
+          "average_steps": 3.0,
+          "episodes": 1
+        },
+        "typosquatting": {
+          "accuracy": 0.0,
+          "average_reward": -0.85,
+          "average_steps": 1.0,
+          "episodes": 1
+        }
+      },
+      "policy_name": "RandomBaselinePolicy",
+      "tool_usage_counts": {
+        "check_maintainer_history": 4,
+        "diff_versions": 2,
+        "get_reputation_score": 4,
+        "inspect_install_script": 3,
+        "run_sandbox_test": 3,
+        "trace_dependencies": 2
+      }
+    },
+    "random_to_trained_delta": {
+      "accuracy": 0.6666666666666666,
+      "average_reward": 1.3333333333333335,
+      "average_steps": 4.0
+    },
+    "trained": {
+      "accuracy": 0.8888888888888888,
+      "average_reward": 0.8555555555555556,
+      "average_steps": 6.0,
+      "confusion_matrix": {
+        "account_takeover": {
+          "account_takeover": 1,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "cicd_poisoning": {
+          "account_takeover": 0,
+          "cicd_poisoning": 1,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "dead_drop_hijack": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 1,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "dependency_confusion": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 1,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "long_con": {
+          "account_takeover": 1,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "metadata_injection": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 1,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "safe": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 1,
+          "star_jacking": 0,
+          "typosquatting": 0
+        },
+        "star_jacking": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 1,
+          "typosquatting": 0
+        },
+        "typosquatting": {
+          "account_takeover": 0,
+          "cicd_poisoning": 0,
+          "dead_drop_hijack": 0,
+          "dependency_confusion": 0,
+          "long_con": 0,
+          "metadata_injection": 0,
+          "safe": 0,
+          "star_jacking": 0,
+          "typosquatting": 1
+        }
+      },
+      "decision_counts": {
+        "account_takeover": 2,
+        "cicd_poisoning": 1,
+        "dead_drop_hijack": 1,
+        "dependency_confusion": 1,
+        "metadata_injection": 1,
+        "safe": 1,
+        "star_jacking": 1,
+        "typosquatting": 1
+      },
+      "episodes": 9,
+      "per_attack": {
+        "account_takeover": {
+          "accuracy": 1.0,
+          "average_reward": 1.25,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "cicd_poisoning": {
+          "accuracy": 1.0,
+          "average_reward": 1.1,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "dead_drop_hijack": {
+          "accuracy": 1.0,
+          "average_reward": 1.15,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "dependency_confusion": {
+          "accuracy": 1.0,
+          "average_reward": 1.3,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "long_con": {
+          "accuracy": 0.0,
+          "average_reward": -0.8999999999999999,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "metadata_injection": {
+          "accuracy": 1.0,
+          "average_reward": 1.25,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "safe": {
+          "accuracy": 1.0,
+          "average_reward": 0.19999999999999996,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "star_jacking": {
+          "accuracy": 1.0,
+          "average_reward": 1.05,
+          "average_steps": 6.0,
+          "episodes": 1
+        },
+        "typosquatting": {
+          "accuracy": 1.0,
+          "average_reward": 1.3,
+          "average_steps": 6.0,
+          "episodes": 1
+        }
+      },
+      "policy_name": "NearestNeighborForensicPolicy",
+      "tool_usage_counts": {
+        "check_maintainer_history": 9,
+        "diff_versions": 9,
+        "get_reputation_score": 9,
+        "inspect_install_script": 9,
+        "run_sandbox_test": 9,
+        "trace_dependencies": 9
+      }
+    },
+    "trained_delta": {
+      "accuracy": 0.11111111111111105,
+      "average_reward": 0.22222222222222232,
+      "average_steps": 0.0
+    }
+  },
+  "schema_version": 1,
+  "seed": 0,
+  "submission_blockers": [
+    "Publish the Docker app to a Hugging Face Space and add the live Space URL to README.md."
+  ],
+  "submission_checks": {
+    "comparison_exists": true,
+    "dockerfile_exists": true,
+    "heuristic_report_exists": true,
+    "openenv_manifest_exists": true,
+    "random_report_exists": true,
+    "readme_has_live_hf_space_url": false,
+    "readme_has_minimum_requirements_section": true,
+    "readme_has_no_todo_placeholders": true,
+    "readme_has_presentation_asset": true,
+    "readme_has_results_section": true,
+    "readme_has_submission_assets_section": true,
+    "readme_has_theme_statement": true,
+    "readme_links_hackathon_summary": true,
+    "readme_links_notebook": true,
+    "readme_links_training_evidence": true,
+    "slide_deck_exists": true,
+    "submission_ready": false,
+    "trained_comparison_exists": true,
+    "trained_report_exists": true,
+    "training_evidence_history_exists": true,
+    "training_evidence_plot_exists": true,
+    "training_evidence_summary_exists": true,
+    "training_notebook_exists": true
+  }
+}

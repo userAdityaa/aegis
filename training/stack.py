@@ -9,6 +9,7 @@ REQUIRED_TRAINING_PACKAGES = (
     "torch",
     "datasets",
     "accelerate",
+    "jmespath",
 )
 
 OPTIONAL_TRAINING_PACKAGES = (

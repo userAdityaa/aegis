@@ -1,0 +1,365 @@
+{
+  "episodes": [
+    {
+      "actual_attack": "typosquatting",
+      "decision": "safe",
+      "episode_id": "0222cb41ae044eecb873e8d0cd08a5f4",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": -1.25,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.25,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.25
+      },
+      "seed": 0,
+      "step_count": 0,
+      "target_pkg": "stackindex405",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "long_con",
+      "decision": "safe",
+      "episode_id": "ba37be5f7682401daeb35f18ba8f6597",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": -1.25,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.25,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.25
+      },
+      "seed": 1,
+      "step_count": 0,
+      "target_pkg": "edge_vault664",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "account_takeover",
+      "decision": "safe",
+      "episode_id": "3fa3b2bf996f418090f4995f51999abd",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": -1.25,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.25,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.25
+      },
+      "seed": 2,
+      "step_count": 0,
+      "target_pkg": "betastack51",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "cicd_poisoning",
+      "decision": "safe",
+      "episode_id": "a24ea33fde0145ccad73a606e9b54241",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": -1.25,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.25,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.25
+      },
+      "seed": 3,
+      "step_count": 0,
+      "target_pkg": "guard_index265",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "dependency_confusion",
+      "decision": "safe",
+      "episode_id": "794aeeac30674ca489afb6bb61eb68d1",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": -1.25,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.25,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.25
+      },
+      "seed": 4,
+      "step_count": 0,
+      "target_pkg": "fluxutils821",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "metadata_injection",
+      "decision": "safe",
+      "episode_id": "6ae19da189004ab08d0e3691d9dd148d",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": -1.25,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.25,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.25
+      },
+      "seed": 5,
+      "step_count": 0,
+      "target_pkg": "relayyield278",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "star_jacking",
+      "decision": "safe",
+      "episode_id": "8b96f395f7744f4588fd4a0e425170fb",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": -1.25,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.25,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.25
+      },
+      "seed": 6,
+      "step_count": 0,
+      "target_pkg": "utils_logic956",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "dead_drop_hijack",
+      "decision": "safe",
+      "episode_id": "28f0655820fa4bddaa6dcba9e5fcb972",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": -1.25,
+      "reward_breakdown": {
+        "accuracy": -1.0,
+        "evidence_coverage": -0.25,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": -1.25
+      },
+      "seed": 7,
+      "step_count": 0,
+      "target_pkg": "proxy-core460",
+      "tool_names": []
+    },
+    {
+      "actual_attack": "safe",
+      "decision": "safe",
+      "episode_id": "6b0eeef077aa43899473a712427f2f2a",
+      "observations": [],
+      "reasoning": "Invalid assistant response without a parseable tool call or verdict: stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs stairs st...",
+      "reward": 0.6,
+      "reward_breakdown": {
+        "accuracy": 0.5,
+        "evidence_coverage": 0.1,
+        "false_alarm": 0.0,
+        "parsimony": -0.0,
+        "reasoning": 0.0,
+        "total": 0.6
+      },
+      "seed": 8,
+      "step_count": 0,
+      "target_pkg": "flux_logic800",
+      "tool_names": []
+    }
+  ],
+  "label": "TransformerTranscriptPolicy[sshleifer/tiny-gpt2]",
+  "reward_curve": [
+    -1.25,
+    -1.25,
+    -1.25,
+    -1.25,
+    -1.25,
+    -1.25,
+    -1.25,
+    -1.25,
+    0.6
+  ],
+  "schema_version": 1,
+  "summary": {
+    "accuracy": 0.1111111111111111,
+    "average_reward": -1.0444444444444445,
+    "average_steps": 0.0,
+    "confusion_matrix": {
+      "account_takeover": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "cicd_poisoning": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "dead_drop_hijack": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "dependency_confusion": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "long_con": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "metadata_injection": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "safe": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "star_jacking": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      },
+      "typosquatting": {
+        "account_takeover": 0,
+        "cicd_poisoning": 0,
+        "dead_drop_hijack": 0,
+        "dependency_confusion": 0,
+        "long_con": 0,
+        "metadata_injection": 0,
+        "safe": 1,
+        "star_jacking": 0,
+        "typosquatting": 0
+      }
+    },
+    "decision_counts": {
+      "safe": 9
+    },
+    "episodes": 9,
+    "per_attack": {
+      "account_takeover": {
+        "accuracy": 0.0,
+        "average_reward": -1.25,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "cicd_poisoning": {
+        "accuracy": 0.0,
+        "average_reward": -1.25,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "dead_drop_hijack": {
+        "accuracy": 0.0,
+        "average_reward": -1.25,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "dependency_confusion": {
+        "accuracy": 0.0,
+        "average_reward": -1.25,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "long_con": {
+        "accuracy": 0.0,
+        "average_reward": -1.25,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "metadata_injection": {
+        "accuracy": 0.0,
+        "average_reward": -1.25,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "safe": {
+        "accuracy": 1.0,
+        "average_reward": 0.6,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "star_jacking": {
+        "accuracy": 0.0,
+        "average_reward": -1.25,
+        "average_steps": 0.0,
+        "episodes": 1
+      },
+      "typosquatting": {
+        "accuracy": 0.0,
+        "average_reward": -1.25,
+        "average_steps": 0.0,
+        "episodes": 1
+      }
+    },
+    "policy_name": "TransformerTranscriptPolicy[sshleifer/tiny-gpt2]",
+    "tool_usage_counts": {}
+  }
+}
