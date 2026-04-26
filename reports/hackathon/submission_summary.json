@@ -7,8 +7,8 @@
       "comparison_path": "reports/hackathon/heuristic_vs_trained.json",
       "delta": {
         "accuracy": -0.11111111111111116,
-        "average_reward": -0.1777777777777777,
-        "average_steps": 4.0
+        "average_reward": -0.14444444444444438,
+        "average_steps": 3.0
       },
       "plot_path": "reports/hackathon/heuristic_vs_trained.png"
     },
@@ -28,8 +28,8 @@
       "comparison_path": "reports/hackathon/random_vs_trained.json",
       "delta": {
         "accuracy": 0.4444444444444444,
-        "average_reward": 0.8444444444444444,
-        "average_steps": 8.0
+        "average_reward": 0.8777777777777778,
+        "average_steps": 7.0
       },
       "plot_path": "reports/hackathon/random_vs_trained.png"
     },
@@ -409,13 +409,13 @@
     },
     "random_to_trained_delta": {
       "accuracy": 0.4444444444444444,
-      "average_reward": 0.8444444444444444,
-      "average_steps": 8.0
+      "average_reward": 0.8777777777777778,
+      "average_steps": 7.0
     },
     "trained": {
       "accuracy": 0.6666666666666666,
-      "average_reward": 0.5222222222222223,
-      "average_steps": 10.0,
+      "average_reward": 0.5555555555555556,
+      "average_steps": 9.0,
       "confusion_matrix": {
         "account_takeover": {
           "account_takeover": 1,
@@ -529,8 +529,8 @@
       "per_attack": {
         "account_takeover": {
           "accuracy": 1.0,
-          "average_reward": 1.5,
-          "average_steps": 3.0,
+          "average_reward": 1.2,
+          "average_steps": 12.0,
           "episodes": 1
         },
         "cicd_poisoning": {
@@ -559,8 +559,8 @@
         },
         "metadata_injection": {
           "accuracy": 1.0,
-          "average_reward": 1.4,
-          "average_steps": 12.0,
+          "average_reward": 1.7000000000000002,
+          "average_steps": 3.0,
           "episodes": 1
         },
         "safe": {
@@ -577,29 +577,28 @@
         },
         "typosquatting": {
           "accuracy": 0.0,
-          "average_reward": -0.9,
-          "average_steps": 12.0,
+          "average_reward": -0.6,
+          "average_steps": 3.0,
           "episodes": 1
         }
       },
       "policy_name": "TransformerTranscriptPolicy",
       "tool_usage_counts": {
         "check_maintainer_history": 9,
-        "diff_versions": 17,
-        "draft_incident_reply": 7,
-        "get_reputation_score": 7,
-        "inspect_install_script": 20,
-        "list_incident_inbox": 7,
-        "read_incident_message": 7,
-        "run_sandbox_test": 8,
-        "send_incident_reply": 7,
-        "trace_dependencies": 1
+        "diff_versions": 18,
+        "draft_incident_reply": 6,
+        "get_reputation_score": 6,
+        "inspect_install_script": 17,
+        "list_incident_inbox": 6,
+        "read_incident_message": 6,
+        "run_sandbox_test": 7,
+        "send_incident_reply": 6
       }
     },
     "trained_delta": {
       "accuracy": -0.11111111111111116,
-      "average_reward": -0.1777777777777777,
-      "average_steps": 4.0
+      "average_reward": -0.14444444444444438,
+      "average_steps": 3.0
     }
   },
   "schema_version": 1,
@@ -625,9 +624,18 @@
     "submission_ready": true,
     "trained_comparison_exists": true,
     "trained_report_exists": true,
+    "training_evidence_has_tool_calls": true,
+    "training_evidence_has_verdicts": true,
     "training_evidence_history_exists": true,
+    "training_evidence_non_degenerate": true,
     "training_evidence_plot_exists": true,
     "training_evidence_summary_exists": true,
     "training_notebook_exists": true
+  },
+  "trained_policy": {
+    "artifact": "artifacts/grpo-evidence",
+    "kind": "transformer_checkpoint",
+    "label": "grpo-evidence",
+    "notes": "trained metrics were produced by evaluating a transformer checkpoint via TransformerTranscriptPolicy."
   }
 }

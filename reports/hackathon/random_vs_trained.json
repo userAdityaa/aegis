@@ -191,16 +191,16 @@
   },
   "delta": {
     "accuracy": 0.4444444444444444,
-    "average_reward": 0.8444444444444444,
-    "average_steps": 8.0
+    "average_reward": 0.8777777777777778,
+    "average_steps": 7.0
   },
   "trained": {
     "episodes_with_trace": 9,
     "label": "grpo-evidence",
     "summary": {
       "accuracy": 0.6666666666666666,
-      "average_reward": 0.5222222222222223,
-      "average_steps": 10.0,
+      "average_reward": 0.5555555555555556,
+      "average_steps": 9.0,
       "confusion_matrix": {
         "account_takeover": {
           "account_takeover": 1,
@@ -314,8 +314,8 @@
       "per_attack": {
         "account_takeover": {
           "accuracy": 1.0,
-          "average_reward": 1.5,
-          "average_steps": 3.0,
+          "average_reward": 1.2,
+          "average_steps": 12.0,
           "episodes": 1
         },
         "cicd_poisoning": {
@@ -344,8 +344,8 @@
         },
         "metadata_injection": {
           "accuracy": 1.0,
-          "average_reward": 1.4,
-          "average_steps": 12.0,
+          "average_reward": 1.7000000000000002,
+          "average_steps": 3.0,
           "episodes": 1
         },
         "safe": {
@@ -362,23 +362,22 @@
         },
         "typosquatting": {
           "accuracy": 0.0,
-          "average_reward": -0.9,
-          "average_steps": 12.0,
+          "average_reward": -0.6,
+          "average_steps": 3.0,
           "episodes": 1
         }
       },
       "policy_name": "TransformerTranscriptPolicy",
       "tool_usage_counts": {
         "check_maintainer_history": 9,
-        "diff_versions": 17,
-        "draft_incident_reply": 7,
-        "get_reputation_score": 7,
-        "inspect_install_script": 20,
-        "list_incident_inbox": 7,
-        "read_incident_message": 7,
-        "run_sandbox_test": 8,
-        "send_incident_reply": 7,
-        "trace_dependencies": 1
+        "diff_versions": 18,
+        "draft_incident_reply": 6,
+        "get_reputation_score": 6,
+        "inspect_install_script": 17,
+        "list_incident_inbox": 6,
+        "read_incident_message": 6,
+        "run_sandbox_test": 7,
+        "send_incident_reply": 6
       }
     }
   }

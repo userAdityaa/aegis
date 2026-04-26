@@ -28,7 +28,23 @@
       <h1>Episode transcript: Episode 1 vs later episode</h1>
       <div class="grid">
         <div class='panel'><h2>Episode 1 (early)</h2><div class='meta'>attack=<code>star_jacking</code> decision=<code class='bad'>no_verdict</code> reward=<code>-1.0</code></div><h3>Reasoning</h3><div class='reasoning'></div><h3>Tool transcript</h3></div>
-        <div class='panel'><h2>Later episode (best of last 10)</h2><div class='meta'>attack=<code>typosquatting</code> decision=<code class='bad'>no_verdict</code> reward=<code>-1.0</code></div><h3>Reasoning</h3><div class='reasoning'></div><h3>Tool transcript</h3></div>
+        <div class='panel'><h2>Later episode (best of last 10)</h2><div class='meta'>attack=<code>metadata_injection</code> decision=<code class='bad'>safe</code> reward=<code>-0.7</code></div><h3>Reasoning</h3><div class='reasoning'>[auto_verdict] no strong malicious signal was found across the forensic tools</div><h3>Tool transcript</h3><div class='step'><div class='tool'>Tool: <code>trace_dependencies</code></div><pre class='json'>{
+  "dependency_count": 1,
+  "flat_dependencies": [
+    {
+      "latest_version": "1.3.2",
+      "maintainer_count": 3,
+      "name": "proxy_watch394",
+      "source": "public"
+    }
+  ],
+  "package": "relayyield278",
+  "tree": {
+    "relayyield278": {
+      "proxy_watch394": {}
+    }
+  }
+}</pre></div></div>
       </div>
     </div>
   </body>
