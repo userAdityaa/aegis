@@ -40,7 +40,12 @@ def rollout_episode(
         if not tool_calls:
             raise ValueError("Policy output must contain either a tool call or a final verdict.")
 
+        supported_tools = set(client.available_tools())
         for tool_call in tool_calls:
+            # Some model checkpoints hallucinate tool names. Ignore unsupported tool calls
+            # instead of hard-failing the entire evaluation run.
+            if tool_call.name not in supported_tools:
+                continue
             client.call_tool(tool_call.name, tool_call.arguments)
 
     if not force_verdict_on_timeout:
