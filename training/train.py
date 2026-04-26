@@ -66,8 +66,10 @@ def main() -> None:
     parser.add_argument("--curriculum", action="store_true")
     parser.add_argument("--manifest-path")
     parser.add_argument("--resume-from-checkpoint")
-    parser.add_argument("--force-clone-tool-template", action="store_true")
-    parser.add_argument("--tool-template-source", default=None)
+    # Tool calling reliability: clone a known-good tool template by default.
+    # (Opt out only if you know your base tokenizer template is compatible with TRL tool execution.)
+    parser.add_argument("--no-force-clone-tool-template", action="store_true")
+    parser.add_argument("--tool-template-source", default="Qwen/Qwen2.5-0.5B-Instruct")
     parser.add_argument("--fast-evidence-100", action="store_true")
     parser.add_argument("--log-completions", action="store_true")
     args = parser.parse_args()
@@ -91,11 +93,7 @@ def main() -> None:
         # Prefer more generations when batch size allows it; GRPO needs reward variance.
         if args.per_device_train_batch_size >= 4 and args.num_generations < 4:
             args.num_generations = 4
-        # Clone a known-good template source unless user overrides.
-        if args.tool_template_source is None:
-            args.tool_template_source = "Qwen/Qwen2.5-0.5B-Instruct"
         args.gradient_accumulation_steps = min(args.gradient_accumulation_steps, 1)
-        args.force_clone_tool_template = True
         args.log_completions = True
 
     config = GRPOTrainingConfig(
@@ -122,8 +120,8 @@ def main() -> None:
         manifest_path=args.manifest_path,
         resume_from_checkpoint=args.resume_from_checkpoint,
         use_curriculum=bool(args.curriculum),
-        force_clone_tool_template=bool(args.force_clone_tool_template),
-        tool_template_source=(args.tool_template_source or "Qwen/Qwen2.5-0.5B-Instruct"),
+        force_clone_tool_template=not bool(args.no_force_clone_tool_template),
+        tool_template_source=str(args.tool_template_source),
         log_completions=bool(args.log_completions),
     )
 
