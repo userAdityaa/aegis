@@ -27,7 +27,7 @@ Use this checklist before the final OpenEnv Hackathon submission.
 python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/hackathon
 ```
 
-Sanity check (judge-facing): open `reports/hackathon/submission_summary.json` and confirm:
+Sanity check: open `reports/hackathon/submission_summary.json` and confirm:
 
 - `trained_policy.kind` matches what you intend to claim (default: `non_neural_classifier`; TRL path: `transformer_checkpoint`)
 - `submission_checks.training_evidence_has_tool_calls` is **true**
@@ -45,7 +45,7 @@ Optional comparison against the committed transformer smoke report:
 python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/hackathon --trained-report reports/sft_smoke/trained_report.json
 ```
 
-## 4. Judge-Facing Narrative
+## 4. Narrative
 
 Use this flow for a short pitch, post, or deck:
 

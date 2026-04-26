@@ -31,7 +31,7 @@ These tools force grounded investigation instead of direct label prediction.
 - TRL / GRPO training entrypoint: [training/train.py](../training/train.py)
 - Re-runnable Colab notebook: [notebooks/aegis_grpo_colab.ipynb](../notebooks/aegis_grpo_colab.ipynb)
 - Logged training evidence: [reports/training_evidence/training_curves.png](../reports/training_evidence/training_curves.png)
-- Fast judge preset (100-step evidence run): `python -m training.train --train ... --fast-evidence-100`
+- Fast preset (100-step evidence run): `python -m training.train --train ... --fast-evidence-100`
 
 ## Slide 5: Results
 

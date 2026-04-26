@@ -46,7 +46,7 @@ Aegis-Env trains those capabilities in a partially observable world with delayed
 - Hugging Face Space packaging: yes. The app is Docker Space-ready via [docker/Dockerfile](docker/Dockerfile) and [docker/demo.py](docker/demo.py).
 - Live Hugging Face Space URL: yes. https://huggingface.co/spaces/userAdityaaaa/aegis
 
-## Judge Quickstart
+## Quickstart
 
 1. Install the repo:
 
@@ -78,7 +78,7 @@ For a slightly thicker evaluation (same workflow, more episodes per attack class
 
 ## Results Snapshot
 
-**How to read the results below (judge-critical):**
+**How to read the results below:**
 
 - **Random** and **heuristic** are policy baselines.
 - The default **“trained”** row in the hackathon bundle is **not** a neural LLM by default — it is a **nearest-neighbor classifier** over handcrafted forensic features ([`artifacts/classifier-smoke/policy.json`](artifacts/classifier-smoke/policy.json)). This is a fast, deterministic benchmark used for quick comparisons.
@@ -117,7 +117,7 @@ These are automatically summarized under `submission_checks` when you regenerate
 5. Reserved tool names avoided (`reset`, `step`, `state`, and `close` are not used as tool names).
 6. Additional resources/tools for Theme 3.2 + long-horizon: `aegis://inbox/current`, `aegis://casefile/current`, `append_case_note`, `draft_incident_reply`, `send_incident_reply`.
 
-## Using OpenEnv (what judges care about)
+## Using OpenEnv
 
 - **Manifest**: `openenv.yaml` is the OpenEnv discovery surface (resources + tools + workflow).
 - **Serving (MCP runtime)**: `environment/mcp_server.py` serves the environment over MCP using `FastMCP`. OpenEnv environments are evaluated via the MCP contract exposed by the manifest; we keep the server implementation lightweight and manifest-driven rather than subclassing an OpenEnv-specific server base class.
@@ -171,7 +171,7 @@ python -m training.train \
 	--run-name aegis-grpo-evidence
 ```
 
-**Judge note on GRPO logs:** Training uses two reward terms: the environment rubric (`aegis_reward_func`) plus a small **completion-shaping** term (`aegis_completion_reward_func` in `training/grpo_env.py`) so short smoke runs still get a non-degenerate learning signal when the model fails to execute tools. For a convincing curve, run enough steps on GPU and commit the updated `reports/training_evidence/` files.
+**Note on GRPO logs:** Training uses two reward terms: the environment rubric (`aegis_reward_func`) plus a small **completion-shaping** term (`aegis_completion_reward_func` in `training/grpo_env.py`) so short smoke runs still get a non-degenerate learning signal when the model fails to execute tools. For a convincing curve, run enough steps on GPU and commit the updated `reports/training_evidence/` files.
 
 Committed training evidence (regenerate in Colab after training):
 
@@ -291,7 +291,7 @@ For Hugging Face Spaces, set `sdk: docker` in the README frontmatter. The root `
 
 ## Final Checklist
 
-1. Keep [README.md](README.md) as the single landing page for judges.
+1. Keep [README.md](README.md) as the single landing page for the project.
 2. Publish the Docker app to a Hugging Face Space and replace the placeholder line above with the live URL.
 3. Re-run [eval/hackathon.py](eval/hackathon.py) after updating the live Space URL so the `submission_checks` and `submission_blockers` fields capture the final state.
 4. Do not commit large media binaries; link to external assets when needed.

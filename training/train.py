@@ -77,7 +77,7 @@ def main() -> None:
         return
 
     if args.fast_evidence_100:
-        # A judge-facing preset: bias toward early non-degenerate GRPO signals within ~100 steps.
+        # Evidence-oriented preset: bias toward early non-degenerate GRPO signals within ~100 steps.
         args.max_steps = min(args.max_steps, 100)
         args.learning_rate = max(args.learning_rate, 5e-6)
         args.max_completion_length = min(args.max_completion_length, 128)

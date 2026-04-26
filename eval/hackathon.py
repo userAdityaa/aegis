@@ -80,7 +80,7 @@ def main() -> None:
             "artifact": None,
             "notes": (
                 "The `trained` row can be a non-neural classifier artifact (default) or a transformer checkpoint "
-                "(when --trained-model is provided). This section makes that explicit for judges."
+                "(when --trained-model is provided). This section makes that explicit for readers."
             ),
         },
         "artifacts": {
@@ -328,7 +328,7 @@ def _submission_blockers(checks: Mapping[str, bool]) -> list[str]:
     if not checks.get("trained_report_exists", False):
         blockers.append("Missing reports/hackathon/trained_report.json.")
     if not checks.get("readme_has_results_section", False):
-        blockers.append("README.md is missing a judge-facing results section.")
+        blockers.append("README.md is missing a results section.")
     if not checks.get("readme_has_presentation_asset", False):
         blockers.append("README.md must link to a slide deck, mini blog, or short video.")
     if not checks.get("readme_has_live_hf_space_url", False):
@@ -349,9 +349,8 @@ def _has_live_hf_space_url(readme_text: str) -> bool:
 def _training_evidence_sanity(training_dir: Path) -> dict[str, bool]:
     """Best-effort sanity checks to catch degenerate committed evidence.
 
-    We intentionally keep these checks non-blocking: they inform the team (and judges reading
-    the bundle) without forcing a hard failure in environments where training evidence isn't
-    regenerated yet.
+    These checks are intentionally non-blocking: they provide a quick signal without forcing
+    a hard failure in environments where training evidence hasn't been regenerated yet.
     """
 
     history_path = training_dir / "training_log_history.json"
