@@ -39,6 +39,8 @@ class GRPOTrainingConfig:
     manifest_path: str | None = None
     resume_from_checkpoint: str | bool | None = None
     use_curriculum: bool = False
+    force_clone_tool_template: bool = True
+    tool_template_source: str = _DEFAULT_TOOL_TEMPLATE_SOURCE
 
 
 def build_training_plan(config: GRPOTrainingConfig) -> dict[str, object]:
@@ -110,8 +112,9 @@ def run_grpo_training(config: GRPOTrainingConfig) -> dict[str, object]:
     model = AutoModelForCausalLM.from_pretrained(config.model_name)
     tokenizer = AutoTokenizer.from_pretrained(config.model_name)
     cloned_template = False
-    if not supports_tool_calling(tokenizer):
-        model, tokenizer, _ = clone_chat_template(model, tokenizer, _DEFAULT_TOOL_TEMPLATE_SOURCE)
+    should_clone = config.force_clone_tool_template or (not supports_tool_calling(tokenizer))
+    if should_clone:
+        model, tokenizer, _ = clone_chat_template(model, tokenizer, config.tool_template_source)
         cloned_template = True
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -174,7 +177,7 @@ def run_grpo_training(config: GRPOTrainingConfig) -> dict[str, object]:
     metrics["output_dir"] = str(output_dir)
     metrics["episodes"] = len(rows)
     metrics["log_history_entries"] = len(trainer.state.log_history)
-    metrics["tool_template_source"] = _DEFAULT_TOOL_TEMPLATE_SOURCE if cloned_template else config.model_name
+    metrics["tool_template_source"] = config.tool_template_source if cloned_template else config.model_name
 
     artifact_paths = save_training_artifacts(
         metrics=metrics,

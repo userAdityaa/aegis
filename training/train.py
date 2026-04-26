@@ -66,6 +66,8 @@ def main() -> None:
     parser.add_argument("--curriculum", action="store_true")
     parser.add_argument("--manifest-path")
     parser.add_argument("--resume-from-checkpoint")
+    parser.add_argument("--force-clone-tool-template", action="store_true")
+    parser.add_argument("--tool-template-source", default=None)
     args = parser.parse_args()
 
     if args.check_stack:
@@ -96,6 +98,8 @@ def main() -> None:
         manifest_path=args.manifest_path,
         resume_from_checkpoint=args.resume_from_checkpoint,
         use_curriculum=bool(args.curriculum),
+        force_clone_tool_template=bool(args.force_clone_tool_template),
+        tool_template_source=(args.tool_template_source or "Qwen/Qwen3-0.6B"),
     )
 
     if config.per_device_train_batch_size % config.num_generations != 0:
