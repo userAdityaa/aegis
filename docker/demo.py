@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import random
 import traceback
+import os
 from pathlib import Path
 from typing import Any
 
@@ -55,16 +56,21 @@ def build_app() -> gr.Blocks:
             outputs=[summary_output, transcript_output, transcript_viewer],
         )
         demo.load(fn=refresh_catalog, inputs=seed_box, outputs=[seed_box, package_picker, package_box])
-        demo.load(fn=load_transcript_viewer, outputs=transcript_viewer)
+        demo.load(fn=safe_load_transcript_viewer, outputs=transcript_viewer)
 
     return demo
 
 
 def refresh_catalog(seed_text: str) -> tuple[str, gr.Dropdown, str]:
-    seed = _resolve_seed(seed_text)
-    packages = _list_packages(seed)
-    default_package = packages[0] if packages else ""
-    return str(seed), gr.Dropdown(choices=packages, value=default_package), default_package
+    try:
+        seed = _resolve_seed(seed_text)
+        packages = _list_packages(seed)
+        default_package = packages[0] if packages else ""
+        return str(seed), gr.Dropdown(choices=packages, value=default_package), default_package
+    except Exception:
+        tb = traceback.format_exc()
+        # Keep the UI usable (and show the traceback in the seed field).
+        return f"ERROR (see below)\n{tb}", gr.Dropdown(choices=[], value=None), ""
 
 
 def run_demo(
@@ -122,6 +128,14 @@ def load_transcript_viewer() -> str:
         "<code>transcript_viewer.html</code> automatically.</p>"
         "</div>"
     )
+
+
+def safe_load_transcript_viewer() -> str:
+    try:
+        return load_transcript_viewer()
+    except Exception:
+        tb = traceback.format_exc()
+        return f"<pre style='white-space:pre-wrap;padding:10px'>Error loading transcript viewer:\n\n{tb}</pre>"
 
 
 def _simulate_episode(*, seed: int, package_name: str, attack_class: str) -> dict[str, Any]:
@@ -200,7 +214,13 @@ def main() -> None:
     args = parser.parse_args()
 
     app = build_app()
-    app.launch(server_name=args.server_name, server_port=args.server_port, share=args.share)
+    show_error = os.environ.get("AEGIS_DEMO_SHOW_ERROR", "1").strip() not in {"0", "false", "False"}
+    app.launch(
+        server_name=args.server_name,
+        server_port=args.server_port,
+        share=args.share,
+        show_error=show_error,
+    )
 
 
 if __name__ == "__main__":
