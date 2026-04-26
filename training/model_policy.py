@@ -76,9 +76,14 @@ class TransformerTranscriptPolicy:
     def __call__(self, state: dict[str, object], observations: list[ToolObservation]) -> str:
         prompt = self.render_transcript(state, observations)
         tokenizer_kwargs: dict[str, object] = {"return_tensors": "pt"}
+        # Cap prompt length aggressively for Colab-sized GPUs. Qwen models can have very
+        # large context windows, and letting prompts grow to that size will OOM during eval.
+        max_prompt_tokens = int(os.environ.get("AEGIS_EVAL_MAX_PROMPT_TOKENS", "2048"))
+        max_length = max_prompt_tokens
         if self.context_window > self.max_new_tokens:
-            tokenizer_kwargs["truncation"] = True
-            tokenizer_kwargs["max_length"] = self.context_window - self.max_new_tokens
+            max_length = min(max_length, self.context_window - self.max_new_tokens)
+        tokenizer_kwargs["truncation"] = True
+        tokenizer_kwargs["max_length"] = max_length
 
         encoded = self.tokenizer(prompt, **tokenizer_kwargs)
         input_ids = encoded["input_ids"].to(self.device)
@@ -107,6 +112,8 @@ class TransformerTranscriptPolicy:
 
     def render_transcript(self, state: dict[str, object], observations: list[ToolObservation]) -> str:
         target_package = str(state.get("target_pkg", ""))
+        max_obs = int(os.environ.get("AEGIS_EVAL_MAX_OBSERVATIONS", "4"))
+        recent_observations = observations[-max_obs:] if max_obs > 0 else []
         transcript: list[str] = [
             self.prompt_prefix,
             "",
@@ -116,7 +123,7 @@ class TransformerTranscriptPolicy:
             "",
         ]
 
-        for observation in observations:
+        for observation in recent_observations:
             transcript.append(
                 f"Assistant: {render_tool_call(observation.call.name, observation.call.arguments)}"
             )
