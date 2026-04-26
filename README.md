@@ -286,6 +286,7 @@ For Hugging Face Spaces, set `sdk: docker` in the README frontmatter. The root `
 - Training evidence bundle: [reports/training_evidence/training_summary.json](reports/training_evidence/training_summary.json), [reports/training_evidence/training_log_history.json](reports/training_evidence/training_log_history.json), [reports/training_evidence/training_curves.png](reports/training_evidence/training_curves.png)
 - Hackathon evaluation bundle: [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json), [reports/hackathon/trained_summary.json](reports/hackathon/trained_summary.json), [reports/hackathon/heuristic_vs_trained.png](reports/hackathon/heuristic_vs_trained.png)
 - Slide deck: [docs/hackathon_slide_deck.md](docs/hackathon_slide_deck.md)
+- Pitch deck (PDF): [AEGIS_Hackathon_Pitch.pdf](https://drive.google.com/file/d/1TrHqgFVqsKDzi1KtWpVfDenPXMt2K-s4/view?usp=sharing)
 - Submission playbook: [docs/hackathon_submission.md](docs/hackathon_submission.md)
 - Live HF Space URL: https://huggingface.co/spaces/userAdityaaaa/aegis
 
