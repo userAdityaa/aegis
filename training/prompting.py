@@ -31,7 +31,9 @@ def build_agent_training_prompt(manifest_text: str | None = None, manifest_path:
         "IMPORTANT: During training, tools are called via the model's native tool-calling interface.\n"
         "Do NOT output XML tags like <tool>...</tool> or <verdict>...</verdict>.\n"
         "Instead:\n"
+        "- Start by calling one investigation tool immediately (recommended: check_maintainer_history).\n"
         "- Call investigation tools (e.g., check_maintainer_history, diff_versions, inspect_install_script, trace_dependencies, get_reputation_score, run_sandbox_test).\n"
         "- When ready to stop, call final_verdict(decision=..., reasoning=...) exactly once.\n"
+        "A good trajectory looks like: tool -> tool -> ... -> final_verdict.\n"
         "Keep reasoning concise, evidence-based, and consistent with tool outputs."
     )
