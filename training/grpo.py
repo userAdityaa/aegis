@@ -9,7 +9,9 @@ from training.dataset import build_training_prompt_rows, summarize_training_prom
 from training.grpo_env import GRPOAegisEnvironment, aegis_completion_reward_func, aegis_reward_func
 from training.reporting import save_training_artifacts
 
-_DEFAULT_TOOL_TEMPLATE_SOURCE = "Qwen/Qwen3-0.6B"
+# Tool calling is sensitive to chat templates. We default to a widely compatible
+# instruct template to maximize the chance TRL executes tool calls correctly.
+_DEFAULT_TOOL_TEMPLATE_SOURCE = "Qwen/Qwen2.5-0.5B-Instruct"
 
 
 @dataclass(slots=True)
