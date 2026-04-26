@@ -73,25 +73,16 @@ class GRPOAegisEnvironment:
             "target_pkg": str(state.get("target_pkg") or ""),
             "actual_attack": self.client.current_attack_class.value,
         }
-        tool_list = ", ".join(
-            [
-                "check_maintainer_history",
-                "diff_versions",
-                "inspect_install_script",
-                "get_reputation_score",
-                "trace_dependencies",
-                "run_sandbox_test",
-                "final_verdict",
-            ]
-        )
+        tool_list = ", ".join(self.client.available_tools()) + ", final_verdict"
         return (
+            "You are a software supply-chain forensic investigator.\n"
+            "Investigate exactly one package per episode.\n"
+            "IMPORTANT: During GRPO training, tools are called via the model's native tool-calling interface.\n"
+            "Do NOT output XML tags like <tool>...</tool> or <verdict>...</verdict>.\n\n"
             f"Target package: {state['target_pkg']}\n"
-            "Investigate using the available tools, then end the episode by calling final_verdict exactly once.\n"
-            "Tool call format (exactly): <tool>tool_name</tool><args>{...json...}</args>\n"
-            'Example tool call: <tool>diff_versions</tool><args>{"pkg_name": "example-pkg"}</args>\n'
-            "Final answer format (exactly once): <tool>final_verdict</tool><args>{\"decision\":\"safe\",\"reasoning\":\"...\"}</args>\n"
-            f"Suggested tool order: {tool_list}\n"
-            "Do not continue after final_verdict."
+            f"Available tools: {tool_list}\n\n"
+            "Use investigation tools to gather evidence, then call final_verdict(decision=..., reasoning=...) exactly once.\n"
+            "Stop immediately after final_verdict."
         )
 
     def check_maintainer_history(self, pkg_name: str | None = None) -> str:
@@ -342,24 +333,45 @@ def aegis_completion_reward_func(
     rewards: list[float] = []
     verdict_like = 0
     tool_like = 0
+    native_tool_like = 0
     for raw in completions:
+        # TRL may pass structured tool-call objects depending on the tokenizer template.
+        if isinstance(raw, dict):
+            tool_calls = raw.get("tool_calls")
+            if isinstance(tool_calls, list) and tool_calls:
+                native_tool_like += 1
         normalized = _completion_to_text(raw).lower()
-        has_verdict = ("<verdict>" in normalized and "</verdict>" in normalized) or ("final_verdict" in normalized)
-        has_tool = "<tool>" in normalized or "check_maintainer_history" in normalized or "diff_versions" in normalized
+        has_verdict = (
+            ("final_verdict" in normalized)
+            or ("\"final_verdict\"" in normalized)
+            or ("<verdict>" in normalized and "</verdict>" in normalized)
+        )
+        has_tool = (
+            ("tool_calls" in normalized)
+            or ("\"name\"" in normalized and "\"arguments\"" in normalized)
+            or ("check_maintainer_history" in normalized)
+            or ("diff_versions" in normalized)
+            or ("inspect_install_script" in normalized)
+            or ("get_reputation_score" in normalized)
+            or ("trace_dependencies" in normalized)
+            or ("run_sandbox_test" in normalized)
+        )
         verdict_like += int(has_verdict)
         tool_like += int(has_tool)
 
-        # Small, bounded reward to avoid dominating the true environment rubric.
+        # Bounded shaping reward to avoid dominating the true environment rubric (-1..~1.4).
+        # This is intentionally stronger than before so early GRPO runs don't collapse to flat -1.
         reward = 0.0
         if has_tool:
-            reward += 0.05
+            reward += 0.25
         if has_verdict:
-            reward += 0.15
+            reward += 0.45
         rewards.append(reward)
 
     if log_metric and rewards:
         log_metric("aegis/completion_shaping_mean", sum(rewards) / len(rewards))
         log_metric("aegis/completion_verdict_like_rate", verdict_like / len(rewards))
         log_metric("aegis/completion_tool_like_rate", tool_like / len(rewards))
+        log_metric("aegis/completion_native_tool_like_rate", native_tool_like / len(rewards))
 
     return rewards
