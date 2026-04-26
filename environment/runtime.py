@@ -130,6 +130,49 @@ class AegisRuntime:
         self.audit.incident_updates_sent += 1
         return {"ok": True, "message_id": message_id, "sent": True}
 
+    def consult_peer_analyst(self, question: str = "What should we do next?") -> dict[str, object]:
+        """Theme 1-style lightweight multi-agent interaction.
+
+        This simulates asking a teammate analyst for a second opinion. It is intentionally
+        deterministic and grounded only in the episode audit state (tools already used),
+        so it does not leak hidden labels.
+        """
+
+        self._record_tool_call("consult_peer_analyst")
+        current_episode = self._require_current_episode()
+        normalized = (question or "").strip()
+        if not normalized:
+            normalized = "What should we do next?"
+
+        used = list(dict.fromkeys(self.audit.tools_used))
+        forensic_order = [
+            "check_maintainer_history",
+            "diff_versions",
+            "inspect_install_script",
+            "get_reputation_score",
+            "trace_dependencies",
+            "run_sandbox_test",
+        ]
+        remaining = [tool for tool in forensic_order if tool not in used]
+        next_tools = remaining[:2]
+        if not next_tools:
+            next_tools = ["final_verdict"]
+
+        response = (
+            "Peer analyst view: focus on high-signal evidence, then decide.\n"
+            f"- Target: {current_episode.target_pkg}\n"
+            f"- Tools used so far: {', '.join(used) if used else 'none'}\n"
+            f"- Suggested next tools: {', '.join(next_tools)}\n"
+            "- When you decide, keep reasoning tied to tool outputs (no speculation)."
+        )
+        return {
+            "question": normalized,
+            "target_pkg": current_episode.target_pkg,
+            "tools_used": used,
+            "suggested_next_tools": next_tools,
+            "response": response,
+        }
+
     def check_maintainer_history(self, pkg_name: str | None = None) -> dict[str, object]:
         resolved_pkg = self._resolve_package_name(pkg_name)
         self._record_tool_call("check_maintainer_history")

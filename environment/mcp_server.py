@@ -141,6 +141,13 @@ def create_app(seed: int | None = None) -> tuple[FastMCP, AegisRuntime]:
         return runtime.send_incident_reply(message_id=message_id)
 
     @mcp.tool(
+        name="consult_peer_analyst",
+        description="Ask a peer analyst agent for a second opinion (Theme 1-style multi-agent interaction).",
+    )
+    def consult_peer_analyst(question: str = "What should we do next?") -> dict[str, object]:
+        return runtime.consult_peer_analyst(question=question)
+
+    @mcp.tool(
         name="final_verdict",
         description="Submit the final attack classification for the current episode.",
     )

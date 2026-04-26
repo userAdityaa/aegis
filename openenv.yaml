@@ -389,6 +389,35 @@ tools:
         sent:
           type: boolean
       additionalProperties: false
+
+  - name: consult_peer_analyst
+    description: Ask a peer analyst agent for a second opinion (Theme 1-style multi-agent interaction).
+    inputSchema:
+      type: object
+      properties:
+        question:
+          type: string
+          description: Optional question for the peer analyst.
+      additionalProperties: false
+    outputSchema:
+      type: object
+      required: [question, target_pkg, tools_used, suggested_next_tools, response]
+      properties:
+        question:
+          type: string
+        target_pkg:
+          type: string
+        tools_used:
+          type: array
+          items:
+            type: string
+        suggested_next_tools:
+          type: array
+          items:
+            type: string
+        response:
+          type: string
+      additionalProperties: false
     outputSchema:
       type: object
       required:
