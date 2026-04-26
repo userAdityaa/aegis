@@ -27,6 +27,12 @@ Use this checklist before the final OpenEnv Hackathon submission.
 python -m eval.hackathon --episodes-per-attack 1 --seed 0 --output-dir reports/hackathon
 ```
 
+Sanity check (judge-facing): open `reports/hackathon/submission_summary.json` and confirm:
+
+- `trained_policy.kind` matches what you intend to claim (default: `non_neural_classifier`; TRL path: `transformer_checkpoint`)
+- `submission_checks.training_evidence_has_tool_calls` is **true**
+- `submission_checks.training_evidence_has_verdicts` is **true**
+
 Optional transformer-checkpoint evaluation:
 
 ```bash

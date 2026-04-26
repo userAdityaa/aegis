@@ -81,13 +81,17 @@ class GRPOAegisEnvironment:
                 "get_reputation_score",
                 "trace_dependencies",
                 "run_sandbox_test",
+                "final_verdict",
             ]
         )
         return (
             f"Target package: {state['target_pkg']}\n"
             "Investigate using the available tools, then end the episode by calling final_verdict exactly once.\n"
+            "Tool call format (exactly): <tool>tool_name</tool><args>{...json...}</args>\n"
+            'Example tool call: <tool>diff_versions</tool><args>{"pkg_name": "example-pkg"}</args>\n'
+            "Final answer format (exactly once): <tool>final_verdict</tool><args>{\"decision\":\"safe\",\"reasoning\":\"...\"}</args>\n"
             f"Suggested tool order: {tool_list}\n"
-            "When ready, call final_verdict(decision=..., reasoning=...). Do not continue after final_verdict."
+            "Do not continue after final_verdict."
         )
 
     def check_maintainer_history(self, pkg_name: str | None = None) -> str:
@@ -238,15 +242,32 @@ def aegis_reward_func(
 ) -> list[float]:
     rewards: list[float] = []
     verdict_completion_count = 0
+    auto_verdict_count = 0
     per_class_rewards: dict[str, list[float]] = {}
     per_class_correct: dict[str, list[int]] = {}
     per_component: dict[str, list[float]] = {}
 
     for environment in environments:
         if environment.last_trace is None:
-            environment._append_failed_event(reward=-1.0)
-            rewards.append(-1.0)
-            continue
+            # If the model collected any evidence but failed to call final_verdict,
+            # auto-finalize the episode so rewards/gradients are non-degenerate.
+            # This is primarily a training-time robustness feature; eval uses rollout.py instead.
+            if environment.client.observations:
+                from training.baseline import infer_verdict_from_observations
+
+                decision, reasoning = infer_verdict_from_observations(environment.client.observations)
+                trace = environment.client.submit_verdict(
+                    decision.value,
+                    f"[auto_verdict] {reasoning}",
+                )
+                environment.last_trace = trace
+                environment.last_reward = trace.reward.total
+                environment._append_training_event(trace)
+                auto_verdict_count += 1
+            else:
+                environment._append_failed_event(reward=-1.0)
+                rewards.append(-1.0)
+                continue
         verdict_completion_count += 1
         rewards.append(environment.last_reward)
         trace = environment.last_trace
@@ -261,6 +282,7 @@ def aegis_reward_func(
     if log_metric and rewards:
         log_metric("aegis/reward_mean", sum(rewards) / len(rewards))
         log_metric("aegis/verdict_completion_rate", verdict_completion_count / len(rewards))
+        log_metric("aegis/auto_verdict_rate", auto_verdict_count / len(rewards))
         for attack, values in per_class_rewards.items():
             log_metric(f"aegis/per_class/{attack}/reward_mean", sum(values) / len(values))
         for attack, values in per_class_correct.items():

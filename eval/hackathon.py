@@ -74,6 +74,15 @@ def main() -> None:
         "schema_version": 1,
         "seed": args.seed,
         "episodes_per_attack": args.episodes_per_attack,
+        "trained_policy": {
+            "kind": "unset",
+            "label": None,
+            "artifact": None,
+            "notes": (
+                "The `trained` row can be a non-neural classifier artifact (default) or a transformer checkpoint "
+                "(when --trained-model is provided). This section makes that explicit for judges."
+            ),
+        },
         "artifacts": {
             "random_report": random_report_path.as_posix(),
             "random_plot": random_plot_path.as_posix(),
@@ -96,6 +105,12 @@ def main() -> None:
         payload["metrics"]["trained"] = dict(trained_payload.get("summary", {}))
         trained_summary_path = _write_summary(dict(trained_payload.get("summary", {})), output_dir / "trained_summary.json")
         payload["artifacts"]["trained_summary"] = trained_summary_path.as_posix()
+        payload["trained_policy"] = {
+            "kind": "external_report",
+            "label": trained_payload.get("label"),
+            "artifact": args.trained_report.as_posix(),
+            "notes": "trained metrics were loaded from an external report JSON.",
+        }
     elif args.trained_model is not None:
         trained_policy = TransformerTranscriptPolicy(args.trained_model)
         # Transformer rollouts can require more turns than simple baselines,
@@ -122,6 +137,12 @@ def main() -> None:
         payload["artifacts"]["trained_plot"] = trained_plot_path.as_posix()
         payload["artifacts"]["trained_summary"] = trained_summary_path.as_posix()
         payload["metrics"]["trained"] = trained_summary.as_dict()
+        payload["trained_policy"] = {
+            "kind": "transformer_checkpoint",
+            "label": trained_label,
+            "artifact": args.trained_model.as_posix(),
+            "notes": "trained metrics were produced by evaluating a transformer checkpoint via TransformerTranscriptPolicy.",
+        }
     else:
         if not args.classifier_artifact.exists():
             train_classifier_artifact(
@@ -147,6 +168,12 @@ def main() -> None:
         payload["artifacts"]["trained_plot"] = trained_plot_path.as_posix()
         payload["artifacts"]["trained_summary"] = trained_summary_path.as_posix()
         payload["metrics"]["trained"] = trained_summary.as_dict()
+        payload["trained_policy"] = {
+            "kind": "non_neural_classifier",
+            "label": f"NearestNeighborForensicPolicy[{args.classifier_artifact.as_posix()}]",
+            "artifact": args.classifier_artifact.as_posix(),
+            "notes": "trained metrics were produced by a kNN over handcrafted boolean forensic features (policy.json).",
+        }
 
     if trained_payload is not None:
         heuristic_vs_trained = _write_comparison(
@@ -247,6 +274,7 @@ def _submission_checks(output_dir: Path) -> dict[str, bool]:
     readme_path = repo_root / "README.md"
     readme_text = readme_path.read_text(encoding="utf-8") if readme_path.exists() else ""
 
+    training_sanity = _training_evidence_sanity(repo_root / "reports" / "training_evidence")
     checks = {
         "openenv_manifest_exists": (repo_root / "openenv.yaml").exists(),
         "training_notebook_exists": (repo_root / "notebooks" / "aegis_grpo_colab.ipynb").exists(),
@@ -254,6 +282,10 @@ def _submission_checks(output_dir: Path) -> dict[str, bool]:
         "training_evidence_summary_exists": (repo_root / "reports" / "training_evidence" / "training_summary.json").exists(),
         "training_evidence_history_exists": (repo_root / "reports" / "training_evidence" / "training_log_history.json").exists(),
         "training_evidence_plot_exists": (repo_root / "reports" / "training_evidence" / "training_curves.png").exists(),
+        # Non-blocking sanity checks. These prevent accidental submission with degenerate evidence.
+        "training_evidence_non_degenerate": training_sanity["non_degenerate"],
+        "training_evidence_has_tool_calls": training_sanity["has_tool_calls"],
+        "training_evidence_has_verdicts": training_sanity["has_verdicts"],
         "slide_deck_exists": (repo_root / "docs" / "hackathon_slide_deck.md").exists(),
         "random_report_exists": (output_dir / "random_report.json").exists(),
         "heuristic_report_exists": (output_dir / "heuristic_report.json").exists(),
@@ -312,6 +344,49 @@ def _readme_has_presentation_asset(readme_text: str) -> bool:
 
 def _has_live_hf_space_url(readme_text: str) -> bool:
     return re.search(r"https://huggingface\.co/spaces/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", readme_text) is not None
+
+
+def _training_evidence_sanity(training_dir: Path) -> dict[str, bool]:
+    """Best-effort sanity checks to catch degenerate committed evidence.
+
+    We intentionally keep these checks non-blocking: they inform the team (and judges reading
+    the bundle) without forcing a hard failure in environments where training evidence isn't
+    regenerated yet.
+    """
+
+    history_path = training_dir / "training_log_history.json"
+    if not history_path.exists():
+        return {"non_degenerate": False, "has_tool_calls": False, "has_verdicts": False}
+
+    try:
+        history = json.loads(history_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"non_degenerate": False, "has_tool_calls": False, "has_verdicts": False}
+    if not isinstance(history, list) or not history:
+        return {"non_degenerate": False, "has_tool_calls": False, "has_verdicts": False}
+
+    def _max_metric(name: str) -> float:
+        best = 0.0
+        for row in history:
+            if not isinstance(row, dict):
+                continue
+            value = row.get(name)
+            if isinstance(value, (int, float)):
+                best = max(best, float(value))
+        return best
+
+    tool_freq = _max_metric("tools/call_frequency")
+    verdict_rate = _max_metric("aegis/verdict_completion_rate")
+    reward_mean = _max_metric("aegis/reward_mean")
+
+    has_tool_calls = tool_freq > 0.0
+    has_verdicts = verdict_rate > 0.0
+    non_degenerate = has_tool_calls and has_verdicts and reward_mean > -0.95
+    return {
+        "non_degenerate": non_degenerate,
+        "has_tool_calls": has_tool_calls,
+        "has_verdicts": has_verdicts,
+    }
 
 
 if __name__ == "__main__":

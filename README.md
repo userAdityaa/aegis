@@ -78,7 +78,11 @@ For a slightly thicker evaluation (same workflow, more episodes per attack class
 
 ## Results Snapshot
 
-**How to read this table:** **Random** and **heuristic** are policy baselines. The **88.9% “trained”** row is a **nearest-neighbor classifier** on handcrafted features ([artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json)), **not** a fine-tuned transformer. For **TRL / GRPO checkpoint** metrics, regenerate the hackathon bundle with `--trained-model artifacts/grpo-evidence` (after you have a checkpoint from Colab).
+**How to read the results below (judge-critical):**
+
+- **Random** and **heuristic** are policy baselines.
+- The default **“trained”** row in the hackathon bundle is **not** a neural LLM by default — it is a **nearest-neighbor classifier** over handcrafted forensic features ([`artifacts/classifier-smoke/policy.json`](artifacts/classifier-smoke/policy.json)). This is a fast, deterministic benchmark used for quick comparisons.
+- If you want **TRL / GRPO transformer checkpoint** metrics, regenerate the hackathon bundle with `--trained-model <checkpoint_dir>` and provide `--trained-label ...`. In that mode, the bundle will explicitly mark `trained_policy.kind=transformer_checkpoint` in `reports/hackathon/submission_summary.json`.
 
 Current source of truth: [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json)
 
@@ -91,6 +95,14 @@ Current source of truth: [reports/hackathon/submission_summary.json](reports/hac
 The default **trained** line in [reports/hackathon/submission_summary.json](reports/hackathon/submission_summary.json) comes from the lightweight nearest-neighbor forensic policy artifact in [artifacts/classifier-smoke/policy.json](artifacts/classifier-smoke/policy.json).
 
 Important: the default `trained` in the hackathon bundle is **not** the TRL/GRPO transformer checkpoint — it is the lightweight **nearest-neighbor classifier** (`artifacts/classifier-smoke/policy.json`) used as a fast, deterministic benchmark. If your story/pitch is “we trained with TRL”, use the transformer checkpoint evaluation path below and cite the corresponding trained report.
+
+**Training evidence sanity target (what “good” looks like):**
+
+- `tools/call_frequency` should be **> 0.0**
+- `aegis/verdict_completion_rate` should be **> 0.0**
+- `aegis/reward_mean` should be **not flat at -1.0**
+
+These are automatically summarized under `submission_checks` when you regenerate the hackathon bundle (see `reports/hackathon/submission_summary.json`).
 
 ![Aegis GRPO training curves](reports/training_evidence/training_curves.png)
 
