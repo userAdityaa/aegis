@@ -28,22 +28,812 @@
       <h1>Episode transcript: Episode 1 vs later episode</h1>
       <div class="grid">
         <div class='panel'><h2>Episode 1 (early)</h2><div class='meta'>attack=<code>star_jacking</code> decision=<code class='bad'>no_verdict</code> reward=<code>-1.0</code></div><h3>Reasoning</h3><div class='reasoning'></div><h3>Tool transcript</h3></div>
-        <div class='panel'><h2>Later episode (best of last 10)</h2><div class='meta'>attack=<code>metadata_injection</code> decision=<code class='bad'>safe</code> reward=<code>-0.7</code></div><h3>Reasoning</h3><div class='reasoning'>[auto_verdict] no strong malicious signal was found across the forensic tools</div><h3>Tool transcript</h3><div class='step'><div class='tool'>Tool: <code>trace_dependencies</code></div><pre class='json'>{
-  "dependency_count": 1,
-  "flat_dependencies": [
+        <div class='panel'><h2>Later episode (best of last 10)</h2><div class='meta'>attack=<code>account_takeover</code> decision=<code class='good'>account_takeover</code> reward=<code>1.5</code></div><h3>Reasoning</h3><div class='reasoning'>[auto_verdict] maintainer IP history changed without stronger evidence elsewhere</div><h3>Tool transcript</h3><div class='step'><div class='tool'>Tool: <code>check_maintainer_history</code></div><pre class='json'>{
+  "commit_count": 100,
+  "ip_history": [
     {
-      "latest_version": "1.3.2",
-      "maintainer_count": 3,
-      "name": "proxy_watch394",
-      "source": "public"
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "optimize cache lookup",
+      "hash": "f83a54719732",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-01-27T11:41:30+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "2f51d42333b8",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-01-28T08:54:22+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "d769fe122cd6",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-01-29T13:41:25+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "a4fb7b338428",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-01-30T11:05:10+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "1e32511ffb6a",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-02-01T10:10:42+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "3c67d6e89560",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-02-02T10:34:41+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "harden input validation",
+      "hash": "f601aab95744",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-02-03T12:16:26+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "bump lockfile",
+      "hash": "2c040356a5d2",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-02-05T09:02:53+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "786bfe1fcccf",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-02-09T10:25:31+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "update packaging metadata",
+      "hash": "86d56a56ac66",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-02-13T12:02:46+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "43b3b36fe173",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-02-17T11:01:31+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "1f00fcb48f95",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-02-21T11:51:35+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "bump lockfile",
+      "hash": "54012b4153f5",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-02-22T11:40:45+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "optimize cache lookup",
+      "hash": "f241eef3af6c",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-02-25T10:17:57+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "improve retry behavior",
+      "hash": "1f52bed5e2d1",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-02-27T07:46:34+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "improve retry behavior",
+      "hash": "df07db8933a9",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-02-29T10:02:33+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "refactor parser helper",
+      "hash": "95daa6187184",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-03-01T08:46:54+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "harden input validation",
+      "hash": "9bfa758668a5",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-03-02T09:41:24+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "c0b88f509181",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-03-06T10:49:02+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "update packaging metadata",
+      "hash": "b6f7759ecd74",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-03-07T10:17:55+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "harden input validation",
+      "hash": "117460ef7ba8",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-03-09T11:10:02+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "harden input validation",
+      "hash": "a13203c19df2",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-03-13T13:37:47+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "9bb84bb64719",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-03-17T11:09:14+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "3e05c4ce7b1b",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-03-20T12:05:52+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "optimize cache lookup",
+      "hash": "79f67d5a2f84",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-03-22T10:06:20+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "8299f13d1a84",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-03-23T08:22:55+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "5e907d70815f",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-03-24T12:38:50+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "80dc22b84e0e",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-03-28T10:51:37+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "optimize cache lookup",
+      "hash": "40b93736e2a0",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-03-29T10:00:12+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "update packaging metadata",
+      "hash": "62f4020a3c4c",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-03-31T09:23:35+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "update packaging metadata",
+      "hash": "0c82b9e9f2e2",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-04-03T09:57:08+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "bump lockfile",
+      "hash": "4e8180a1437c",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-04-04T09:39:44+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "c60b75905893",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-04-08T14:53:18+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "f9a9807ac1c7",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-04-11T11:26:26+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "65bbd8771952",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-04-12T08:04:41+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "dd8c08188845",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-04-16T09:08:23+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "bump lockfile",
+      "hash": "f9d9e75b89c3",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-04-17T08:13:09+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "improve retry behavior",
+      "hash": "f2439299eedf",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-04-19T09:50:58+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "26b8dc73f0b0",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-04-23T11:28:36+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "optimize cache lookup",
+      "hash": "82e728b429b3",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-04-24T12:34:03+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "45b185c65234",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-04-25T14:34:14+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "update packaging metadata",
+      "hash": "e393df200e88",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-04-28T11:43:17+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "5d031d8beb94",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-04-29T13:02:11+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "refactor parser helper",
+      "hash": "ae91dd7044ca",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-05-01T14:16:28+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "873c3f1b980e",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-05-03T09:27:07+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "873c3f1b980e",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-05-03T09:27:07+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "optimize cache lookup",
+      "hash": "3589f91d5bd2",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-05-06T12:21:07+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "optimize cache lookup",
+      "hash": "3589f91d5bd2",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-05-06T12:21:07+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "refactor parser helper",
+      "hash": "d39ab9eb7621",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-05-08T11:09:43+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "refactor parser helper",
+      "hash": "d39ab9eb7621",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-05-08T11:09:43+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "59d58de5617d",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-05-11T10:01:44+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "59d58de5617d",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-05-11T10:01:44+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "update packaging metadata",
+      "hash": "c3453fb8040d",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-05-13T10:27:26+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "update packaging metadata",
+      "hash": "c3453fb8040d",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-05-13T10:27:26+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "optimize cache lookup",
+      "hash": "6a07af8e3d52",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-05-14T09:18:42+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "optimize cache lookup",
+      "hash": "6a07af8e3d52",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-05-14T09:18:42+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "19e35f154ee1",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-05-18T12:31:12+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "19e35f154ee1",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-05-18T12:31:12+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "harden input validation",
+      "hash": "007546edd44c",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-05-20T09:23:44+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "harden input validation",
+      "hash": "007546edd44c",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-05-20T09:23:44+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "5d8e72dd0dcc",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-05-24T11:01:13+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "5d8e72dd0dcc",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-05-24T11:01:13+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "optimize cache lookup",
+      "hash": "e9965a616afa",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-05-27T12:29:11+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "optimize cache lookup",
+      "hash": "e9965a616afa",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-05-27T12:29:11+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "harden input validation",
+      "hash": "5ff7a9c4b224",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-05-30T12:37:40+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "harden input validation",
+      "hash": "5ff7a9c4b224",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-05-30T12:37:40+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "bce15e7f5842",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-05-31T11:51:43+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "bce15e7f5842",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-05-31T11:51:43+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "f9ee34a3b5c5",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-06-02T09:40:57+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "f9ee34a3b5c5",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-06-02T09:40:57+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "harden input validation",
+      "hash": "541fcfaa57d1",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-06-06T12:36:55+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "harden input validation",
+      "hash": "541fcfaa57d1",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-06-06T12:36:55+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "84beca3179c5",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-06-07T10:24:08+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "84beca3179c5",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-06-07T10:24:08+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "11536d501c46",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-06-10T10:43:54+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "11536d501c46",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-06-10T10:43:54+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "improve retry behavior",
+      "hash": "efd23ffa93e9",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-06-14T08:47:31+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "improve retry behavior",
+      "hash": "efd23ffa93e9",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-06-14T08:47:31+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "update packaging metadata",
+      "hash": "5d08243718c2",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-06-16T13:01:24+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "update packaging metadata",
+      "hash": "5d08243718c2",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-06-16T13:01:24+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "a021dc782561",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-06-18T11:58:23+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "a021dc782561",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-06-18T11:58:23+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "04f9d37766a9",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-06-19T13:44:47+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "04f9d37766a9",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-06-19T13:44:47+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "update packaging metadata",
+      "hash": "11cef4e4f957",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-06-23T10:47:54+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "update packaging metadata",
+      "hash": "11cef4e4f957",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-06-23T10:47:54+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "71bbe22c90ee",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-06-25T11:52:14+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "fix edge case in serializer",
+      "hash": "71bbe22c90ee",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-06-25T11:52:14+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "179c7af020c9",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-06-26T10:25:52+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "refactor parser helper",
+      "hash": "179c7af020c9",
+      "ip": "80.145.250.181",
+      "timestamp": "2024-06-26T10:25:52+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "update packaging metadata",
+      "hash": "41c31bad47cb",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-06-27T08:09:15+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "update packaging metadata",
+      "hash": "41c31bad47cb",
+      "ip": "80.145.250.109",
+      "timestamp": "2024-06-27T08:09:15+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "harden input validation",
+      "hash": "46ed367c31b3",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-07-01T08:53:34+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "harden input validation",
+      "hash": "46ed367c31b3",
+      "ip": "80.145.250.60",
+      "timestamp": "2024-07-01T08:53:34+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "18d17aefbf57",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-07-04T10:24:26+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "18d17aefbf57",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-07-04T10:24:26+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "1005dd1842a7",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-07-05T09:22:27+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "1005dd1842a7",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-07-05T09:22:27+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "normalize release path",
+      "hash": "d5e35c6e4337",
+      "ip": "246.222.244.219",
+      "timestamp": "2024-07-12T01:05:05+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "fix release headers",
+      "hash": "da94ab73738f",
+      "ip": "246.222.244.219",
+      "timestamp": "2024-07-12T02:47:51+00:00"
     }
   ],
-  "package": "relayyield278",
-  "tree": {
-    "relayyield278": {
-      "proxy_watch394": {}
+  "maintainers": [
+    {
+      "commit_count": 49,
+      "commit_hour_distribution": {
+        "1": 1,
+        "10": 16,
+        "11": 7,
+        "12": 3,
+        "2": 1,
+        "7": 1,
+        "8": 8,
+        "9": 12
+      },
+      "email": "rachelgobeta22@maintainers.net",
+      "first_seen": "2024-02-01T10:10:42+00:00",
+      "known_ips": [
+        "80.145.250.109",
+        "80.145.250.181",
+        "80.145.250.60"
+      ],
+      "last_seen": "2024-07-12T02:47:51+00:00",
+      "name": "Rachel Gomez"
+    },
+    {
+      "commit_count": 51,
+      "commit_hour_distribution": {
+        "10": 8,
+        "11": 13,
+        "12": 12,
+        "13": 7,
+        "14": 3,
+        "8": 3,
+        "9": 5
+      },
+      "email": "drcandacbeta68@codeforge.ai",
+      "first_seen": "2024-01-27T11:41:30+00:00",
+      "known_ips": [
+        "179.62.139.109",
+        "179.62.139.56"
+      ],
+      "last_seen": "2024-07-05T09:22:27+00:00",
+      "name": "Dr. Candace Webster"
     }
-  }
+  ],
+  "off_hours_recent_commits": [
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "normalize release path",
+      "hash": "d5e35c6e4337",
+      "ip": "246.222.244.219",
+      "timestamp": "2024-07-12T01:05:05+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "fix release headers",
+      "hash": "da94ab73738f",
+      "ip": "246.222.244.219",
+      "timestamp": "2024-07-12T02:47:51+00:00"
+    }
+  ],
+  "package": "betastack51",
+  "recent_commits": [
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "improve retry behavior",
+      "hash": "18d17aefbf57",
+      "ip": "179.62.139.56",
+      "timestamp": "2024-07-04T10:24:26+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "1005dd1842a7",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-07-05T09:22:27+00:00"
+    },
+    {
+      "author": "drcandacbeta68@codeforge.ai",
+      "diff_summary": "bump lockfile",
+      "hash": "1005dd1842a7",
+      "ip": "179.62.139.109",
+      "timestamp": "2024-07-05T09:22:27+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "normalize release path",
+      "hash": "d5e35c6e4337",
+      "ip": "246.222.244.219",
+      "timestamp": "2024-07-12T01:05:05+00:00"
+    },
+    {
+      "author": "rachelgobeta22@maintainers.net",
+      "diff_summary": "fix release headers",
+      "hash": "da94ab73738f",
+      "ip": "246.222.244.219",
+      "timestamp": "2024-07-12T02:47:51+00:00"
+    }
+  ],
+  "suspicious_ip_shift": true,
+  "unseen_recent_ips": [
+    "246.222.244.219"
+  ]
 }</pre></div></div>
       </div>
     </div>

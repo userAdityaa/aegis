@@ -6,9 +6,9 @@
     "heuristic_vs_trained": {
       "comparison_path": "reports/hackathon/heuristic_vs_trained.json",
       "delta": {
-        "accuracy": -0.11111111111111116,
-        "average_reward": -0.14444444444444438,
-        "average_steps": 3.0
+        "accuracy": -0.33333333333333337,
+        "average_reward": -0.6888888888888889,
+        "average_steps": 3.2222222222222214
       },
       "plot_path": "reports/hackathon/heuristic_vs_trained.png"
     },
@@ -27,9 +27,9 @@
     "random_vs_trained": {
       "comparison_path": "reports/hackathon/random_vs_trained.json",
       "delta": {
-        "accuracy": 0.4444444444444444,
-        "average_reward": 0.8777777777777778,
-        "average_steps": 7.0
+        "accuracy": 0.2222222222222222,
+        "average_reward": 0.3333333333333333,
+        "average_steps": 7.222222222222221
       },
       "plot_path": "reports/hackathon/random_vs_trained.png"
     },
@@ -408,14 +408,14 @@
       }
     },
     "random_to_trained_delta": {
-      "accuracy": 0.4444444444444444,
-      "average_reward": 0.8777777777777778,
-      "average_steps": 7.0
+      "accuracy": 0.2222222222222222,
+      "average_reward": 0.3333333333333333,
+      "average_steps": 7.222222222222221
     },
     "trained": {
-      "accuracy": 0.6666666666666666,
-      "average_reward": 0.5555555555555556,
-      "average_steps": 9.0,
+      "accuracy": 0.4444444444444444,
+      "average_reward": 0.01111111111111112,
+      "average_steps": 9.222222222222221,
       "confusion_matrix": {
         "account_takeover": {
           "account_takeover": 1,
@@ -430,12 +430,12 @@
         },
         "cicd_poisoning": {
           "account_takeover": 0,
-          "cicd_poisoning": 1,
+          "cicd_poisoning": 0,
           "dead_drop_hijack": 0,
           "dependency_confusion": 0,
           "long_con": 0,
           "metadata_injection": 0,
-          "safe": 0,
+          "safe": 1,
           "star_jacking": 0,
           "typosquatting": 0
         },
@@ -478,8 +478,8 @@
           "dead_drop_hijack": 0,
           "dependency_confusion": 0,
           "long_con": 0,
-          "metadata_injection": 1,
-          "safe": 0,
+          "metadata_injection": 0,
+          "safe": 1,
           "star_jacking": 0,
           "typosquatting": 0
         },
@@ -519,10 +519,8 @@
       },
       "decision_counts": {
         "account_takeover": 3,
-        "cicd_poisoning": 1,
         "dead_drop_hijack": 1,
-        "metadata_injection": 1,
-        "safe": 2,
+        "safe": 4,
         "star_jacking": 1
       },
       "episodes": 9,
@@ -534,9 +532,9 @@
           "episodes": 1
         },
         "cicd_poisoning": {
-          "accuracy": 1.0,
-          "average_reward": 1.2,
-          "average_steps": 12.0,
+          "accuracy": 0.0,
+          "average_reward": -1.0,
+          "average_steps": 8.0,
           "episodes": 1
         },
         "dead_drop_hijack": {
@@ -558,9 +556,9 @@
           "episodes": 1
         },
         "metadata_injection": {
-          "accuracy": 1.0,
-          "average_reward": 1.7000000000000002,
-          "average_steps": 3.0,
+          "accuracy": 0.0,
+          "average_reward": -1.0,
+          "average_steps": 9.0,
           "episodes": 1
         },
         "safe": {
@@ -584,21 +582,22 @@
       },
       "policy_name": "TransformerTranscriptPolicy",
       "tool_usage_counts": {
-        "check_maintainer_history": 9,
-        "diff_versions": 18,
-        "draft_incident_reply": 6,
+        "check_maintainer_history": 13,
+        "diff_versions": 19,
+        "draft_incident_reply": 5,
         "get_reputation_score": 6,
-        "inspect_install_script": 17,
-        "list_incident_inbox": 6,
-        "read_incident_message": 6,
-        "run_sandbox_test": 7,
-        "send_incident_reply": 6
+        "inspect_install_script": 16,
+        "list_incident_inbox": 5,
+        "read_incident_message": 4,
+        "run_sandbox_test": 8,
+        "send_incident_reply": 5,
+        "trace_dependencies": 2
       }
     },
     "trained_delta": {
-      "accuracy": -0.11111111111111116,
-      "average_reward": -0.14444444444444438,
-      "average_steps": 3.0
+      "accuracy": -0.33333333333333337,
+      "average_reward": -0.6888888888888889,
+      "average_steps": 3.2222222222222214
     }
   },
   "schema_version": 1,
